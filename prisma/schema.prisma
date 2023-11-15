@@ -36,16 +36,16 @@ model Image {
 
 model CategoryImage {
   id        Int      @id @default(autoincrement())
-  Product   Product? @relation(fields: [productId], references: [id])
-  productId Int?
+  Product   Product  @relation(fields: [productId], references: [id])
+  productId Int
   image_for ImageFor
   src_path  String
 }
 
 model GalleryImage {
   id        Int      @id @default(autoincrement())
-  Product   Product? @relation(fields: [productId], references: [id])
-  productId Int?
+  Product   Product  @relation(fields: [productId], references: [id])
+  productId Int
   image_for ImageFor
   src_path  String
 }
@@ -63,8 +63,8 @@ model OtherProductsImages {
 
   image_for       ImageFor
   src_path        String
-  OtherProducts   OtherProducts? @relation(fields: [otherProductsId], references: [id])
-  otherProductsId Int?
+  OtherProducts   OtherProducts @relation(fields: [otherProductsId], references: [id])
+  otherProductsId Int
 }
 
 model Inclusions {
