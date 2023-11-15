@@ -9,3 +9,109 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Product {
+  id            Int             @id @default(autoincrement())
+  slug          String
+  name          String
+  image         Image[]
+  imageId       Int
+  category      String
+  categoryImage CategoryImage[]
+  new           Boolean
+  price         Int
+  description   String
+  features      String
+  inclusions    Inclusions[]
+  gallery       GalleryImage[]
+  otherProducts OtherProducts[]
+}
+
+model Image {
+  id        Int      @id @default(autoincrement())
+  Product   Product  @relation(fields: [ProductId], references: [id])
+  ProductId Int
+  image_for ImageFor
+  src_path  String
+}
+
+model CategoryImage {
+  id        Int      @id @default(autoincrement())
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId Int?
+  image_for ImageFor
+  src_path  String
+}
+
+model GalleryImage {
+  id        Int      @id @default(autoincrement())
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId Int?
+  image_for ImageFor
+  src_path  String
+}
+
+model OtherProducts {
+  id              Int                   @id @default(autoincrement())
+  Product         Product               @relation(fields: [parentProductId], references: [id])
+  parentProductId Int
+  productId       Int
+  image           OtherProductsImages[]
+}
+
+model OtherProductsImages {
+  id Int @id @default(autoincrement())
+
+  image_for       ImageFor
+  src_path        String
+  OtherProducts   OtherProducts? @relation(fields: [otherProductsId], references: [id])
+  otherProductsId Int?
+}
+
+model Inclusions {
+  id        Int     @id @default(autoincrement())
+  Product   Product @relation(fields: [productId], references: [id])
+  productId Int
+  item      String
+  quantity  Int
+}
+
+model Customer {
+  id          Int           @id @default(autoincrement())
+  name        String
+  email       String
+  phone       String
+  address     String
+  zipcode     String
+  city        String
+  country     String
+  transaction Transaction[]
+}
+
+model Transaction {
+  id            Int           @id @default(autoincrement())
+  Customer      Customer      @relation(fields: [customerId], references: [id])
+  customerId    Int
+  paymentMethod PaymentMethod
+  eMoneyNumber  String?
+  eMoneyPin     String?
+  shippingFee   Float
+  vatRate       Float
+}
+
+model OrderItem {
+  id        Int @id @default(autoincrement())
+  productId Int
+  quantity  Int
+}
+
+enum ImageFor {
+  MOBILE
+  TABLET
+  DESKTOP
+}
+
+enum PaymentMethod {
+  EMONEY
+  COD
+}
