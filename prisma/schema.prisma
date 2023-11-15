@@ -15,7 +15,6 @@ model Product {
   slug          String
   name          String
   image         Image[]
-  imageId       Int
   category      String
   categoryImage CategoryImage[]
   new           Boolean
