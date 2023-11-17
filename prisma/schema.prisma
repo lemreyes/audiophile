@@ -11,7 +11,7 @@ datasource db {
 }
 
 model Product {
-  id            Int             @id @default(autoincrement())
+  id            Int                   @id @default(autoincrement())
   slug          String
   name          String
   image         Image[]
@@ -24,6 +24,7 @@ model Product {
   inclusions    Inclusions[]
   gallery       GalleryImage[]
   otherProducts OtherProducts[]
+  imageAsOther  ImageAsOtherProduct[]
   created_at    DateTime
   updated_at    DateTime
 }
@@ -63,24 +64,23 @@ model GalleryImage {
 }
 
 model OtherProducts {
-  id              Int                   @id @default(autoincrement())
-  Product         Product               @relation(fields: [parentProductId], references: [id])
+  id              Int      @id @default(autoincrement())
+  Product         Product  @relation(fields: [parentProductId], references: [id])
   parentProductId Int
   productId       Int
-  image           OtherProductsImages[]
   created_at      DateTime
   updated_at      DateTime
 }
 
-model OtherProductsImages {
-  id              Int           @id @default(autoincrement())
-  mobileSrc       String
-  tabletSrc       String
-  desktopSrc      String
-  OtherProducts   OtherProducts @relation(fields: [otherProductsId], references: [id])
-  otherProductsId Int
-  created_at      DateTime
-  updated_at      DateTime
+model ImageAsOtherProduct {
+  id         Int      @id @default(autoincrement())
+  mobileSrc  String
+  tabletSrc  String
+  desktopSrc String
+  Product    Product  @relation(fields: [productId], references: [id])
+  productId  Int
+  created_at DateTime
+  updated_at DateTime
 }
 
 model Inclusions {
