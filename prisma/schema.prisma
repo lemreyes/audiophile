@@ -24,30 +24,42 @@ model Product {
   inclusions    Inclusions[]
   gallery       GalleryImage[]
   otherProducts OtherProducts[]
+  created_at    DateTime
+  updated_at    DateTime
 }
 
 model Image {
-  id        Int      @id @default(autoincrement())
-  Product   Product  @relation(fields: [ProductId], references: [id])
-  ProductId Int
-  image_for ImageFor
-  src_path  String
+  id         Int      @id @default(autoincrement())
+  mobileSrc  String
+  tabletSrc  String
+  desktopSrc String
+  Product    Product  @relation(fields: [productId], references: [id])
+  productId  Int
+  created_at DateTime
+  updated_at DateTime
 }
 
 model CategoryImage {
-  id        Int      @id @default(autoincrement())
-  Product   Product  @relation(fields: [productId], references: [id])
-  productId Int
-  image_for ImageFor
-  src_path  String
+  id         Int      @id @default(autoincrement())
+  mobileSrc  String
+  tabletSrc  String
+  desktopSrc String
+  Product    Product  @relation(fields: [productId], references: [id])
+  productId  Int
+  created_at DateTime
+  updated_at DateTime
 }
 
 model GalleryImage {
-  id        Int      @id @default(autoincrement())
-  Product   Product  @relation(fields: [productId], references: [id])
-  productId Int
-  image_for ImageFor
-  src_path  String
+  id         Int      @id @default(autoincrement())
+  order      Int
+  mobileSrc  String
+  tabletSrc  String
+  desktopSrc String
+  Product    Product  @relation(fields: [productId], references: [id])
+  productId  Int
+  created_at DateTime
+  updated_at DateTime
 }
 
 model OtherProducts {
@@ -56,23 +68,29 @@ model OtherProducts {
   parentProductId Int
   productId       Int
   image           OtherProductsImages[]
+  created_at      DateTime
+  updated_at      DateTime
 }
 
 model OtherProductsImages {
-  id Int @id @default(autoincrement())
-
-  image_for       ImageFor
-  src_path        String
+  id              Int           @id @default(autoincrement())
+  mobileSrc       String
+  tabletSrc       String
+  desktopSrc      String
   OtherProducts   OtherProducts @relation(fields: [otherProductsId], references: [id])
   otherProductsId Int
+  created_at      DateTime
+  updated_at      DateTime
 }
 
 model Inclusions {
-  id        Int     @id @default(autoincrement())
-  Product   Product @relation(fields: [productId], references: [id])
-  productId Int
-  item      String
-  quantity  Int
+  id         Int      @id @default(autoincrement())
+  Product    Product  @relation(fields: [productId], references: [id])
+  productId  Int
+  item       String
+  quantity   Int
+  created_at DateTime
+  updated_at DateTime
 }
 
 model Customer {
@@ -85,6 +103,8 @@ model Customer {
   city        String
   country     String
   transaction Transaction[]
+  created_at  DateTime
+  updated_at  DateTime
 }
 
 model Transaction {
@@ -96,12 +116,16 @@ model Transaction {
   eMoneyPin     String?
   shippingFee   Float
   vatRate       Float
+  created_at    DateTime
+  updated_at    DateTime
 }
 
 model OrderItem {
-  id        Int @id @default(autoincrement())
-  productId Int
-  quantity  Int
+  id         Int      @id @default(autoincrement())
+  productId  Int
+  quantity   Int
+  created_at DateTime
+  updated_at DateTime
 }
 
 enum ImageFor {
