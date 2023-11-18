@@ -4,6 +4,7 @@
 
 :root {
   --primary: #191919;
+  --accent: #d87d4a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -11,4 +12,11 @@
 
 body {
   background: white;
+}
+
+.bg-hero-mobile {
+  background-image: url("../../public/assets/home/mobile/image-header.jpg");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: cover;
 }
