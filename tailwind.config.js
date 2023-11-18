@@ -10,6 +10,8 @@ module.exports = {
       colors: {
         primary: "var(--primary)",
         accent: "var(--accent)",
+        product: "var(--bg-gray-product)",
+        textPrimary: "var(--text-primary)",
       },
       screens: {
         tablet: "400px",
