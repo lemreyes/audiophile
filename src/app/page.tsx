@@ -1,4 +1,5 @@
 import Categories from "./Components/Categories";
+import FeatureProduct from "./Components/FeatureProduct";
 import Hero from "./Components/Hero";
 
 export default function Home() {
@@ -6,7 +7,7 @@ export default function Home() {
     <main className="">
       <Hero />
       <Categories />
-      
+      <FeatureProduct />
     </main>
   );
 }

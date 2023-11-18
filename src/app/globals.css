@@ -5,7 +5,7 @@
 :root {
   --primary: #191919;
   --accent: #d87d4a;
-  --bg-gray-product: #F1F1F1;
+  --bg-gray-product: #f1f1f1;
   --text-primary: #979797;
 }
 
@@ -20,5 +20,19 @@ body {
   background-image: url("../../public/assets/home/mobile/image-header.jpg");
   background-repeat: no-repeat;
   background-position: left top;
+  background-size: cover;
+}
+
+.bg-feature {
+  background-image: url("../../public/assets//home/desktop/pattern-circles.svg");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: contain;
+}
+
+.bg-zx7 {
+  background-image: url("../../public/assets//home/mobile/image-speaker-zx7.jpg");
+  background-repeat: no-repeat;
+  background-position: right top;
   background-size: cover;
 }
