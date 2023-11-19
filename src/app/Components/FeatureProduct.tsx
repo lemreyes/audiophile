@@ -80,18 +80,22 @@ export default function FeatureProduct() {
         </div>
       </article>
       <article className="bg-zx7 w-full rounded-lg mt-8 pl-8 py-20">
-        <h2 className="text-3xl uppercase font-bold">ZX7 speaker</h2>
+        <h2 className="text-3xl uppercase font-bold tracking-[2px]">
+          ZX7 speaker
+        </h2>
         <button className="mt-12 border border-black px-8 py-4 uppercase text-sm font-bold">
           See Product
         </button>
       </article>
-      <article className="mt-8">
-        <ImageDynamic imageSrc={yX1EarphonesImageSrc} />
-        <div className="mt-8 bg-product pl-8 py-12 rounded-lg">
-          <h2 className="text-3xl uppercase font-bold">yx1 earphones</h2>
-          <button className="mt-12 border border-black px-8 py-4 uppercase text-sm font-bold">
-            See Product
-          </button>
+      <article className="mt-8 tablet:w-full">
+        <div className="tablet:flex tablet:flex-row gap-x-4">
+          <ImageDynamic imageSrc={yX1EarphonesImageSrc} />
+          <div className="tablet:flex tablet:flex-col tablet:justify-center mt-8 tablet:mt-0 bg-product pl-16 tablet:w-1/2 rounded-lg">
+            <h2 className="text-3xl uppercase font-bold">yx1 earphones</h2>
+            <button className="mt-12 border border-black px-4 py-4 w-[160px] uppercase text-sm font-bold">
+              See Product
+            </button>
+          </div>
         </div>
       </article>
     </section>
