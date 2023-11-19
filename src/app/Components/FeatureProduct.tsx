@@ -5,6 +5,7 @@ import yx1_mobile from "../../../public/assets/home/mobile/image-earphones-yx1.j
 import yx1_tablet from "../../../public/assets/home/tablet/image-earphones-yx1.jpg";
 import yx1_desktop from "../../../public/assets/home/desktop/image-earphones-yx1.jpg";
 import ImageDynamic, { ImageSrcObject } from "./ImageDynamic";
+import ClosingStatement from "./ClosingStatement";
 
 export default function FeatureProduct() {
   const zX9ImageSrc: ImageSrcObject = {
@@ -98,6 +99,7 @@ export default function FeatureProduct() {
           </div>
         </div>
       </article>
+      <ClosingStatement />
     </section>
   );
 }

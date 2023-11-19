@@ -24,24 +24,26 @@ export default function ClosingStatement() {
       width: 540,
       height: 588,
       altText: "man with headphones",
-      styleClasses: "rounded-lg",
+      styleClasses: "rounded-lg desktop:order-2",
     },
   };
 
   return (
-    <section className="mt-8 mb-12 flex flex-col items-center">
+    <section className="mt-8 mb-12 flex flex-col desktop:flex-row items-center">
       <ImageDynamic imageSrc={bestGearImgSrc} />
-      <h2 className="mt-8 px-8 text-3xl text-center uppercase font-bold">
-        Bringing you the <span className="text-accent">best</span> audio gear
-      </h2>
-      <p className="mt-8 px-4 text-sm text-center text-gray-600">
-        Located at the heart of New York City, Audiophile is the premier store
-        for high end headphones, earphones, speakers, and audio accessories. We
-        have a large showroom and luxury demonstration rooms available for you
-        to browse and experience a wide range of our products. Stop by our store
-        to meet some of the fantastic people who make Audiophile the best place
-        to buy your portable audio equipment.
-      </p>
+      <div className="desktop:order-1">
+        <h2 className="mt-8 px-8 tablet:w-2/3 text-3xl tablet:text-[40px] desktop:tracking-wide tablet:leading-[44px] text-center uppercase font-bold">
+          Bringing you the <span className="text-accent">best</span> audio gear
+        </h2>
+        <p className="mt-8 px-4 text-sm text-center text-gray-600 tablet:w-2/3 leading-[25px]">
+          Located at the heart of New York City, Audiophile is the premier store
+          for high end headphones, earphones, speakers, and audio accessories.
+          We have a large showroom and luxury demonstration rooms available for
+          you to browse and experience a wide range of our products. Stop by our
+          store to meet some of the fantastic people who make Audiophile the
+          best place to buy your portable audio equipment.
+        </p>
+      </div>
     </section>
   );
 }
