@@ -27,7 +27,7 @@ export default function FeatureProduct() {
       width: 410,
       height: 493,
       altText: "zx9-speaker",
-      styleClasses: "desktop:absolute desktop:-bottom-4 desktop:left-24",
+      styleClasses: "desktop:absolute desktop:-bottom-4 desktop:left-16",
     },
   };
 
@@ -58,18 +58,19 @@ export default function FeatureProduct() {
   return (
     <section
       id="featureProducts"
-      className="desktop:w-4/5 flex flex-col items-center mt-8 px-6 "
+      className="desktop:w-11/12 flex flex-col items-center mt-8 px-6 "
     >
       <article
         id="zx9-speaker"
-        className="flex flex-col items-center bg-feature rounded-lg bg-accent w-full px-4 py-16 desktop:h-[560px] desktop:relative desktop:overflow-hidden"
+        className="flex flex-col items-center desktop:items-end bg-feature rounded-lg bg-accent w-full px-4 py-16 
+                    desktop:h-[560px] desktop:relative desktop:overflow-hidden"
       >
         <ImageDynamic imageSrc={zX9ImageSrc} />
-        <div className="flex flex-col items-center desktop:items-start desktop:w-1/3 text-center desktop:text-left desktop:ml-80">
-          <h2 className="mt-12 text-3xl desktop:text-6xl desktop:text-left uppercase text-white font-bold">
+        <div className="flex flex-col items-center desktop:items-start desktop:w-1/3 text-center desktop:text-left desktop:mr-20">
+          <h2 className="mt-12 tablet:w-1/3 text-3xl tablet:text-6xl text-center desktop:text-left uppercase text-white font-bold">
             ZX9 speaker
           </h2>
-          <p className="mt-12 px-4 desktop:px-0 text-[15px] leading-[25px]  text-white text-center desktop:text-left">
+          <p className="mt-12 tablet:w-2/3 px-4 desktop:px-0 text-[15px] leading-[25px]  text-white text-center desktop:text-left">
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
