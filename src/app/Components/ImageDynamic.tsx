@@ -3,37 +3,37 @@ import Image from "next/image";
 import { StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
 
-enum ScreenTypeEnum {
+export enum ScreenTypeEnum {
   SCREENTYPE_MOBILE = 0,
   SCREENTYPE_TABLET,
   SCREENTYPE_DESKTOP,
 }
 
-interface ImageSrcObject {
-  mobile: StaticImageData | null;
-  tablet: StaticImageData | null;
-  desktop: StaticImageData | null;
+export interface ImageSrcObject {
+  mobile: imageData | null;
+  tablet: imageData | null;
+  desktop: imageData | null;
+}
+
+export interface imageData {
+  imageData: StaticImageData | null;
+  width: number;
+  height: number;
+  altText: string;
+  styleClasses: string;
 }
 
 export default function ImageDynamic({
   imageSrc,
-  altText,
-  styleClasses,
-  width,
-  height,
 }: {
   imageSrc: ImageSrcObject;
-  altText: string;
-  styleClasses: string;
-  width: number;
-  height: number;
 }) {
   const [screenType, setScreenType] = useState<ScreenTypeEnum>(
     ScreenTypeEnum.SCREENTYPE_MOBILE
   );
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 400) {
+      if (window.innerWidth < 430) {
         setScreenType(ScreenTypeEnum.SCREENTYPE_MOBILE);
       } else if (window.innerWidth < 1024) {
         setScreenType(ScreenTypeEnum.SCREENTYPE_TABLET);
@@ -54,35 +54,47 @@ export default function ImageDynamic({
     };
   }, []);
 
-  if (screenType === ScreenTypeEnum.SCREENTYPE_MOBILE) {
+  if (
+    screenType === ScreenTypeEnum.SCREENTYPE_MOBILE &&
+    imageSrc.mobile &&
+    imageSrc.mobile.imageData
+  ) {
     return (
       <Image
-        src={imageSrc.mobile as StaticImageData}
-        alt={altText}
-        className={`${styleClasses}`}
-        width={width}
-        height={height}
+        src={imageSrc.mobile.imageData}
+        alt={imageSrc.mobile.altText}
+        className={`${imageSrc.mobile.styleClasses}`}
+        width={imageSrc.mobile.width}
+        height={imageSrc.mobile.height}
       />
     );
-  } else if (screenType === ScreenTypeEnum.SCREENTYPE_TABLET) {
+  } else if (
+    screenType === ScreenTypeEnum.SCREENTYPE_TABLET &&
+    imageSrc.tablet &&
+    imageSrc.tablet.imageData
+  ) {
     return (
       <Image
-        src={imageSrc.tablet as StaticImageData}
-        alt={altText}
-        className={`${styleClasses}`}
-        width={width}
-        height={height}
+        src={imageSrc.tablet.imageData}
+        alt={imageSrc.tablet.altText}
+        className={`${imageSrc.tablet.styleClasses}`}
+        width={imageSrc.tablet.width}
+        height={imageSrc.tablet.height}
       />
     );
   } else {
-    return (
-      <Image
-        src={imageSrc.desktop as StaticImageData}
-        alt={altText}
-        className={`${styleClasses}`}
-        width={width}
-        height={height}
-      />
-    );
+    if (imageSrc.desktop && imageSrc.desktop.imageData) {
+      return (
+        <Image
+          src={imageSrc.desktop.imageData}
+          alt={imageSrc.desktop.altText}
+          className={`${imageSrc.desktop.styleClasses}`}
+          width={imageSrc.desktop.width}
+          height={imageSrc.desktop.height}
+        />
+      );
+    } else {
+      return <p>No image.</p>;
+    }
   }
 }

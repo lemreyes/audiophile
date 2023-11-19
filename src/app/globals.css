@@ -9,18 +9,15 @@
   --text-primary: #979797;
 }
 
-@media (prefers-color-scheme: dark) {
-}
-
 body {
   background: white;
 }
 
-.bg-hero-mobile {
+.bg-hero {
   background-image: url("../../public/assets/home/mobile/image-header.jpg");
   background-repeat: no-repeat;
-  background-position: left top;
-  background-size: cover;
+  background-position: center center;
+  background-size: contain;
 }
 
 .bg-feature {
@@ -35,4 +32,24 @@ body {
   background-repeat: no-repeat;
   background-position: right top;
   background-size: cover;
+}
+
+@media only screen and (min-width: 430px) {
+  .bg-hero {
+    background-image: url("../../public/assets/home/tablet/image-header.jpg");
+  }
+
+}
+
+@media only screen and (min-width: 1024px) {
+  .bg-hero {
+    background-image: url("../../public/assets/home/desktop/image-hero.jpg");
+    background-position: right center;
+    background-size: contain;
+  }
+
+  .bg-feature {
+    background-position: left top;
+    background-size: auto;
+  }
 }

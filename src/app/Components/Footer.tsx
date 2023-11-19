@@ -22,10 +22,10 @@ export default function Footer() {
         </ul>
       </nav>
       <p className="mt-8 text-gray-400 text-[15px] text-center leading-6 px-8">
-        Audiophile is an all in one stop to fulfill your audio needs. We're a
+        Audiophile is an all in one stop to fulfill your audio needs. We are a
         small team of music lovers and sound specialists who are devoted to
         helping you get the most out of personal audio. Come and visit our demo
-        facility - we’re open 7 days a week.
+        facility - we are open 7 days a week.
       </p>
       <p className="mt-12 text-gray-400 text-[15px] text-center leading-6 px-8">
         Copyright 2023. All Rights Reserved

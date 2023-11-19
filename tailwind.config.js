@@ -14,7 +14,7 @@ module.exports = {
         textPrimary: "var(--text-primary)",
       },
       screens: {
-        tablet: "400px",
+        tablet: "430px",
         desktop: "1024px",
       },
       backgroundImage: {},

@@ -2,22 +2,26 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="py-28 bg-hero-mobile w-full flex flex-col items-center">
-      <span className="mb-8 uppercase tracking-[10px] text-gray-400">
-        New product
-      </span>
-      <h1 className="text-white uppercase text-4xl text-center font-bold">
-        XX99 Mark II Headphones
-      </h1>
-      <p className="mt-10 mb-8 px-16 text-gray-400 text-center">
-        Experience natural, lifelike audio and exceptional build quality made
-        for the passionate music enthusiast.
-      </p>
-      <Link href="">
-        <button className="uppercase px-8 py-6 bg-accent text-white tracking-wide">
-          See product
-        </button>
-      </Link>
+    <section className="bg-[#191919] bg-hero w-full flex flex-col items-center">
+      <div className="w-4/5 ">
+        <div className="flex flex-col items-center desktop:items-start py-24">
+          <span className="mb-8 uppercase tracking-[10px] text-gray-400">
+            New product
+          </span>
+          <h1 className="desktop:w-1/2 text-white uppercase text-4xl tablet:text-6xl tablet:px-8 desktop:px-0 text-center desktop:text-left font-bold">
+            XX99 Mark II Headphones
+          </h1>
+          <p className="mt-10 mb-8 px-16 desktop:w-1/3 desktop:px-0 text-gray-400 text-center desktop:text-left">
+            Experience natural, lifelike audio and exceptional build quality
+            made for the passionate music enthusiast.
+          </p>
+          <Link href="">
+            <button className="uppercase px-8 py-4 bg-accent text-white tracking-wide">
+              See product
+            </button>
+          </Link>
+        </div>
+      </div>
     </section>
   );
 }

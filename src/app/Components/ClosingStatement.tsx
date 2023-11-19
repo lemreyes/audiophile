@@ -5,20 +5,32 @@ import ImageDynamic from "./ImageDynamic";
 
 export default function ClosingStatement() {
   const bestGearImgSrc = {
-    mobile: bestGear_mobile,
-    tablet: bestGear_tablet,
-    desktop: bestGear_desktop,
+    mobile: {
+      imageData: bestGear_mobile,
+      width: 327,
+      height: 300,
+      altText: "man with headphones",
+      styleClasses: "rounded-lg",
+    },
+    tablet: {
+      imageData: bestGear_tablet,
+      width: 689,
+      height: 300,
+      altText: "man with headphones",
+      styleClasses: "rounded-lg",
+    },
+    desktop: {
+      imageData: bestGear_desktop,
+      width: 540,
+      height: 588,
+      altText: "man with headphones",
+      styleClasses: "rounded-lg",
+    },
   };
 
   return (
-    <section className="mt-8 mb-12">
-      <ImageDynamic
-        imageSrc={bestGearImgSrc}
-        altText={"man with headphones"}
-        styleClasses={"rounded-lg"}
-        width={0}
-        height={0}
-      />
+    <section className="mt-8 mb-12 flex flex-col items-center">
+      <ImageDynamic imageSrc={bestGearImgSrc} />
       <h2 className="mt-8 px-8 text-3xl text-center uppercase font-bold">
         Bringing you the <span className="text-accent">best</span> audio gear
       </h2>
