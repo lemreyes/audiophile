@@ -17,7 +17,7 @@ export default function ClosingStatement() {
       width: 689,
       height: 300,
       altText: "man with headphones",
-      styleClasses: "rounded-lg",
+      styleClasses: "rounded-lg w-full",
     },
     desktop: {
       imageData: bestGear_desktop,
