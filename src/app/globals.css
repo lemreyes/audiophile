@@ -40,7 +40,7 @@ body {
   }
 
   .bg-feature {
-    background-position: 40% 200%;
+    background-position: center -10rem;
     background-size: cover;
   }
 
@@ -60,8 +60,7 @@ body {
   }
 
   .bg-feature {
-    background-attachment: fixed;
-    background-position: -90% 0%;
+    background-position: -12rem -2rem;
     background-size: auto;
   }
 
