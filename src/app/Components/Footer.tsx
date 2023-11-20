@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="flex flex-col items-center bg-black text-white">
-      <div className="w-24 h-[4px] bg-accent"></div>
+      <div id="footer-accent" className="w-24 h-[4px] bg-accent"></div>
       <Image src={logo} alt="Logo" className="mt-12" />
       <nav
         id="site-links"
