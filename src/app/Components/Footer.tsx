@@ -30,7 +30,7 @@ export default function Footer() {
         helping you get the most out of personal audio. Come and visit our demo
         facility - we are open 7 days a week.
       </p>
-      <div className="tablet:flex tablet:flex-row tablet:justify-between tablet:w-[90%] tablet:ml-10">
+      <div className="flex flex-col items-center tablet:items-start tablet:flex-row tablet:justify-between tablet:w-[90%] tablet:ml-10">
         <p className="mt-12 text-gray-400 text-[15px] text-center leading-6 px-8 tablet:px-0">
           Copyright 2023. All Rights Reserved
         </p>
