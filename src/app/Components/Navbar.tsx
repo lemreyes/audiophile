@@ -5,7 +5,7 @@ import logo from "../../../public/assets/shared/desktop/logo.svg";
 
 export default function Navbar() {
   return (
-    <div className="bg-primary py-4 flex flex-col items-center ">
+    <nav className="bg-primary py-4 flex flex-col items-center ">
       <div className="w-4/5 flex flex-row justify-between items-center">
         <Image
           src={hamburger_icon}
@@ -21,6 +21,6 @@ export default function Navbar() {
         </ul>
         <Image src={cart_icon} alt="cart_icon" className="w-4 h-4" />
       </div>
-    </div>
+    </nav>
   );
 }
