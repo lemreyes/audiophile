@@ -7,12 +7,12 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="grid grid-cols-1 grid-rows-1 tablet:items-start bg-black text-white">
+    <footer className="grid grid-cols-1 tablet:items-start bg-black text-white">
       <div
         id="footer-accent"
-        className="tablet:ml-10 w-24 h-[4px] bg-accent justify-self-center"
+        className="tablet:ml-10 w-24 h-[4px] bg-accent justify-self-center tablet:justify-self-start"
       ></div>
-      <Image src={logo} alt="Logo" className="mt-12 tablet:ml-10 justify-self-center" />
+      <Image src={logo} alt="Logo" className="mt-12 tablet:ml-10 justify-self-center tablet:justify-self-start" />
       <nav
         id="site-links"
         className="mt-8 tablet:ml-10 uppercase text-[13px] font-bold leading-[25px] tracking-[2px] text-center"
@@ -30,8 +30,7 @@ export default function Footer() {
         helping you get the most out of personal audio. Come and visit our demo
         facility - we are open 7 days a week.
       </p>
-      <div className="flex flex-col items-center tablet:items-start tablet:flex-row tablet:justify-between tablet:w-[90%] tablet:ml-10"></div>
-      <p className="mt-12 tablet:ml-10 text-gray-400 text-[15px] text-center leading-6 px-8 tablet:px-0">
+      <p className="mt-12 tablet:ml-10 text-gray-400 text-[15px] text-center tablet:text-left leading-6 px-8 tablet:px-0">
         Copyright 2023. All Rights Reserved
       </p>
       <nav id="social-media-links" className="my-12 tablet:my-0 tablet:self-end tablet:justify-self-end tablet:mr-12 tablet:mb-12 justify-self-center">
