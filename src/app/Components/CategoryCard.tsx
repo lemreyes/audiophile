@@ -17,7 +17,7 @@ export default function CategoryCard({
         <h2 className="mt-16 uppercase text-center text-[15px] font-bold mb-4">
           {name}
         </h2>
-        <span className="uppercase text-center inline text-textPrimary text-[13px] font-bold">
+        <span className="uppercase text-center inline text-textPrimary text-[13px] font-bold hover:text-accent">
           Shop <Image src={shop_arrow} alt="arrow icon" className="inline" />
         </span>
       </div>

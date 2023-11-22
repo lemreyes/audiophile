@@ -5,6 +5,7 @@
 :root {
   --primary: #191919;
   --accent: #d87d4a;
+  --accent-hover: #FBAF85;
   --bg-gray-product: #f1f1f1;
   --text-primary: #979797;
 }

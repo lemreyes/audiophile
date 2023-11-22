@@ -16,7 +16,7 @@ export default function Hero() {
             made for the passionate music enthusiast.
           </p>
           <Link href="">
-            <button className="uppercase px-8 py-4 bg-accent text-white tracking-wide">
+            <button className="uppercase px-8 py-4 bg-accent hover:bg-accentHover text-white tracking-wide">
               See product
             </button>
           </Link>

@@ -2,8 +2,11 @@
 import Image from "next/image";
 import logo from "../../../public/assets/shared/desktop/logo.svg";
 import fb_logo from "../../../public/assets/shared/desktop/icon-facebook.svg";
+import fb_logo_hover from "../../../public/assets/shared/desktop/icon-facebook-hover.svg";
 import twitter_logo from "../../../public/assets/shared/desktop/icon-twitter.svg";
+import twitter_logo_hover from "../../../public/assets/shared/desktop/icon-twitter-hover.svg";
 import ig_logo from "../../../public/assets/shared/desktop/icon-instagram.svg";
+import ig_logo_hover from "../../../public/assets/shared/desktop/icon-instagram-hover.svg";
 import Link from "next/link";
 import { ScreenTypeEnum } from "../Types/Interfaces";
 import { useEffect, useState } from "react";
@@ -35,6 +38,10 @@ export default function Footer() {
     };
   }, []);
 
+  const [isFbLogoHover, setIsFbLogoHover] = useState(false);
+  const [isIgLogoHover, setIsIgLogoHover] = useState(false);
+  const [isTwitterLogoHover, setIsTwitterLogoHover] = useState(false);
+
   if (
     ScreenTypeEnum.SCREENTYPE_MOBILE === screenType ||
     ScreenTypeEnum.SCREENTYPE_TABLET === screenType
@@ -55,10 +62,18 @@ export default function Footer() {
           className="mt-8 tablet:ml-10 uppercase text-[13px] font-bold leading-[25px] tracking-[2px] text-center tablet:text-left"
         >
           <ul className="tablet:flex tablet:flex-row gap-x-8">
-            <li className="my-8 tablet:my-0">Home</li>
-            <li className="my-8 tablet:my-0">Headphones</li>
-            <li className="my-8 tablet:my-0">Speakers</li>
-            <li className="my-8 tablet:my-0">Earphones</li>
+            <Link href="">
+              <li className="my-8 tablet:my-0 hover:text-accent">Home</li>
+            </Link>
+            <Link href="">
+              <li className="my-8 tablet:my-0 hover:text-accent">Headphones</li>
+            </Link>
+            <Link href="">
+              <li className="my-8 tablet:my-0 hover:text-accent">Speakers</li>
+            </Link>
+            <Link href="">
+              <li className="my-8 tablet:my-0 hover:text-accent">Earphones</li>
+            </Link>
           </ul>
         </nav>
         <p className="mt-8 tablet:ml-10 text-gray-400 text-[15px] text-center tablet:text-left leading-6 font-medium px-8 tablet:px-0 tablet:w-[90%]">
@@ -78,17 +93,32 @@ export default function Footer() {
             <ul className="flex flex-row gap-x-4">
               <li className="mr-4 tablet:mr-0">
                 <Link href="http://www.facebook.com">
-                  <Image src={fb_logo} alt="facebook logo" />
+                  <Image
+                    src={isFbLogoHover ? fb_logo_hover : fb_logo}
+                    alt="facebook logo"
+                    onMouseEnter={() => setIsFbLogoHover(true)}
+                    onMouseLeave={() => setIsFbLogoHover(false)}
+                  />
                 </Link>
               </li>
               <li className="mr-4 tablet:mr-0">
                 <Link href="http://www.twitter.com">
-                  <Image src={twitter_logo} alt="twitter logo" />
+                  <Image
+                    src={isTwitterLogoHover ? twitter_logo_hover : twitter_logo}
+                    alt="twitter logo"
+                    onMouseEnter={() => setIsTwitterLogoHover(true)}
+                    onMouseLeave={() => setIsTwitterLogoHover(false)}
+                  />
                 </Link>
               </li>
               <li>
                 <Link href="http://www.instagram.com">
-                  <Image src={ig_logo} alt="instagram logo" />
+                  <Image
+                    src={isIgLogoHover ? ig_logo_hover : ig_logo}
+                    alt="instagram logo"
+                    onMouseEnter={() => setIsIgLogoHover(true)}
+                    onMouseLeave={() => setIsIgLogoHover(false)}
+                  />
                 </Link>
               </li>
             </ul>
@@ -115,14 +145,24 @@ export default function Footer() {
                         row-start-2 row-end-3 col-start-2 col-end-3 self-start justify-self-end"
           >
             <ul className="flex flex-row gap-x-8">
-              <li className="">Home</li>
-              <li className="">Headphones</li>
-              <li className="">Speakers</li>
-              <li className="">Earphones</li>
+              <Link href="">
+                <li className="hover:text-accent">Home</li>
+              </Link>
+              <Link href="">
+                <li className="hover:text-accent">Headphones</li>
+              </Link>
+              <Link href="">
+                <li className="hover:text-accent">Speakers</li>
+              </Link>
+              <Link href="">
+                <li className="hover:text-accent">Earphones</li>
+              </Link>
             </ul>
           </nav>
-          <p className="text-gray-400 text-[15px] text-left leading-6 font-medium 
-                          row-start-3 row-end-4 col-start-1 col-end-2 self-start justify-self-end">
+          <p
+            className="text-gray-400 text-[15px] text-left leading-6 font-medium 
+                          row-start-3 row-end-4 col-start-1 col-end-2 self-start justify-self-end"
+          >
             Audiophile is an all in one stop to fulfill your audio needs. We are
             a small team of music lovers and sound specialists who are devoted
             to helping you get the most out of personal audio. Come and visit
@@ -138,17 +178,32 @@ export default function Footer() {
             <ul className="flex flex-row gap-x-4">
               <li className="mr-4 tablet:mr-0">
                 <Link href="http://www.facebook.com">
-                  <Image src={fb_logo} alt="facebook logo" />
+                  <Image
+                    src={isFbLogoHover ? fb_logo_hover : fb_logo}
+                    alt="facebook logo"
+                    onMouseEnter={() => setIsFbLogoHover(true)}
+                    onMouseLeave={() => setIsFbLogoHover(false)}
+                  />
                 </Link>
               </li>
               <li className="mr-4 tablet:mr-0">
                 <Link href="http://www.twitter.com">
-                  <Image src={twitter_logo} alt="twitter logo" />
+                  <Image
+                    src={isTwitterLogoHover ? twitter_logo_hover : twitter_logo}
+                    alt="twitter logo"
+                    onMouseEnter={() => setIsTwitterLogoHover(true)}
+                    onMouseLeave={() => setIsTwitterLogoHover(false)}
+                  />
                 </Link>
               </li>
               <li>
                 <Link href="http://www.instagram.com">
-                  <Image src={ig_logo} alt="instagram logo" />
+                  <Image
+                    src={isIgLogoHover ? ig_logo_hover : ig_logo}
+                    alt="instagram logo"
+                    onMouseEnter={() => setIsIgLogoHover(true)}
+                    onMouseLeave={() => setIsIgLogoHover(false)}
+                  />
                 </Link>
               </li>
             </ul>

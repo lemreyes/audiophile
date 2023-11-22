@@ -75,7 +75,7 @@ export default function FeatureProduct() {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
-          <button className="mt-12 px-8 py-4 bg-black text-white text-sm uppercase font-bold">
+          <button className="mt-12 px-8 py-4 bg-black hover:bg-[#4c4c4c] text-white text-sm uppercase font-bold">
             See product
           </button>
         </div>
@@ -84,7 +84,7 @@ export default function FeatureProduct() {
         <h2 className="text-3xl uppercase font-bold tracking-[2px]">
           ZX7 speaker
         </h2>
-        <button className="mt-12 border border-black px-8 py-4 uppercase text-sm font-bold">
+        <button className="mt-12 border border-black hover:bg-black hover:text-white px-8 py-4 uppercase text-sm font-bold">
           See Product
         </button>
       </article>
@@ -93,7 +93,7 @@ export default function FeatureProduct() {
           <ImageDynamic imageSrc={yX1EarphonesImageSrc} />
           <div className="tablet:flex tablet:flex-col tablet:justify-center mt-8 tablet:mt-0 bg-product pl-12 tablet:w-4/5 rounded-lg">
             <h2 className="text-3xl uppercase font-bold">yx1 earphones</h2>
-            <button className="mt-12 border border-black px-4 py-4 w-[160px] uppercase text-sm font-bold">
+            <button className="mt-12 border border-black hover:bg-black hover:text-white px-4 py-4 w-[160px] uppercase text-sm font-bold">
               See Product
             </button>
           </div>
