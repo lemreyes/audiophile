@@ -91,7 +91,7 @@ export default function FeatureProduct() {
       <article className="mt-8 tablet:w-full">
         <div className="tablet:flex tablet:flex-row gap-x-4">
           <ImageDynamic imageSrc={yX1EarphonesImageSrc} />
-          <div className="tablet:flex tablet:flex-col tablet:justify-center mt-8 tablet:mt-0 bg-product pl-16 tablet:w-1/2 rounded-lg">
+          <div className="tablet:flex tablet:flex-col tablet:justify-center mt-8 tablet:mt-0 bg-product pl-12 tablet:w-4/5 rounded-lg">
             <h2 className="text-3xl uppercase font-bold">yx1 earphones</h2>
             <button className="mt-12 border border-black px-4 py-4 w-[160px] uppercase text-sm font-bold">
               See Product

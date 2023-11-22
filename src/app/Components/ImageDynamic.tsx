@@ -2,12 +2,7 @@
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
-
-export enum ScreenTypeEnum {
-  SCREENTYPE_MOBILE = 0,
-  SCREENTYPE_TABLET,
-  SCREENTYPE_DESKTOP,
-}
+import { ScreenTypeEnum } from "../Types/Interfaces";
 
 export interface ImageSrcObject {
   mobile: imageData | null;

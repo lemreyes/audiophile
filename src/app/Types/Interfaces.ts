@@ -1,0 +1,5 @@
+export enum ScreenTypeEnum {
+  SCREENTYPE_MOBILE = 0,
+  SCREENTYPE_TABLET,
+  SCREENTYPE_DESKTOP,
+}
