@@ -62,16 +62,16 @@ export default function Footer() {
           className="mt-8 tablet:ml-10 uppercase text-[13px] font-bold leading-[25px] tracking-[2px] text-center tablet:text-left"
         >
           <ul className="tablet:flex tablet:flex-row gap-x-8">
-            <Link href="">
+            <Link href="/">
               <li className="my-8 tablet:my-0 hover:text-accent">Home</li>
             </Link>
-            <Link href="">
+            <Link href="/Headphones">
               <li className="my-8 tablet:my-0 hover:text-accent">Headphones</li>
             </Link>
-            <Link href="">
+            <Link href="/Speakers">
               <li className="my-8 tablet:my-0 hover:text-accent">Speakers</li>
             </Link>
-            <Link href="">
+            <Link href="/Earphones">
               <li className="my-8 tablet:my-0 hover:text-accent">Earphones</li>
             </Link>
           </ul>
@@ -145,16 +145,16 @@ export default function Footer() {
                         row-start-2 row-end-3 col-start-2 col-end-3 self-start justify-self-end"
           >
             <ul className="flex flex-row gap-x-8">
-              <Link href="">
+              <Link href="/">
                 <li className="hover:text-accent">Home</li>
               </Link>
-              <Link href="">
+              <Link href="/Headphones">
                 <li className="hover:text-accent">Headphones</li>
               </Link>
-              <Link href="">
+              <Link href="/Speakers">
                 <li className="hover:text-accent">Speakers</li>
               </Link>
-              <Link href="">
+              <Link href="/Earphones">
                 <li className="hover:text-accent">Earphones</li>
               </Link>
             </ul>

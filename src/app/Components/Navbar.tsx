@@ -15,16 +15,16 @@ export default function Navbar() {
         />
         <Image src={logo} alt="logo" />
         <ul className="hidden desktop:flex desktop:flex-row desktop:gap-x-8 text-white uppercase text-[13px] tracking-[2px] text-center">
-          <Link href="">
+          <Link href="/">
             <li className="my-8 hover:text-accent">Home</li>
           </Link>
-          <Link href="">
+          <Link href="/Headphones">
             <li className="my-8 hover:text-accent">Headphones</li>
           </Link>
-          <Link href="">
+          <Link href="/Speakers">
             <li className="my-8 hover:text-accent">Speakers</li>
           </Link>
-          <Link href="">
+          <Link href="/Earphones">
             <li className="my-8 hover:text-accent">Earphones</li>
           </Link>
         </ul>
