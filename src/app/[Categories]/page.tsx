@@ -21,8 +21,8 @@ export default async function Category({
   });
 
   return (
-    <main className="">
-      <section className="bg-black">
+    <main className="flex flex-col items-center">
+      <section className="bg-black w-full">
         <h1 className="text-white text-3xl tracking-[2px] uppercase font-bold text-center py-8">
           {params.Categories}
         </h1>
