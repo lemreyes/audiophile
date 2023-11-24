@@ -11,7 +11,7 @@ export interface ImageSrcObject {
 }
 
 export interface imageData {
-  imageData: StaticImageData | null;
+  imageData: StaticImageData | string | null;
   width: number;
   height: number;
   altText: string;

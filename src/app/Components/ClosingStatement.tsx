@@ -32,10 +32,10 @@ export default function ClosingStatement() {
     <section className="mt-8 mb-12 flex flex-col desktop:flex-row items-center">
       <ImageDynamic imageSrc={bestGearImgSrc} />
       <div className="desktop:order-1 flex flex-col items-center">
-        <h2 className="mt-8 tablet:w-4/5 text-3xl tablet:text-[40px] desktop:tracking-wide tablet:leading-[44px] text-center uppercase font-bold">
+        <h2 className="px-8 mt-8 tablet:w-4/5 text-3xl tablet:text-[40px] desktop:tracking-wide tablet:leading-[44px] text-center uppercase font-bold">
           Bringing you the <span className="text-accent">best</span> audio gear
         </h2>
-        <p className="mt-8 text-sm text-center text-gray-600 tablet:w-2/3 leading-[25px]">
+        <p className="px-12 mt-8 text-sm text-center text-gray-600 tablet:w-2/3 leading-[25px]">
           Located at the heart of New York City, Audiophile is the premier store
           for high end headphones, earphones, speakers, and audio accessories.
           We have a large showroom and luxury demonstration rooms available for
