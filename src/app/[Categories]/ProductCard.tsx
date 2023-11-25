@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ImageDynamic from "../Components/ImageDynamic";
 import { ProductInfo } from "../Types/Interfaces";
 
@@ -61,9 +62,16 @@ export default function ProductCard({
         <p className="text-center desktop:text-left text-[15px] leading-[25px] text-textPrimary mb-8 font-medium">
           {product.description}
         </p>
-        <button className="px-8 py-4 uppercase bg-accent hover:bg-accentHover text-white text-[13px] tracking-[1px] font-bold">
-          See Product
-        </button>
+        <Link
+          href={{
+            pathname: `/${product.category}/${product.slug}`,
+            query: { id: product.id },
+          }}
+        >
+          <button className="px-8 py-4 uppercase bg-accent hover:bg-accentHover text-white text-[13px] tracking-[1px] font-bold">
+            See Product
+          </button>
+        </Link>
       </div>
     </article>
   );

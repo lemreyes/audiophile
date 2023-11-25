@@ -15,7 +15,7 @@ export default async function Category({
 
   const products = await prisma.product.findMany({
     where: {
-      category: params.Categories.toLowerCase(),
+      category: params.Categories,
     },
     include: {
       image: true,
