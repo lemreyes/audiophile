@@ -5,6 +5,7 @@ import AddToCart from "./Components/AddToCart";
 import Gallery from "./Components/Gallery";
 import Categories from "../../Components/Categories";
 import ClosingStatement from "../../Components/ClosingStatement";
+import OtherProducts from "./Components/OtherProducts";
 
 type Props = {
   params: {};
@@ -127,7 +128,7 @@ export default async function ProductDetail(params: Props) {
         <h3 className="text-[24px] font-bold tracking-wide leading-[36px] text-center uppercase">
           You may also like
         </h3>
-          
+        <OtherProducts productList={product.otherProducts} />
       </section>
       <Categories />
       <ClosingStatement />
