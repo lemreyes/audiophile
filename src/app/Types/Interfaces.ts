@@ -27,3 +27,14 @@ export interface ImageInfo {
   created_at: Date;
   updated_at: Date;
 }
+
+export interface GalleryInfo {
+  id: number;
+  order: number;
+  mobileSrc: string;
+  tabletSrc: string;
+  desktopSrc: string;
+  productId: number;
+  created_at: Date;
+  updated_at: Date;
+}

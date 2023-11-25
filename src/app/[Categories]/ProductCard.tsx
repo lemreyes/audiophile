@@ -35,10 +35,11 @@ export default function ProductCard({
 
   let orderStyle = "";
   if (listOrder % 2 === 0) {
-    orderStyle = "deskttop:order-last";
+    orderStyle = "desktop:order-last";
   } else {
     orderStyle = "desktop:order-first";
   }
+  console.log("orderStyle", orderStyle);
 
   return (
     <article

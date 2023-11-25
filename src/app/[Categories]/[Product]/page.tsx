@@ -1,5 +1,8 @@
 import { notFound } from "next/navigation";
 import prisma from "../../Utilities/prismaUtils";
+import ImageDynamic from "../../Components/ImageDynamic";
+import AddToCart from "./Components/AddToCart";
+import Gallery from "./Components/Gallery";
 
 type Props = {
   params: {};
@@ -19,7 +22,11 @@ export default async function ProductDetail(params: Props) {
     include: {
       image: true,
       categoryImage: true,
-      gallery: true,
+      gallery: {
+        orderBy: {
+          order: "asc",
+        },
+      },
       inclusions: true,
       otherProducts: true,
       imageAsOther: true,
@@ -29,5 +36,91 @@ export default async function ProductDetail(params: Props) {
     notFound();
   }
 
-  return <main>Product Detail</main>;
+  const mainImageSrc = {
+    mobile: {
+      imageData: product.image[0].mobileSrc,
+      width: 181,
+      height: 215,
+      altText: `${product.name}`,
+      styleClasses: "w-full",
+    },
+    tablet: {
+      imageData: product.image[0].tabletSrc,
+      width: 202,
+      height: 243,
+      altText: `${product.name}`,
+      styleClasses: "",
+    },
+    desktop: {
+      imageData: product.image[0].desktopSrc,
+      width: 350,
+      height: 386,
+      altText: `${product.name}`,
+      styleClasses: "",
+    },
+  };
+
+  const priceFormatOptions = {
+    style: "decimal", // Use the decimal style
+    minimumFractionDigits: 0, // Do not show any decimal places
+    maximumFractionDigits: 0, // Do not show any decimal places
+    useGrouping: true, // Enable grouping (commas for thousands)
+  };
+
+  return (
+    <main className="flex flex-col items-start">
+      <span className="self-start ml-8 mt-4 text-[15px] text-textPrimary font-medium leading-[25px]">
+        Go Back
+      </span>
+      <section className="mt-4 px-8 flex flex-col items-start w-full">
+        <div className="w-full bg-product flex flex-col items-center">
+          <ImageDynamic imageSrc={mainImageSrc} />
+        </div>
+        {product.new && (
+          <span className="uppercase text-left text-accent text-[14px]">
+            New Product
+          </span>
+        )}
+        <h1 className="mt-8 text-[28px] font-bold tracking-wide uppercase">
+          {product.name}
+        </h1>
+        <p className="mt-4 text-[15px] leading-[25px] font-medium text-left text-textPrimary">
+          {product.description}
+        </p>
+        <span className="my-4 text-[18px] text-left tracking-wider font-bold">
+          $ {product.price.toLocaleString("en-US", priceFormatOptions)}
+        </span>
+        <AddToCart />
+      </section>
+      <section className="mt-12 px-8">
+        <h3 className="text-[24px] font-bold tracking-wide leading-[36px] uppercase">
+          Features
+        </h3>
+        <p className="mt-4 text-[15px] leading-[25px] text-textPrimary">
+          {product.features}
+        </p>
+      </section>
+      <section className="mt-12 px-8">
+        <h3 className="text-[24px] font-bold tracking-wide leading-[36px] uppercase">
+          In the box
+        </h3>
+        <ul className="mt-8">
+          {product.inclusions.map((item) => {
+            return (
+              <li
+                key={item.id}
+                className="flex flex-row items-center gap-x-8 my-4 text-[15px] font-medium leading-[25px] text-textPrimary"
+              >
+                <span className="text-accent font-bold">{item.quantity}x</span>
+                <span>{item.item}</span>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+      <section className="mt-12 px-8">
+        <Gallery gallery={product.gallery} />
+      </section>
+    </main>
+  );
 }

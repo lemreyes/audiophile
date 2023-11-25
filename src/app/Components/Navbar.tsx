@@ -12,6 +12,10 @@ export default function Navbar() {
           src={hamburger_icon}
           alt="burger_icon"
           className="w-4 h-4 desktop:hidden"
+          width={40}
+          style={{
+            height: "auto",
+          }}
         />
         <Image src={logo} alt="logo" />
         <ul className="hidden desktop:flex desktop:flex-row desktop:gap-x-8 text-white uppercase text-[13px] tracking-[2px] text-center">

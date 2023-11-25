@@ -32,6 +32,7 @@ export default async function Category({
       <section className="flex flex-col items-center mb-8">
         {products.map((product) => {
           productListingOrder++;
+          console.log("productListingOrder", productListingOrder);
           return (
             <ProductCard
               key={product.id}

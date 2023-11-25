@@ -61,6 +61,7 @@ export default function ImageDynamic({
         className={`${imageSrc.mobile.styleClasses}`}
         width={imageSrc.mobile.width}
         height={imageSrc.mobile.height}
+        style={{ height: "auto" }}
       />
     );
   } else if (
@@ -75,6 +76,7 @@ export default function ImageDynamic({
         className={`${imageSrc.tablet.styleClasses}`}
         width={imageSrc.tablet.width}
         height={imageSrc.tablet.height}
+        style={{ height: "auto" }}
       />
     );
   } else {
@@ -86,6 +88,7 @@ export default function ImageDynamic({
           className={`${imageSrc.desktop.styleClasses}`}
           width={imageSrc.desktop.width}
           height={imageSrc.desktop.height}
+          style={{ height: "auto" }}
         />
       );
     } else {
