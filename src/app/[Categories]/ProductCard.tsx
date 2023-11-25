@@ -26,16 +26,27 @@ export default function ProductCard({ product }: { product: ProductInfo }) {
     },
   };
   return (
-    <article key={product.id} className="flex flex-col items-center w-4/5 my-12">
-      <ImageDynamic imageSrc={imageSrc} />
+    <article
+      key={product.id}
+      className="flex flex-col items-center w-4/5 my-12"
+    >
+      <div className="flex flex-col items-center w-full bg-product">
+        <ImageDynamic imageSrc={imageSrc} />
+      </div>
       {product.new && (
         <span className="my-8 uppercase text-[14px] tracking-[10px] text-accent">
           new product
         </span>
       )}
-      <h2 className="uppercase font-bold text-[28px] tracking-[1px] text-center mb-8">{product.name}</h2>
-      <p className="text-center text-[15px] leading-[25px] text-textPrimary mb-8 font-medium">{product.description}</p>
-      <button className="px-8 py-4 uppercase bg-accent hover:bg-accentHover text-white text-[13px] tracking-[1px] font-bold">See Product</button>
+      <h2 className="uppercase font-bold text-[28px] tracking-[1px] text-center mb-8">
+        {product.name}
+      </h2>
+      <p className="text-center text-[15px] leading-[25px] text-textPrimary mb-8 font-medium">
+        {product.description}
+      </p>
+      <button className="px-8 py-4 uppercase bg-accent hover:bg-accentHover text-white text-[13px] tracking-[1px] font-bold">
+        See Product
+      </button>
     </article>
   );
 }
