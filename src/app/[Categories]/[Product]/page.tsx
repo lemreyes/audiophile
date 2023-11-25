@@ -42,15 +42,15 @@ export default async function ProductDetail(params: Props) {
   const mainImageSrc = {
     mobile: {
       imageData: product.image[0].mobileSrc,
-      width: 181,
-      height: 215,
+      width: 327,
+      height: 327,
       altText: `${product.name}`,
       styleClasses: "w-full",
     },
     tablet: {
       imageData: product.image[0].tabletSrc,
-      width: 202,
-      height: 243,
+      width: 281,
+      height: 480,
       altText: `${product.name}`,
       styleClasses: "",
     },
@@ -75,25 +75,27 @@ export default async function ProductDetail(params: Props) {
       <span className="self-start ml-8 mt-4 text-[15px] text-textPrimary font-medium leading-[25px]">
         Go Back
       </span>
-      <section className="mt-4 px-8 flex flex-col items-start w-full">
+      <section className="mt-4 px-8 flex flex-col tablet:flex-row items-start tablet:items-center w-full tablet:gap-x-4">
         <div className="w-full bg-product flex flex-col items-center">
           <ImageDynamic imageSrc={mainImageSrc} />
         </div>
-        {product.new && (
-          <span className="mt-4 uppercase text-left text-accent text-[14px] tracking-[10px]">
-            New Product
+        <div className="flex flex-col items-start">
+          {product.new && (
+            <span className="mt-4 uppercase text-left text-accent text-[14px] tracking-[10px]">
+              New Product
+            </span>
+          )}
+          <h1 className="mt-8 text-[28px] font-bold tracking-wide uppercase">
+            {product.name}
+          </h1>
+          <p className="mt-4 text-[15px] leading-[25px] font-medium text-left text-textPrimary">
+            {product.description}
+          </p>
+          <span className="my-4 text-[18px] text-left tracking-wider font-bold">
+            $ {product.price.toLocaleString("en-US", priceFormatOptions)}
           </span>
-        )}
-        <h1 className="mt-8 text-[28px] font-bold tracking-wide uppercase">
-          {product.name}
-        </h1>
-        <p className="mt-4 text-[15px] leading-[25px] font-medium text-left text-textPrimary">
-          {product.description}
-        </p>
-        <span className="my-4 text-[18px] text-left tracking-wider font-bold">
-          $ {product.price.toLocaleString("en-US", priceFormatOptions)}
-        </span>
-        <AddToCart />
+          <AddToCart />
+        </div>
       </section>
       <section className="mt-12 px-8">
         <h3 className="text-[24px] font-bold tracking-wide leading-[36px] uppercase">
