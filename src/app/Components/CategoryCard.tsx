@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import shop_arrow from "../../../public/assets/home/arrow_icon.svg";
 import ImageDynamic, { ImageSrcObject } from "./ImageDynamic";
 

@@ -11,6 +11,8 @@ export default async function Category({
 }) {
   console.log("Categories", params.Categories);
 
+  let productListingOrder = 0;
+
   const products = await prisma.product.findMany({
     where: {
       category: params.Categories.toLowerCase(),
@@ -29,7 +31,14 @@ export default async function Category({
       </section>
       <section className="flex flex-col items-center mb-8">
         {products.map((product) => {
-          return <ProductCard key={product.id} product={product} />;
+          productListingOrder++;
+          return (
+            <ProductCard
+              key={product.id}
+              product={product}
+              listOrder={productListingOrder}
+            />
+          );
         })}
       </section>
       <Categories />

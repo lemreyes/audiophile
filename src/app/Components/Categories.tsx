@@ -87,7 +87,7 @@ export default function Categories() {
   return (
     <section
       id="categories"
-      className="tablet:w-4/5 flex flex-col items-center tablet:flex-row tablet:gap-x-4 mt-8 desktop:mt-16 px-6"
+      className="w-full tablet:w-11/12 flex flex-col items-center tablet:flex-row tablet:gap-x-4 desktop:mt-16 px-6 tablet:px-0"
     >
       <CategoryCard name="Headphones" image={headphonesImgSrc} />
       <CategoryCard name="Speakers" image={speakersImgSrc} />
