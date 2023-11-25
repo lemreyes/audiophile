@@ -37,7 +37,6 @@ export default function Gallery({ gallery }: { gallery: Array<GalleryInfo> }) {
   return (
     <Fragment>
       {imgSrcInfo.map((imgSrc) => {
-        // eslint-disable-next-line react/jsx-key
         return <ImageDynamic imageSrc={imgSrc} />;
       })}
     </Fragment>

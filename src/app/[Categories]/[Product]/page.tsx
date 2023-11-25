@@ -3,6 +3,8 @@ import prisma from "../../Utilities/prismaUtils";
 import ImageDynamic from "../../Components/ImageDynamic";
 import AddToCart from "./Components/AddToCart";
 import Gallery from "./Components/Gallery";
+import Categories from "../../Components/Categories";
+import ClosingStatement from "../../Components/ClosingStatement";
 
 type Props = {
   params: {};
@@ -68,7 +70,7 @@ export default async function ProductDetail(params: Props) {
   };
 
   return (
-    <main className="flex flex-col items-start">
+    <main className="flex flex-col items-center">
       <span className="self-start ml-8 mt-4 text-[15px] text-textPrimary font-medium leading-[25px]">
         Go Back
       </span>
@@ -100,7 +102,7 @@ export default async function ProductDetail(params: Props) {
           {product.features}
         </p>
       </section>
-      <section className="mt-12 px-8">
+      <section className="mt-12 px-8 self-start">
         <h3 className="text-[24px] font-bold tracking-wide leading-[36px] uppercase">
           In the box
         </h3>
@@ -121,6 +123,14 @@ export default async function ProductDetail(params: Props) {
       <section className="mt-12 px-8">
         <Gallery gallery={product.gallery} />
       </section>
+      <section className="mt-12 px-8">
+        <h3 className="text-[24px] font-bold tracking-wide leading-[36px] text-center uppercase">
+          You may also like
+        </h3>
+          
+      </section>
+      <Categories />
+      <ClosingStatement />
     </main>
   );
 }
