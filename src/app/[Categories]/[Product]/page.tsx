@@ -79,7 +79,7 @@ export default async function ProductDetail(params: Props) {
           <ImageDynamic imageSrc={mainImageSrc} />
         </div>
         {product.new && (
-          <span className="uppercase text-left text-accent text-[14px]">
+          <span className="mt-4 uppercase text-left text-accent text-[14px] tracking-[10px]">
             New Product
           </span>
         )}

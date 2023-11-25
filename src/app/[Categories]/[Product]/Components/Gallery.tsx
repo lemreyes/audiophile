@@ -4,6 +4,7 @@ import ImageDynamic, { ImageSrcObject } from "../../../Components/ImageDynamic";
 
 export default function Gallery({ gallery }: { gallery: Array<GalleryInfo> }) {
   let imgSrcInfo: Array<ImageSrcObject> = [];
+  let imgKey = 0;
 
   // populate gallery array
   gallery.map((galleryImage) => {
@@ -37,7 +38,8 @@ export default function Gallery({ gallery }: { gallery: Array<GalleryInfo> }) {
   return (
     <Fragment>
       {imgSrcInfo.map((imgSrc) => {
-        return <ImageDynamic imageSrc={imgSrc} />;
+        imgKey++;
+        return <ImageDynamic key={imgKey} imageSrc={imgSrc} />;
       })}
     </Fragment>
   );
