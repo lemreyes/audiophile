@@ -21,11 +21,12 @@ export default async function OtherProducts({
   productList: Array<OtherProductsInfo>;
 }) {
   let otherProductDisplayInfoArray: Array<OtherProductDisplayInfo> = [];
-  productList.map(async (otherProductInfo: OtherProductsInfo) => {
+
+  for (const otherProduct of productList) {
     // get product detail
     const product = await prisma.product.findUnique({
       where: {
-        id: otherProductInfo.productId,
+        id: otherProduct.productId,
       },
       include: {
         image: true,
@@ -66,8 +67,8 @@ export default async function OtherProducts({
       imageSrc: imageSrc,
     };
 
-    return otherProductDisplayInfoArray.push(productDisplayInfo);
-  });
+    otherProductDisplayInfoArray.push(productDisplayInfo);
+  }
 
   return (
     <div>
