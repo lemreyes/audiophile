@@ -39,7 +39,6 @@ export default function ProductCard({
   } else {
     orderStyle = "desktop:order-first";
   }
-  console.log("orderStyle", orderStyle);
 
   return (
     <article

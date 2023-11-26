@@ -28,7 +28,6 @@ export default function ImageDynamic({
   );
   useEffect(() => {
     const handleResize = () => {
-      console.log("window innerwidth", window.innerWidth )
       if (window.innerWidth < 430) {
         setScreenType(ScreenTypeEnum.SCREENTYPE_MOBILE);
       } else if (window.innerWidth < 1024) {
@@ -49,8 +48,6 @@ export default function ImageDynamic({
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  console.log("screentype", screenType);
 
   if (
     screenType === ScreenTypeEnum.SCREENTYPE_MOBILE &&

@@ -9,8 +9,6 @@ export default async function Category({
 }: {
   params: { Categories: string };
 }) {
-  console.log("Categories", params.Categories);
-
   let productListingOrder = 0;
 
   const products = await prisma.product.findMany({
@@ -32,7 +30,6 @@ export default async function Category({
       <section className="flex flex-col items-center mb-8">
         {products.map((product) => {
           productListingOrder++;
-          console.log("productListingOrder", productListingOrder);
           return (
             <ProductCard
               key={product.id}
