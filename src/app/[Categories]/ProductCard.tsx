@@ -9,30 +9,6 @@ export default function ProductCard({
   product: ProductInfo;
   listOrder: number;
 }) {
-  const imageSrc = {
-    mobile: {
-      imageData: product.image[0].mobileSrc,
-      width: 220,
-      height: 243,
-      altText: `${product.name}`,
-      styleClasses: "",
-    },
-    tablet: {
-      imageData: product.image[0].tabletSrc,
-      width: 220,
-      height: 243,
-      altText: `${product.name}`,
-      styleClasses: "",
-    },
-    desktop: {
-      imageData: product.image[0].desktopSrc,
-      width: 349,
-      height: 386,
-      altText: `${product.name}`,
-      styleClasses: "",
-    },
-  };
-
   let orderStyle = "";
   if (listOrder % 2 === 0) {
     orderStyle = "desktop:order-last";
@@ -46,7 +22,7 @@ export default function ProductCard({
       className="flex flex-col desktop:flex-row items-center w-11/12 my-12 desktop:gap-x-12"
     >
       <div
-        className={`flex flex-col items-center w-full bg-product ${orderStyle}`}
+        className={`flex flex-col items-center tablet:w-full bg-product ${orderStyle}`}
       >
         <Picture
           srcSet={{
@@ -55,7 +31,7 @@ export default function ProductCard({
             desktop: product.image[0].desktopSrc,
           }}
           alt={product.name}
-          styleClass=""
+          styleClass="w-auto h-[352px]"
         />
       </div>
       <div className="flex flex-col items-center desktop:items-start">
@@ -67,7 +43,7 @@ export default function ProductCard({
         <h2 className="uppercase font-bold text-[28px] tracking-[1px] text-center desktop:text-left my-8 desktop:mt-0">
           {product.name}
         </h2>
-        <p className="text-center desktop:text-left text-[15px] leading-[25px] text-textPrimary mb-8 font-medium">
+        <p className="mb-8 tablet:px-12 text-center desktop:text-left text-[15px] leading-[25px] text-textPrimary font-medium">
           {product.description}
         </p>
         <Link
