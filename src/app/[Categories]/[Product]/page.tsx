@@ -6,6 +6,7 @@ import Categories from "../../Components/Categories";
 import ClosingStatement from "../../Components/ClosingStatement";
 import OtherProducts from "./Components/OtherProducts";
 import Picture from "../../Components/Picture";
+import styles from "./styles.module.css";
 
 type Props = {
   params: {};
@@ -39,30 +40,6 @@ export default async function ProductDetail(params: Props) {
     notFound();
   }
 
-  const mainImageSrc = {
-    mobile: {
-      imageData: product.image[0].mobileSrc,
-      width: 327,
-      height: 327,
-      altText: `${product.name}`,
-      styleClasses: "w-full",
-    },
-    tablet: {
-      imageData: product.image[0].tabletSrc,
-      width: 281,
-      height: 480,
-      altText: `${product.name}`,
-      styleClasses: "",
-    },
-    desktop: {
-      imageData: product.image[0].desktopSrc,
-      width: 350,
-      height: 386,
-      altText: `${product.name}`,
-      styleClasses: "",
-    },
-  };
-
   const priceFormatOptions = {
     style: "decimal", // Use the decimal style
     minimumFractionDigits: 0, // Do not show any decimal places
@@ -72,10 +49,10 @@ export default async function ProductDetail(params: Props) {
 
   return (
     <main className="flex flex-col items-center">
-      <span className="self-start ml-8 mt-4 text-[15px] text-textPrimary font-medium leading-[25px]">
+      <span className="w-10/12 tablet:w-11/12 desktop:w-4/5 self-start ml-8 mt-4 text-[15px] text-textPrimary font-medium leading-[25px]">
         Go Back
       </span>
-      <section className="mt-4 px-8 flex flex-col tablet:flex-row items-start tablet:items-center w-full tablet:gap-x-4">
+      <section className="mt-4 flex flex-col tablet:flex-row items-start tablet:items-center w-10/12 tablet:w-11/12 desktop:w-4/5 tablet:gap-x-12">
         <div className="w-full bg-product flex flex-col items-center">
           <Picture
             srcSet={{
@@ -105,7 +82,7 @@ export default async function ProductDetail(params: Props) {
           <AddToCart />
         </div>
       </section>
-      <section className="mt-12 px-8">
+      <section className="mt-16 w-10/12 tablet:w-11/12 desktop:w-4/5 ">
         <h3 className="text-[24px] font-bold tracking-wide leading-[36px] uppercase">
           Features
         </h3>
@@ -113,11 +90,11 @@ export default async function ProductDetail(params: Props) {
           {product.features}
         </p>
       </section>
-      <section className="mt-12 px-8 self-start">
+      <section className="mt-12 w-10/12 tablet:w-11/12 desktop:w-4/5 tablet:grid tablet:grid-cols-2">
         <h3 className="text-[24px] font-bold tracking-wide leading-[36px] uppercase">
           In the box
         </h3>
-        <ul className="mt-8">
+        <ul className="mt-8 tablet:mt-0">
           {product.inclusions.map((item) => {
             return (
               <li
@@ -131,11 +108,13 @@ export default async function ProductDetail(params: Props) {
           })}
         </ul>
       </section>
-      <section className="mt-12 px-8">
-        <Gallery gallery={product.gallery} />
+      <section className="mt-12 w-10/12 tablet:w-11/12 desktop:w-4/5 overflow-hidden">
+        <div className={`${styles.gallery_grid}`}>
+          <Gallery gallery={product.gallery} />
+        </div>
       </section>
       <section className="mt-12 px-8">
-        <h3 className="text-[24px] font-bold tracking-wide leading-[36px] text-center uppercase">
+        <h3 className="mb-4 text-[24px] font-bold tracking-wide leading-[36px] text-center uppercase">
           You may also like
         </h3>
         <OtherProducts productList={product.otherProducts} />

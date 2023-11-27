@@ -57,10 +57,10 @@ export default async function OtherProducts({
   }
 
   return (
-    <div>
+    <div className="flex flex-col items-center gap-y-4 tablet:mt-8 tablet:grid tablet:grid-cols-3 tablet:gap-x-4 tablet:gap-y-0">
       {otherProductDisplayInfoArray.map((otherProduct) => {
         return (
-          <div key={otherProduct.id} className="flex flex-col items-center">
+          <div key={otherProduct.id} className="flex flex-col items-center justify-between rounded-xl p-1 bg-product tablet:h-full">
             <Picture
               srcSet={{
                 mobile: otherProduct.imageSrcSetInfo.imageSrc.mobile,
@@ -71,7 +71,7 @@ export default async function OtherProducts({
               styleClass={otherProduct.imageSrcSetInfo.styleClasses}
             />
 
-            <h4 className="mt-4 text-[24px] font-bold] text-center tracking-wide">
+            <h4 className="mt-4 text-[24px] px-4 font-bold text-center tracking-wide">
               {otherProduct.name}
             </h4>
             <button

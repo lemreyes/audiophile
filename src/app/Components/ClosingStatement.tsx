@@ -2,7 +2,8 @@ import Picture from "./Picture";
 
 export default function ClosingStatement() {
   return (
-    <section className="mt-8 mb-12 flex flex-col desktop:grid desktop:grid-cols-2 desktop:gap-x-8 items-center w-4/5">
+    <section className="mt-8 mb-12 w-10/12 tablet:w-11/12 desktop:w-4/5
+                        flex flex-col desktop:grid desktop:grid-cols-2 desktop:gap-x-8 items-center">
       <div className="w-full desktop:order-2">
         <Picture
           srcSet={{
@@ -15,7 +16,8 @@ export default function ClosingStatement() {
         />
       </div>
       <div className="desktop:order-1 flex flex-col items-center">
-        <h2 className="px-4 desktop:px-0 mt-8 tablet:w-4/5 desktop:w-full text-3xl tablet:text-[40px] desktop:tracking-wide tablet:leading-[44px] text-center desktop:text-left uppercase font-bold">
+        <h2 className="px-4 desktop:px-0 mt-8 tablet:w-4/5 desktop:w-full text-3xl tablet:text-[40px] 
+                        desktop:tracking-wide tablet:leading-[44px] text-center desktop:text-left uppercase font-bold">
           Bringing you the <span className="text-accent">best</span> audio gear
         </h2>
         <p className="px-4 desktop:px-0 mt-8 text-[15px] font-medium text-center desktop:text-left text-gray-600 leading-[25px]">
