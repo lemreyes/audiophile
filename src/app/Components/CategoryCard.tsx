@@ -1,19 +1,27 @@
 import Image from "next/image";
 import shop_arrow from "../../../public/assets/home/arrow_icon.svg";
-import ImageDynamic, { ImageSrcObject } from "./ImageDynamic";
+import Picture from "./Picture";
 
 export default function CategoryCard({
   name,
   image,
 }: {
   name: string;
-  image: ImageSrcObject;
+  image: any;
 }) {
   return (
     <article className="w-full mb-8 ">
       <div className="h-[85px]"></div>
       <div className="bg-product flex flex-col items-center rounded-lg p-8 h-[165px] relative">
-        <ImageDynamic imageSrc={image} />
+        <Picture
+          srcSet={{
+            mobile: image.mobile,
+            tablet: image.tablet,
+            desktop: image.desktop,
+          }}
+          alt={"zx9-speaker"}
+          styleClass={"desktop:absolute desktop:-bottom-4 desktop:left-16"}
+        />
         <h2 className="mt-16 uppercase text-center text-[15px] font-bold mb-4">
           {name}
         </h2>

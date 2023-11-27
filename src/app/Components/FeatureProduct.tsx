@@ -1,61 +1,6 @@
-import zx9_mobile from "../../../public/assets/home/mobile/image-speaker-zx9.png";
-import zx9_tablet from "../../../public/assets/home/tablet/image-speaker-zx9.png";
-import zx9_desktop from "../../../public/assets/home/desktop/image-speaker-zx9.png";
-import yx1_mobile from "../../../public/assets/home/mobile/image-earphones-yx1.jpg";
-import yx1_tablet from "../../../public/assets/home/tablet/image-earphones-yx1.jpg";
-import yx1_desktop from "../../../public/assets/home/desktop/image-earphones-yx1.jpg";
-import ImageDynamic, { ImageSrcObject } from "./ImageDynamic";
-import ClosingStatement from "./ClosingStatement";
+import Picture from "./Picture";
 
 export default function FeatureProduct() {
-  const zX9ImageSrc: ImageSrcObject = {
-    mobile: {
-      imageData: zx9_mobile,
-      width: 173,
-      height: 207,
-      altText: "zx9-speaker",
-      styleClasses: "",
-    },
-    tablet: {
-      imageData: zx9_tablet,
-      width: 197,
-      height: 237,
-      altText: "zx9-speaker",
-      styleClasses: "",
-    },
-    desktop: {
-      imageData: zx9_desktop,
-      width: 410,
-      height: 493,
-      altText: "zx9-speaker",
-      styleClasses: "desktop:absolute desktop:-bottom-4 desktop:left-16",
-    },
-  };
-
-  const yX1EarphonesImageSrc = {
-    mobile: {
-      imageData: yx1_mobile,
-      width: 327,
-      height: 200,
-      altText: "yx1-earphones",
-      styleClasses: "rounded-lg",
-    },
-    tablet: {
-      imageData: yx1_tablet,
-      width: 339,
-      height: 320,
-      altText: "yx1-earphones",
-      styleClasses: "rounded-lg",
-    },
-    desktop: {
-      imageData: yx1_desktop,
-      width: 540,
-      height: 320,
-      altText: "yx1-earphones",
-      styleClasses: "rounded-lg",
-    },
-  };
-
   return (
     <section
       id="featureProducts"
@@ -66,7 +11,15 @@ export default function FeatureProduct() {
         className="flex flex-col items-center desktop:items-end bg-feature rounded-lg bg-accent w-full px-4 py-16 
                     desktop:h-[560px] desktop:relative desktop:overflow-hidden"
       >
-        <ImageDynamic imageSrc={zX9ImageSrc} />
+        <Picture
+          srcSet={{
+            mobile: "/assets/home/mobile/image-speaker-zx9.png",
+            tablet: "/assets/home/desktop/image-speaker-zx9.png",
+            desktop: "/assets/home/tablet/image-speaker-zx9.png",
+          }}
+          alt={"zx9-speaker"}
+          styleClass={"desktop:absolute desktop:-bottom-4 desktop:left-16"}
+        />
         <div className="flex flex-col items-center desktop:items-start desktop:w-1/3 text-center desktop:text-left desktop:mr-20">
           <h2 className="mt-12 tablet:w-1/3 text-3xl tablet:text-6xl text-center desktop:text-left uppercase text-white font-bold">
             ZX9 speaker
@@ -90,7 +43,15 @@ export default function FeatureProduct() {
       </article>
       <article className="mt-8 tablet:w-full">
         <div className="tablet:flex tablet:flex-row gap-x-4">
-          <ImageDynamic imageSrc={yX1EarphonesImageSrc} />
+          <Picture
+            srcSet={{
+              mobile: "assets/home/mobile/image-earphones-yx1.jpg",
+              tablet: "/assets/home/tablet/image-earphones-yx1.jpg",
+              desktop: "/assets/home/desktop/image-earphones-yx1.jpg",
+            }}
+            alt={"yx1-earphones"}
+            styleClass={"rounded-lg"}
+          />
           <div className="tablet:flex tablet:flex-col tablet:justify-center mt-8 tablet:mt-0 bg-product pl-12 tablet:w-4/5 rounded-lg">
             <h2 className="text-3xl uppercase font-bold">yx1 earphones</h2>
             <button className="mt-12 border border-black hover:bg-black hover:text-white px-4 py-4 w-[160px] uppercase text-sm font-bold">
