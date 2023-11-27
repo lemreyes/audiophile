@@ -2,7 +2,7 @@ import Picture from "./Picture";
 
 export default function ClosingStatement() {
   return (
-    <section className="mt-8 mb-12 flex flex-col desktop:grid desktop:grid-cols-2 desktop:gap-x-8 items-center w-11/12">
+    <section className="mt-8 mb-12 flex flex-col desktop:grid desktop:grid-cols-2 desktop:gap-x-8 items-center w-4/5">
       <div className="w-full desktop:order-2">
         <Picture
           srcSet={{

@@ -19,7 +19,7 @@ export default function ProductCard({
   return (
     <article
       key={product.id}
-      className="flex flex-col desktop:flex-row items-center w-11/12 my-12 desktop:gap-x-12"
+      className="flex flex-col desktop:grid desktop:grid-cols-2 items-center w-4/5 my-12 desktop:gap-x-12"
     >
       <div
         className={`flex flex-col items-center tablet:w-full bg-product ${orderStyle}`}
@@ -31,7 +31,7 @@ export default function ProductCard({
             desktop: product.image[0].desktopSrc,
           }}
           alt={product.name}
-          styleClass="w-auto h-[352px]"
+          styleClass="w-auto tablet:h-[352px] desktop:h-auto"
         />
       </div>
       <div className="flex flex-col items-center desktop:items-start">
@@ -43,7 +43,7 @@ export default function ProductCard({
         <h2 className="uppercase font-bold text-[28px] tracking-[1px] text-center desktop:text-left my-8 desktop:mt-0">
           {product.name}
         </h2>
-        <p className="mb-8 tablet:px-12 text-center desktop:text-left text-[15px] leading-[25px] text-textPrimary font-medium">
+        <p className="mb-8 tablet:px-12 desktop:px-0 text-center desktop:text-left text-[15px] leading-[25px] text-textPrimary font-medium">
           {product.description}
         </p>
         <Link
