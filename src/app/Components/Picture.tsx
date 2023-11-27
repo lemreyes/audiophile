@@ -25,13 +25,14 @@ export default function Picture({
   return (
     <picture>
       <source
-        srcSet={srcSet.tablet}
-        media={`(min-width: ${TABLET_MIN_WIDTH}px)`}
-      />
-      <source
         srcSet={srcSet.desktop}
         media={`(min-width: ${DESKTOP_MIN_WIDTH}px)`}
       />
+      <source
+        srcSet={srcSet.tablet}
+        media={`(min-width: ${TABLET_MIN_WIDTH}px)`}
+      />
+
       <img src={srcSet.mobile} alt={alt} className={styleClass} />
     </picture>
   );
