@@ -44,7 +44,7 @@ export default async function OtherProducts({
         desktop: product.image[0].desktopSrc,
       },
       alt: product.name,
-      styleClasses: "",
+      styleClasses: "max-w-[200px]",
     };
 
     const productDisplayInfo: OtherProductDisplayInfo = {
@@ -57,19 +57,24 @@ export default async function OtherProducts({
   }
 
   return (
-    <div className="flex flex-col items-center gap-y-4 tablet:mt-8 tablet:grid tablet:grid-cols-3 tablet:gap-x-4 tablet:gap-y-0">
+    <div className="flex flex-col items-center gap-y-4 tablet:mt-8 tablet:grid tablet:grid-cols-3 tablet:gap-x-4 tablet:gap-y-0 w-full">
       {otherProductDisplayInfoArray.map((otherProduct) => {
         return (
-          <div key={otherProduct.id} className="flex flex-col items-center justify-between rounded-xl p-1 bg-product tablet:h-full">
-            <Picture
-              srcSet={{
-                mobile: otherProduct.imageSrcSetInfo.imageSrc.mobile,
-                tablet: otherProduct.imageSrcSetInfo.imageSrc.tablet,
-                desktop: otherProduct.imageSrcSetInfo.imageSrc.desktop,
-              }}
-              alt={otherProduct.imageSrcSetInfo.alt}
-              styleClass={otherProduct.imageSrcSetInfo.styleClasses}
-            />
+          <div
+            key={otherProduct.id}
+            className="flex flex-col items-center justify-between h-full"
+          >
+            <div className="px-2 bg-product rounded-lg w-full flex items-center justify-center">
+              <Picture
+                srcSet={{
+                  mobile: otherProduct.imageSrcSetInfo.imageSrc.mobile,
+                  tablet: otherProduct.imageSrcSetInfo.imageSrc.tablet,
+                  desktop: otherProduct.imageSrcSetInfo.imageSrc.desktop,
+                }}
+                alt={otherProduct.imageSrcSetInfo.alt}
+                styleClass={otherProduct.imageSrcSetInfo.styleClasses}
+              />
+            </div>
 
             <h4 className="mt-4 text-[24px] px-4 font-bold text-center tracking-wide">
               {otherProduct.name}

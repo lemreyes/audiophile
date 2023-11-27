@@ -83,15 +83,15 @@ export default async function ProductDetail(params: Props) {
         </div>
       </section>
       <section className="mt-16 w-10/12 tablet:w-11/12 desktop:w-4/5 ">
-        <h3 className="text-[24px] font-bold tracking-wide leading-[36px] uppercase">
+        <h3 className="text-[24px] tablet:text-[32px] font-bold tracking-wide leading-[32px] uppercase">
           Features
         </h3>
-        <p className="mt-4 text-[15px] leading-[25px] text-textPrimary">
+        <p className="mt-4 text-[15px] font-medium leading-[25px] text-textPrimary">
           {product.features}
         </p>
       </section>
       <section className="mt-12 w-10/12 tablet:w-11/12 desktop:w-4/5 tablet:grid tablet:grid-cols-2">
-        <h3 className="text-[24px] font-bold tracking-wide leading-[36px] uppercase">
+        <h3 className="text-[24px] tablet:text-[32px] font-bold tracking-wide leading-[36px] uppercase">
           In the box
         </h3>
         <ul className="mt-8 tablet:mt-0">
@@ -113,8 +113,8 @@ export default async function ProductDetail(params: Props) {
           <Gallery gallery={product.gallery} />
         </div>
       </section>
-      <section className="mt-12 px-8">
-        <h3 className="mb-4 text-[24px] font-bold tracking-wide leading-[36px] text-center uppercase">
+      <section className="mt-16 w-10/12 tablet:w-11/12 desktop:w-4/5  flex flex-col items-center">
+        <h3 className="mb-4 text-[24px] tablet:text-[32px] font-bold tracking-wide leading-[36px] text-center uppercase">
           You may also like
         </h3>
         <OtherProducts productList={product.otherProducts} />
