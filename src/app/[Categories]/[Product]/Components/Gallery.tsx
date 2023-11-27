@@ -1,45 +1,41 @@
 import { Fragment } from "react";
 import { GalleryInfo } from "../../../Types/Interfaces";
-import ImageDynamic, { ImageSrcObject } from "../../../Components/ImageDynamic";
+import Picture, { srcSetInfo } from "../../../Components/Picture";
 
 export default function Gallery({ gallery }: { gallery: Array<GalleryInfo> }) {
-  let imgSrcInfo: Array<ImageSrcObject> = [];
+  let imgSrcInfo: Array<srcSetInfo> = [];
   let imgKey = 0;
 
-  // populate gallery array
   gallery.map((galleryImage) => {
-    const imgSrc = {
-      mobile: {
-        imageData: galleryImage.mobileSrc,
-        width: 500,
-        height: 500,
-        altText: `product-image-${galleryImage.order}`,
-        styleClasses: "rounded-2xl mb-4",
+    const imageInfo = {
+      imageSrc: {
+        mobile: galleryImage.mobileSrc,
+        tablet: galleryImage.tabletSrc,
+        desktop: galleryImage.desktopSrc,
       },
-      tablet: {
-        imageData: galleryImage.tabletSrc,
-        width: 500,
-        height: 500,
-        altText: `product-image-${galleryImage.order}`,
-        styleClasses: "rounded-2xl mb-4",
-      },
-      desktop: {
-        imageData: galleryImage.desktopSrc,
-        width: 500,
-        height: 500,
-        altText: `product-image-${galleryImage.order}`,
-        styleClasses: "rounded-2xl mb-4",
-      },
+      alt: `product-image-${galleryImage.order}`,
+      styleClasses: "rounded-2xl mb-4",
     };
 
-    return imgSrcInfo.push(imgSrc);
+    return imgSrcInfo.push(imageInfo);
   });
 
   return (
     <Fragment>
       {imgSrcInfo.map((imgSrc) => {
         imgKey++;
-        return <ImageDynamic key={imgKey} imageSrc={imgSrc} />;
+        return (
+          <Picture
+            key={imgSrc.alt}
+            srcSet={{
+              mobile: imgSrc.imageSrc.mobile,
+              tablet: imgSrc.imageSrc.tablet,
+              desktop: imgSrc.imageSrc.desktop,
+            }}
+            alt={imgSrc.alt}
+            styleClass={imgSrc.styleClasses}
+          />
+        );
       })}
     </Fragment>
   );

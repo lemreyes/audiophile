@@ -20,7 +20,7 @@ export default function CategoryCard({
             desktop: image.desktop,
           }}
           alt={"zx9-speaker"}
-          styleClass={"desktop:absolute desktop:-bottom-4 desktop:left-16"}
+          styleClass={"absolute -top-20 -translate-x-1/2"}
         />
         <h2 className="mt-16 uppercase text-center text-[15px] font-bold mb-4">
           {name}

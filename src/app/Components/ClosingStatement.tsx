@@ -1,36 +1,17 @@
-import bestGear_mobile from "../../../public/assets/shared/mobile/image-best-gear.jpg";
-import bestGear_tablet from "../../../public/assets/shared/tablet/image-best-gear.jpg";
-import bestGear_desktop from "../../../public/assets/shared/desktop/image-best-gear.jpg";
-import ImageDynamic from "./ImageDynamic";
+import Picture from "./Picture";
 
 export default function ClosingStatement() {
-  const bestGearImgSrc = {
-    mobile: {
-      imageData: bestGear_mobile,
-      width: 327,
-      height: 300,
-      altText: "man with headphones",
-      styleClasses: "rounded-lg",
-    },
-    tablet: {
-      imageData: bestGear_tablet,
-      width: 689,
-      height: 300,
-      altText: "man with headphones",
-      styleClasses: "rounded-lg w-full",
-    },
-    desktop: {
-      imageData: bestGear_desktop,
-      width: 540,
-      height: 588,
-      altText: "man with headphones",
-      styleClasses: "rounded-lg desktop:order-2",
-    },
-  };
-
   return (
     <section className="mt-8 mb-12 flex flex-col desktop:flex-row items-center w-11/12">
-      <ImageDynamic imageSrc={bestGearImgSrc} />
+      <Picture
+        srcSet={{
+          mobile: "/assets/shared/mobile/image-best-gear.jpg",
+          tablet: "/assets/shared/tablet/image-best-gear.jpg",
+          desktop: "/assets/shared/desktop/image-best-gear.jpg",
+        }}
+        alt="man with headphones"
+        styleClass="rounded-lg tablet:w-full desktop:w-auto desktop:order-2"
+      />
       <div className="desktop:order-1 flex flex-col items-center">
         <h2 className="px-4 mt-8 tablet:w-4/5 text-3xl tablet:text-[40px] desktop:tracking-wide tablet:leading-[44px] text-center uppercase font-bold">
           Bringing you the <span className="text-accent">best</span> audio gear

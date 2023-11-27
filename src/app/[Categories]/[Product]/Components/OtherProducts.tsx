@@ -1,4 +1,4 @@
-import ImageDynamic, { ImageSrcObject } from "../../../Components/ImageDynamic";
+import Picture, { srcSetInfo } from "../../../Components/Picture";
 import prisma from "../../../Utilities/prismaUtils";
 
 export interface OtherProductsInfo {
@@ -12,7 +12,7 @@ export interface OtherProductsInfo {
 interface OtherProductDisplayInfo {
   id: number;
   name: string;
-  imageSrc: ImageSrcObject;
+  imageSrcSetInfo: srcSetInfo;
 }
 
 export default async function OtherProducts({
@@ -37,34 +37,20 @@ export default async function OtherProducts({
       throw new Error("Product information not found.");
     }
 
-    const imageSrc = {
-      mobile: {
-        imageData: product.image[0].mobileSrc,
-        width: 327,
-        height: 120,
-        altText: `${product.name}`,
-        styleClasses: "",
+    const imageInfo = {
+      imageSrc: {
+        mobile: product.image[0].mobileSrc,
+        tablet: product.image[0].tabletSrc,
+        desktop: product.image[0].desktopSrc,
       },
-      tablet: {
-        imageData: product.image[0].tabletSrc,
-        width: 223,
-        height: 471,
-        altText: `${product.name}`,
-        styleClasses: "",
-      },
-      desktop: {
-        imageData: product.image[0].desktopSrc,
-        width: 350,
-        height: 318,
-        altText: `${product.name}`,
-        styleClasses: "",
-      },
+      alt: product.name,
+      styleClasses: "",
     };
 
     const productDisplayInfo: OtherProductDisplayInfo = {
       id: product.id,
       name: product.name,
-      imageSrc: imageSrc,
+      imageSrcSetInfo: imageInfo,
     };
 
     otherProductDisplayInfoArray.push(productDisplayInfo);
@@ -75,7 +61,16 @@ export default async function OtherProducts({
       {otherProductDisplayInfoArray.map((otherProduct) => {
         return (
           <div key={otherProduct.id} className="flex flex-col items-center">
-            <ImageDynamic imageSrc={otherProduct.imageSrc} />
+            <Picture
+              srcSet={{
+                mobile: otherProduct.imageSrcSetInfo.imageSrc.mobile,
+                tablet: otherProduct.imageSrcSetInfo.imageSrc.tablet,
+                desktop: otherProduct.imageSrcSetInfo.imageSrc.desktop,
+              }}
+              alt={otherProduct.imageSrcSetInfo.alt}
+              styleClass={otherProduct.imageSrcSetInfo.styleClasses}
+            />
+
             <h4 className="mt-4 text-[24px] font-bold] text-center tracking-wide">
               {otherProduct.name}
             </h4>

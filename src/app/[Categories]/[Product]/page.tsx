@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
 import prisma from "../../Utilities/prismaUtils";
-import ImageDynamic from "../../Components/ImageDynamic";
 import AddToCart from "./Components/AddToCart";
 import Gallery from "./Components/Gallery";
 import Categories from "../../Components/Categories";
 import ClosingStatement from "../../Components/ClosingStatement";
 import OtherProducts from "./Components/OtherProducts";
+import Picture from "../../Components/Picture";
 
 type Props = {
   params: {};
@@ -77,7 +77,15 @@ export default async function ProductDetail(params: Props) {
       </span>
       <section className="mt-4 px-8 flex flex-col tablet:flex-row items-start tablet:items-center w-full tablet:gap-x-4">
         <div className="w-full bg-product flex flex-col items-center">
-          <ImageDynamic imageSrc={mainImageSrc} />
+          <Picture
+            srcSet={{
+              mobile: product.image[0].mobileSrc,
+              tablet: product.image[0].tabletSrc,
+              desktop: product.image[0].desktopSrc,
+            }}
+            alt={product.name}
+            styleClass="w-full tablet:w-auto"
+          />
         </div>
         <div className="flex flex-col items-start">
           {product.new && (

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import ImageDynamic from "../Components/ImageDynamic";
 import { ProductInfo } from "../Types/Interfaces";
+import Picture from "../Components/Picture";
 
 export default function ProductCard({
   product,
@@ -48,7 +48,15 @@ export default function ProductCard({
       <div
         className={`flex flex-col items-center w-full bg-product ${orderStyle}`}
       >
-        <ImageDynamic imageSrc={imageSrc} />
+        <Picture
+          srcSet={{
+            mobile: product.image[0].mobileSrc,
+            tablet: product.image[0].tabletSrc,
+            desktop: product.image[0].desktopSrc,
+          }}
+          alt={product.name}
+          styleClass=""
+        />
       </div>
       <div className="flex flex-col items-center desktop:items-start">
         {product.new && (
