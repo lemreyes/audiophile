@@ -65,7 +65,7 @@ export default async function OtherProducts({
         return (
           <div
             key={otherProduct.id}
-            className="flex flex-col items-center justify-between h-full"
+            className="flex flex-col items-center justify-between w-full h-full"
           >
             <div className="px-2 bg-product rounded-lg w-full flex items-center justify-center">
               <Picture
