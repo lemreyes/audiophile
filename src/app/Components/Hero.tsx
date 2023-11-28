@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Hero() {
   return (
     <section className="bg-[#191919] bg-hero w-full flex flex-col items-center">
-      <div className="w-4/5 border-t-textPrimary">
+      <div className="w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 border-t-textPrimary">
         <div className="flex flex-col items-center desktop:items-start py-24">
           <span className="mb-8 uppercase tracking-[10px] text-gray-400">
             New product

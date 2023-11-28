@@ -49,10 +49,10 @@ export default async function ProductDetail(params: Props) {
 
   return (
     <main className="flex flex-col items-center">
-      <span className="w-10/12 tablet:w-11/12 desktop:w-4/5 self-start ml-8 mt-4 text-[15px] text-textPrimary font-medium leading-[25px]">
+      <span className="w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 mt-4 text-[15px] text-textPrimary font-medium leading-[25px]">
         Go Back
       </span>
-      <section className="mt-4 flex flex-col tablet:flex-row items-start tablet:items-center w-10/12 tablet:w-11/12 desktop:w-4/5 tablet:gap-x-12">
+      <section className="mt-4 flex flex-col tablet:flex-row items-start tablet:items-center w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 tablet:gap-x-12">
         <div className="w-full bg-product flex flex-col items-center">
           <Picture
             srcSet={{
@@ -82,7 +82,7 @@ export default async function ProductDetail(params: Props) {
           <AddToCart />
         </div>
       </section>
-      <section className="mt-16 w-10/12 tablet:w-11/12 desktop:w-4/5 ">
+      <section className="mt-16 w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 ">
         <h3 className="text-[24px] tablet:text-[32px] font-bold tracking-wide leading-[32px] uppercase">
           Features
         </h3>
@@ -90,7 +90,7 @@ export default async function ProductDetail(params: Props) {
           {product.features}
         </p>
       </section>
-      <section className="mt-12 w-10/12 tablet:w-11/12 desktop:w-4/5 tablet:grid tablet:grid-cols-2">
+      <section className="mt-12 w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 tablet:grid tablet:grid-cols-2">
         <h3 className="text-[24px] tablet:text-[32px] font-bold tracking-wide leading-[36px] uppercase">
           In the box
         </h3>
@@ -108,12 +108,12 @@ export default async function ProductDetail(params: Props) {
           })}
         </ul>
       </section>
-      <section className="mt-12 w-10/12 tablet:w-11/12 desktop:w-4/5 overflow-hidden">
+      <section className="mt-12 w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 overflow-hidden">
         <div className={`${styles.gallery_grid}`}>
           <Gallery gallery={product.gallery} />
         </div>
       </section>
-      <section className="mt-16 w-10/12 tablet:w-11/12 desktop:w-4/5  flex flex-col items-center">
+      <section className="mt-16 w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 flex flex-col items-center">
         <h3 className="mb-4 text-[24px] tablet:text-[32px] font-bold tracking-wide leading-[36px] text-center uppercase">
           You may also like
         </h3>

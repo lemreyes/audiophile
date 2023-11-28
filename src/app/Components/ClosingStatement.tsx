@@ -2,7 +2,7 @@ import Picture from "./Picture";
 
 export default function ClosingStatement() {
   return (
-    <section className="mt-8 mb-12 w-10/12 tablet:w-11/12 desktop:w-4/5
+    <section className="mt-8 mb-12 w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5
                         flex flex-col desktop:grid desktop:grid-cols-2 desktop:gap-x-8 items-center">
       <div className="w-full desktop:order-2">
         <Picture

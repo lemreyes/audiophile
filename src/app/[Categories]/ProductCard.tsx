@@ -19,7 +19,7 @@ export default function ProductCard({
   return (
     <article
       key={product.id}
-      className="flex flex-col desktop:grid desktop:grid-cols-2 items-center w-4/5 my-12 desktop:gap-x-12"
+      className="flex flex-col desktop:grid desktop:grid-cols-2 items-center my-12 desktop:gap-x-12"
     >
       <div
         className={`flex flex-col items-center tablet:w-full bg-product ${orderStyle}`}

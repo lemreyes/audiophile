@@ -129,7 +129,7 @@ export default function Footer() {
   } else {
     return (
       <footer className="bg-black text-white flex flex-col items-center">
-        <div className="grid grid-cols-2 grid-rows-4 w-4/5">
+        <div className="grid grid-cols-2 grid-rows-4 desktop:w-4/5 wide:w-3/5">
           <div
             id="footer-accent"
             className="w-24 h-[4px] bg-accent row-start-1 row-end-2 col-start-1 col-end-2"

@@ -5,7 +5,7 @@ export default function FeatureProduct() {
   return (
     <section
       id="featureProducts"
-      className="tablet:w-4/5 flex flex-col items-center mt-8 px-8 tablet:px-0"
+      className="w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 flex flex-col items-center mt-8 tablet:px-0"
     >
       <article
         id="zx9-speaker"

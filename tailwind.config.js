@@ -18,6 +18,7 @@ module.exports = {
       screens: {
         tablet: "430px",
         desktop: "1024px",
+        wide: "1366px",
       },
       backgroundImage: {},
     },

@@ -27,7 +27,7 @@ export default async function Category({
           {params.Categories}
         </h1>
       </section>
-      <section className="flex flex-col items-center mb-8">
+      <section className="w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 flex flex-col items-center mb-8">
         {products.map((product) => {
           productListingOrder++;
           return (
