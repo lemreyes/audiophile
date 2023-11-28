@@ -1,3 +1,4 @@
+import Link from "next/link";
 import CategoryCard from "./CategoryCard";
 
 export default function Categories() {
@@ -8,8 +9,8 @@ export default function Categories() {
   };
 
   const speakersImgSrc = {
-    mobile:"/assets/home/mobile/speakers_category.png",
-    tablet:"/assets/home/tablet/speakers_category.png",
+    mobile: "/assets/home/mobile/speakers_category.png",
+    tablet: "/assets/home/tablet/speakers_category.png",
     desktop: "/assets/home/desktop/speakers_category.png",
   };
 

@@ -17,7 +17,9 @@ export default function Navbar() {
             height: "auto",
           }}
         />
-        <Image src={logo} alt="logo" />
+        <Link href="/">
+          <Image src={logo} alt="logo" />
+        </Link>
         <ul className="hidden desktop:flex desktop:flex-row desktop:gap-x-8 text-white uppercase text-[13px] tracking-[2px] text-center">
           <Link href="/">
             <li className="my-8 hover:text-accent">Home</li>

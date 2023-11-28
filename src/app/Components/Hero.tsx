@@ -15,7 +15,12 @@ export default function Hero() {
             Experience natural, lifelike audio and exceptional build quality
             made for the passionate music enthusiast.
           </p>
-          <Link href="">
+          <Link
+            href={{
+              pathname: `/Headphones/xx99-mark-two-headphones`,
+              query: { id: 4 },
+            }}
+          >
             <button className="uppercase px-8 py-4 bg-accent hover:bg-accentHover text-white tracking-wide">
               See product
             </button>
