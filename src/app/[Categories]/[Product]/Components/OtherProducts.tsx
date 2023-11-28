@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Picture, { srcSetInfo } from "../../../Components/Picture";
 import prisma from "../../../Utilities/prismaUtils";
 
@@ -12,6 +13,7 @@ export interface OtherProductsInfo {
 interface OtherProductDisplayInfo {
   id: number;
   name: string;
+  category: string;
   imageSrcSetInfo: srcSetInfo;
 }
 
@@ -50,6 +52,7 @@ export default async function OtherProducts({
     const productDisplayInfo: OtherProductDisplayInfo = {
       id: product.id,
       name: product.name,
+      category: product.category,
       imageSrcSetInfo: imageInfo,
     };
 
@@ -79,12 +82,19 @@ export default async function OtherProducts({
             <h4 className="mt-4 text-[24px] px-4 font-bold text-center tracking-wide">
               {otherProduct.name}
             </h4>
-            <button
-              className="mt-4 mb-8 py-4 px-8 uppercase text-[13px] font-bold tracking-wide text-white bg-accent 
-                          hover:bg-accentHover"
+            <Link
+              href={{
+                pathname: `/${otherProduct.category}/${otherProduct.name}`,
+                query: { id: otherProduct.id },
+              }}
             >
-              See product
-            </button>
+              <button
+                className="mt-4 mb-8 py-4 px-8 uppercase text-[13px] font-bold tracking-wide text-white bg-accent 
+                          hover:bg-accentHover"
+              >
+                See product
+              </button>
+            </Link>
           </div>
         );
       })}

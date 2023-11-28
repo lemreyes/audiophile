@@ -7,6 +7,7 @@ import ClosingStatement from "../../Components/ClosingStatement";
 import OtherProducts from "./Components/OtherProducts";
 import Picture from "../../Components/Picture";
 import styles from "./styles.module.css";
+import Link from "next/link";
 
 type Props = {
   params: {};
@@ -49,9 +50,11 @@ export default async function ProductDetail(params: Props) {
 
   return (
     <main className="flex flex-col items-center">
-      <span className="w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 mt-4 text-[15px] text-textPrimary font-medium leading-[25px]">
-        Go Back
-      </span>
+      <Link href={`/${product.category}`} className="w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 mt-4 text-[15px] text-textPrimary font-medium leading-[25px]">
+        <span >
+          Go Back
+        </span>
+      </Link>
       <section className="mt-4 flex flex-col tablet:flex-row items-start tablet:items-center w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 tablet:gap-x-12">
         <div className="w-full bg-product flex flex-col items-center">
           <Picture
