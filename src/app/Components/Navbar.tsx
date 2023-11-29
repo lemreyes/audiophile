@@ -11,17 +11,14 @@ export default function Navbar() {
   const [isShowCartDialog, setIsShowCartDialog] = useState(false);
 
   const openCartDialog = () => {
-    console.log("toggle cart dialog");
     setIsShowCartDialog(true);
-    document.body.style.overflow = 'hidden'
+    document.body.style.overflow = "hidden";
   };
 
   const hdlClickOutside = () => {
     setIsShowCartDialog(false);
-    document.body.style.overflow = 'auto'
+    document.body.style.overflow = "auto";
   };
-
-  console.log("isShowCartDialog", isShowCartDialog);
 
   return (
     <Fragment>
