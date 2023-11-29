@@ -10,13 +10,15 @@ import CartDialog from "./CartDialog";
 export default function Navbar() {
   const [isShowCartDialog, setIsShowCartDialog] = useState(false);
 
-  const toggleCartDialog = () => {
+  const openCartDialog = () => {
     console.log("toggle cart dialog");
-    setIsShowCartDialog(!isShowCartDialog);
+    setIsShowCartDialog(true);
+    document.body.style.overflow = 'hidden'
   };
 
   const hdlClickOutside = () => {
     setIsShowCartDialog(false);
+    document.body.style.overflow = 'auto'
   };
 
   console.log("isShowCartDialog", isShowCartDialog);
@@ -55,7 +57,7 @@ export default function Navbar() {
             src={cart_icon}
             alt="cart_icon"
             className="w-4 h-4"
-            onClick={toggleCartDialog}
+            onClick={openCartDialog}
           />
         </nav>
       </header>
