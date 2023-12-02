@@ -4,7 +4,7 @@ import hamburger_icon from "../../../public/assets/shared/tablet/icon-hamburger.
 import cart_icon from "../../../public/assets/shared/desktop/icon-cart.svg";
 import logo from "../../../public/assets/shared/desktop/logo.svg";
 import Link from "next/link";
-import { useState, useEffect, useRef, Fragment } from "react";
+import { useState, Fragment } from "react";
 import CartDialog from "./CartDialog";
 
 export default function Navbar() {
