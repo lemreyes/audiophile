@@ -12,12 +12,13 @@ export default function Navbar() {
 
   const openCartDialog = () => {
     setIsShowCartDialog(true);
-    document.body.style.overflow = "hidden";
+    document.body.style.overflowY = "scroll";
+    document.body.style.overflowX = "hidden";
   };
 
   const hdlClickOutside = () => {
     setIsShowCartDialog(false);
-    document.body.style.overflow = "auto";
+    document.body.style.overflowY = "auto";
   };
 
   return (
