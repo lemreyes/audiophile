@@ -35,6 +35,7 @@ model Image {
   mobileSrc  String
   tabletSrc  String
   desktopSrc String
+  cartSrc    String   @default("")
   Product    Product  @relation(fields: [productId], references: [id])
   productId  Int
   created_at DateTime
