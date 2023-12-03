@@ -13,6 +13,7 @@ export interface OtherProductsInfo {
 interface OtherProductDisplayInfo {
   id: number;
   name: string;
+  shortName: string;
   category: string;
   imageSrcSetInfo: srcSetInfo;
 }
@@ -52,6 +53,7 @@ export default async function OtherProducts({
     const productDisplayInfo: OtherProductDisplayInfo = {
       id: product.id,
       name: product.name,
+      shortName: product.shortName,
       category: product.category,
       imageSrcSetInfo: imageInfo,
     };
@@ -80,7 +82,7 @@ export default async function OtherProducts({
             </div>
 
             <h4 className="mt-4 text-[24px] px-4 font-bold text-center tracking-wide">
-              {otherProduct.name}
+              {otherProduct.shortName}
             </h4>
             <Link
               href={{
