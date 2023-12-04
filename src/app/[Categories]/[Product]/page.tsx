@@ -8,6 +8,7 @@ import OtherProducts from "./Components/OtherProducts";
 import Picture from "../../Components/Picture";
 import styles from "./styles.module.css";
 import Link from "next/link";
+import { CartItem } from "../../Store/CartStore";
 
 type Props = {
   params: {};
@@ -50,10 +51,11 @@ export default async function ProductDetail(params: Props) {
 
   return (
     <main className="flex flex-col items-center">
-      <Link href={`/${product.category}`} className="w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 mt-4 text-[15px] text-textPrimary font-medium leading-[25px]">
-        <span >
-          Go Back
-        </span>
+      <Link
+        href={`/${product.category}`}
+        className="w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 mt-4 text-[15px] text-textPrimary font-medium leading-[25px]"
+      >
+        <span>Go Back</span>
       </Link>
       <section className="mt-4 flex flex-col tablet:flex-row items-start tablet:items-center w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 tablet:gap-x-12">
         <div className="w-full bg-product flex flex-col items-center">
@@ -82,7 +84,11 @@ export default async function ProductDetail(params: Props) {
           <span className="my-4 text-[18px] text-left tracking-wider font-bold">
             $ {product.price.toLocaleString("en-US", priceFormatOptions)}
           </span>
-          <AddToCart />
+          <AddToCart
+            id={product.id}
+            name={product.name}
+            srcPath={product.image[0].cartSrc}
+          />
         </div>
       </section>
       <section className="mt-16 w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 ">

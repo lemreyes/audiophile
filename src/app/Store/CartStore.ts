@@ -1,12 +1,12 @@
 import { create } from "zustand";
 
-interface CartState {
+export interface CartState {
   itemCount: number;
-  items: Array<CartItemList>;
-  addItem: (updatedItemList: Array<CartItemList>) => void;
+  items: Array<CartItem>;
+  addItem: (updatedItemList: CartItem) => void;
 }
 
-export interface CartItemList {
+export interface CartItem {
   productId: number;
   productName: string;
   quantity: number;
@@ -16,8 +16,10 @@ export interface CartItemList {
 export const useCartStore = create<CartState>()((set) => ({
   itemCount: 0,
   items: [],
-  addItem: (updatedItemList: Array<CartItemList>) =>
-    set({
-      items: updatedItemList,
-    }),
+  addItem: (cartItem: CartItem) =>
+    set((state) => ({
+      ...state,
+      items: [...state.items, cartItem],
+      itemCount: state.itemCount + 1,
+    })),
 }));
