@@ -8,7 +8,6 @@ import OtherProducts from "./Components/OtherProducts";
 import Picture from "../../Components/Picture";
 import styles from "./styles.module.css";
 import Link from "next/link";
-import { CartItem } from "../../Store/CartStore";
 
 type Props = {
   params: {};
@@ -87,6 +86,7 @@ export default async function ProductDetail(params: Props) {
           <AddToCart
             id={product.id}
             name={product.name}
+            price={product.price}
             srcPath={product.image[0].cartSrc}
           />
         </div>

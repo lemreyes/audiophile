@@ -6,10 +6,12 @@ import { CartState, CartItem, useCartStore } from "../../../Store/CartStore";
 export default function AddToCart({
   id,
   name,
+  price,
   srcPath,
 }: {
   id: number;
   name: string;
+  price: number;
   srcPath: string;
 }) {
   const [quantity, setQuantity] = useState(1);
@@ -19,6 +21,7 @@ export default function AddToCart({
   const cartItem: CartItem = {
     productId: id,
     productName: name,
+    price: price,
     quantity: quantity,
     imageSrc: srcPath,
   };

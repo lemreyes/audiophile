@@ -18,7 +18,7 @@ export default function CountButton({
   };
 
   return (
-    <div className="flex flex-row items-center justify-between">
+    <div className="flex flex-row items-center">
       <button
         className="text-[13px] font-bold tracking-wide bg-product p-4 text-textPrimary hover:text-accent"
         onClick={hdlDecrementButton}
