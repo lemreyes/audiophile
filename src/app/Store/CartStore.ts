@@ -4,7 +4,7 @@ export interface CartState {
   itemCount: number;
   items: Array<CartItem>;
   addItem: (updatedItemList: CartItem) => void;
-  removeAll: () => void;
+  removeAll: () => void
 }
 
 export interface CartItem {
