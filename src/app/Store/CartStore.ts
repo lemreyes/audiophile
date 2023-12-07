@@ -4,6 +4,7 @@ export interface CartState {
   itemCount: number;
   items: Array<CartItem>;
   addItem: (updatedItemList: CartItem) => void;
+  removeAll: () => void;
 }
 
 export interface CartItem {
@@ -23,4 +24,5 @@ export const useCartStore = create<CartState>()((set) => ({
       items: [...state.items, cartItem],
       itemCount: state.itemCount + 1,
     })),
+  removeAll: () => set({ items: [], itemCount: 0 }),
 }));
