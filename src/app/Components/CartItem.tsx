@@ -6,12 +6,14 @@ export default function CartItem({
   imageSrc,
   productName,
   price,
+  quantity,
 }: {
   imageSrc: string;
   productName: string;
   price: number;
+  quantity: number;
 }) {
-  const [quantity, setQuantity] = useState(1);
+  const [newQuantity, setNewQuantity] = useState(quantity);
 
   return (
     <div className="flex flex-row items-center justify-between px-8 mt-4 mb-4">
@@ -28,7 +30,7 @@ export default function CartItem({
         </div>
       </div>
       <div>
-        <CountButton quantity={quantity} btnHandler={setQuantity} />
+        <CountButton quantity={newQuantity} btnHandler={setNewQuantity} />
       </div>
     </div>
   );

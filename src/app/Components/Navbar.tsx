@@ -16,9 +16,12 @@ export default function Navbar() {
     document.body.style.overflowX = "hidden";
   };
 
-  const hdlClickOutside = () => {
-    setIsShowCartDialog(false);
-    document.body.style.overflowY = "auto";
+  const hdlClickOutside = (e) => {
+    if (e.target.id === "overlay") {
+      setIsShowCartDialog(false);
+      document.body.style.overflowY = "auto";
+      document.body.style.overflowX = "auto";
+    }
   };
 
   return (
