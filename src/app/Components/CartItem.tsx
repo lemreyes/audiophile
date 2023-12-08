@@ -18,7 +18,7 @@ export default function CartItem({
   const numberFormat = new Intl.NumberFormat("en-US");
 
   return (
-    <div className="flex flex-row items-center justify-between px-8 mt-4 mb-4">
+    <div className="flex flex-row items-center justify-between mt-4 mb-4">
       <div className="flex flex-row items-center justify-start">
         <Image
           src={imageSrc}
