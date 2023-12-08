@@ -85,7 +85,7 @@ export default async function ProductDetail(params: Props) {
           </span>
           <AddToCart
             id={product.id}
-            name={product.name}
+            name={product.shortName}
             price={product.price}
             srcPath={product.image[0].cartSrc}
           />

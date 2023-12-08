@@ -26,9 +26,13 @@ export default function CartItem({
           width={64}
           height={64}
         />
-        <div className="flex flex-col items-start">
-          <span>{productName}</span>
-          <span>${numberFormat.format(price)}</span>
+        <div className="flex flex-col items-start ml-4">
+          <span className="text-[15px] font-bold leading-[25px]">
+            {productName}
+          </span>
+          <span className="text-[14px] text-gray-400 font-bold leading-[25px]">
+            ${numberFormat.format(price)}
+          </span>
         </div>
       </div>
       <div>
