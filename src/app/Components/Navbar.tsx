@@ -16,12 +16,13 @@ export default function Navbar() {
     document.body.style.overflowX = "hidden";
   };
 
-  const hdlClickOutside = (e) => {
-    if (e.target.id === "overlay") {
+  const hdlClickOutside = (e: React.MouseEvent) => {
+    const target = e.target as HTMLDivElement;
+    if (target && target.id === "overlay") {
       setIsShowCartDialog(false);
       document.body.style.overflowY = "auto";
       document.body.style.overflowX = "auto";
-    }
+    } 
   };
 
   return (

@@ -6,14 +6,13 @@ import CartItem from "./CartItem";
 export default function CartDialog({
   hdlClickOutside,
 }: {
-  hdlClickOutside: () => void;
+  hdlClickOutside: (e: React.MouseEvent) => void;
 }) {
   const cartItems = useCartStore((state: CartState) => state.items);
   const cartItemsCount = useCartStore((state: CartState) => state.itemCount);
   const cartItemsTotalPrice = useCartStore(
     (state: CartState) => state.totalPrice
   );
-  console.log("cartItemsTotalPrice", cartItemsTotalPrice);
 
   let numberFormat = new Intl.NumberFormat("en-US");
 
