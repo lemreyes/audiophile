@@ -32,7 +32,7 @@ export default function CartDialog({
       onClick={hdlClickOutside}
     >
       <div className="w-11/12 desktop:w-4/5 wide:w-3/5 mt-12 desktop:mt-24 flex flex-col items-end">
-        <div className="bg-white rounded-lg w-full tablet:w-7/12 p-4">
+        <div className="bg-white rounded-lg w-full tablet:w-7/12 p-8">
           <div className="flex flex-row items-center justify-between">
             <h3 className="tracking-wider text-[18px] font-bold">
               Cart ({cartItemsCount})
@@ -59,7 +59,7 @@ export default function CartDialog({
               );
             })}
           </div>
-          <div className="flex flex-row items-center justify-between">
+          <div className="mt-4 flex flex-row items-center justify-between">
             <span className="text-[15px] text-gray-400 leading-[25px] font-medium uppercase">
               Total
             </span>
@@ -67,6 +67,9 @@ export default function CartDialog({
               ${numberFormat.format(cartItemsTotalPrice)}
             </span>
           </div>
+          <button className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent hover:bg-accentHover ">
+            Checkout
+          </button>
         </div>
       </div>
     </div>
