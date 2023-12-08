@@ -10,6 +10,13 @@ export default function CartDialog({
 }) {
   const cartItems = useCartStore((state: CartState) => state.items);
   const cartItemsCount = useCartStore((state: CartState) => state.itemCount);
+  const cartItemsTotalPrice = useCartStore(
+    (state: CartState) => state.totalPrice
+  );
+  console.log("cartItemsTotalPrice", cartItemsTotalPrice);
+
+  let numberFormat = new Intl.NumberFormat("en-US");
+
   const cartItemsRemoveAll = useCartStore(
     (state: CartState) => state.removeAll
   );
@@ -25,7 +32,7 @@ export default function CartDialog({
       onClick={hdlClickOutside}
     >
       <div className="w-11/12 desktop:w-4/5 wide:w-3/5 mt-12 desktop:mt-24 flex flex-col items-end">
-        <div className="bg-white rounded-lg w-full tablet:w-7/12">
+        <div className="bg-white rounded-lg w-full tablet:w-7/12 p-4">
           <div className="flex flex-row items-center justify-between">
             <h3 className="tracking-wider text-[18px] font-bold">
               Cart ({cartItemsCount})
@@ -51,6 +58,14 @@ export default function CartDialog({
                 />
               );
             })}
+          </div>
+          <div className="flex flex-row items-center justify-between">
+            <span className="text-[15px] text-gray-400 leading-[25px] font-medium uppercase">
+              Total
+            </span>
+            <span className="text-[18px] font-bold">
+              ${numberFormat.format(cartItemsTotalPrice)}
+            </span>
           </div>
         </div>
       </div>

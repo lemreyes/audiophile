@@ -15,6 +15,8 @@ export default function CartItem({
 }) {
   const [newQuantity, setNewQuantity] = useState(quantity);
 
+  const numberFormat = new Intl.NumberFormat("en-US");
+
   return (
     <div className="flex flex-row items-center justify-between px-8 mt-4 mb-4">
       <div className="flex flex-row items-center justify-start">
@@ -26,7 +28,7 @@ export default function CartItem({
         />
         <div className="flex flex-col items-start">
           <span>{productName}</span>
-          <span>{price}</span>
+          <span>${numberFormat.format(price)}</span>
         </div>
       </div>
       <div>
