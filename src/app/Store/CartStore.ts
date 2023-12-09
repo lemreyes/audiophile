@@ -41,11 +41,7 @@ export const useCartStore = create<CartState>()(
         }
 
         existingItem.quantity = existingItem.quantity + item.quantity;
-
-        return {
-          ...state,
-          totalPrice: state.totalPrice + item.quantity * item.price,
-        };
+        state.totalPrice = state.totalPrice + item.quantity * item.price;
       });
     },
     decrementItem: (item: CartItem) => {},
