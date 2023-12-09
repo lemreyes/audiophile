@@ -1,21 +1,58 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CountButton from "../[Categories]/[Product]/Components/CountButton";
+import { CartState, ICartItem, useCartStore } from "../Store/CartStore";
 
 export default function CartItem({
+  id,
   imageSrc,
   productName,
   price,
   quantity,
 }: {
+  id: number;
   imageSrc: string;
   productName: string;
   price: number;
   quantity: number;
 }) {
   const [newQuantity, setNewQuantity] = useState(quantity);
-
   const numberFormat = new Intl.NumberFormat("en-US");
+
+  const incrementCartItem = useCartStore(
+    (state: CartState) => state.incrementItem
+  );
+
+  const decrementCartitem = useCartStore(
+    (state: CartState) => state.decrementItem
+  );
+
+  const hdlIncrement = () => {
+    setNewQuantity(newQuantity + 1);
+
+    const cartItem: ICartItem = {
+      productId: id,
+      productName: productName,
+      price: price,
+      quantity: newQuantity,
+      imageSrc: imageSrc,
+    };
+
+    incrementCartItem(cartItem);
+  };
+  const hdlDecrement = () => {
+    setNewQuantity(newQuantity - 1);
+
+    const cartItem: ICartItem = {
+      productId: id,
+      productName: productName,
+      price: price,
+      quantity: newQuantity,
+      imageSrc: imageSrc,
+    };
+
+    decrementCartitem(cartItem);
+  };
 
   return (
     <div className="flex flex-row items-center justify-between mt-4 mb-4">
@@ -36,7 +73,11 @@ export default function CartItem({
         </div>
       </div>
       <div>
-        <CountButton quantity={newQuantity} btnHandler={setNewQuantity} />
+        <CountButton
+          quantity={newQuantity}
+          hdlIncrement={hdlIncrement}
+          hdlDecrement={hdlDecrement}
+        />
       </div>
     </div>
   );

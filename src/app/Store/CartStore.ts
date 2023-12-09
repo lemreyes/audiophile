@@ -1,18 +1,17 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import CartItem from "../Components/CartItem";
 
 export interface CartState {
   itemCount: number;
   totalPrice: number;
-  items: Array<CartItem>;
-  addCartItem: (item: CartItem) => void;
-  decrementItem: (item: CartItem) => void;
-  deleteItem: (item: CartItem) => void;
+  items: Array<ICartItem>;
+  addCartItem: (item: ICartItem) => void;
+  incrementItem: (item: ICartItem) => void;
+  decrementItem: (item: ICartItem) => void;
   removeAll: () => void;
 }
 
-export interface CartItem {
+export interface ICartItem {
   productId: number;
   productName: string;
   price: number;
@@ -25,7 +24,7 @@ export const useCartStore = create<CartState>()(
     itemCount: 0,
     totalPrice: 0,
     items: [],
-    addCartItem: (item: CartItem) => {
+    addCartItem: (item: ICartItem) => {
       set((state) => {
         const existingItem = state.items.find(
           (stateItem) => stateItem.productId === item.productId
@@ -44,8 +43,44 @@ export const useCartStore = create<CartState>()(
         state.totalPrice = state.totalPrice + item.quantity * item.price;
       });
     },
-    decrementItem: (item: CartItem) => {},
-    deleteItem: (item: CartItem) => {},
-    removeAll: () => set({ items: [], itemCount: 0 }),
+    incrementItem: (item: ICartItem) => {
+      set((state) => {
+        const existingItem = state.items.find(
+          (stateItem) => stateItem.productId === item.productId
+        );
+
+        if (!existingItem) {
+          throw new Error("Item does not exist");
+        }
+
+        existingItem.quantity++;
+        state.totalPrice = state.totalPrice + item.price;
+      });
+    },
+    decrementItem: (item: ICartItem) => {
+      set((state) => {
+        const existingItem = state.items.find(
+          (stateItem) => stateItem.productId === item.productId
+        );
+
+        if (!existingItem) {
+          throw new Error("Item does not exist");
+        }
+
+        existingItem.quantity--;
+        state.totalPrice = state.totalPrice - item.price;
+
+        if (existingItem.quantity === 0) {
+          state.itemCount--;
+
+          const newItemArray = state.items.filter((stateItem) => {
+            return stateItem.productId !== item.productId;
+          });
+
+          state.items = newItemArray;
+        }
+      });
+    },
+    removeAll: () => set({ items: [], itemCount: 0, totalPrice: 0 }),
   }))
 );

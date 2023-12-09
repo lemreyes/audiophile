@@ -50,6 +50,7 @@ export default function CartDialog({
               return (
                 <CartItem
                   key={item.productId}
+                  id={item.productId}
                   imageSrc={item.imageSrc}
                   productName={item.productName}
                   price={item.price}
