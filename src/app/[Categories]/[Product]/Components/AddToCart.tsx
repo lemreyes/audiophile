@@ -15,7 +15,7 @@ export default function AddToCart({
   srcPath: string;
 }) {
   const [quantity, setQuantity] = useState(1);
-  const addItemToCart = useCartStore((state: CartState) => state.addItem);
+  const addItemToCart = useCartStore((state: CartState) => state.addCartItem);
 
   // create the CartItem object
   const cartItem: CartItem = {
