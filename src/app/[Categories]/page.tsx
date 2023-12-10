@@ -1,6 +1,5 @@
 import prisma from "../Utilities/prismaUtils";
-import ImageDynamic from "../Components/ImageDynamic";
-import ProductCard from "./ProductCard";
+import ProductCard from "./Components/ProductCard";
 import Categories from "../Components/Categories";
 import ClosingStatement from "../Components/ClosingStatement";
 

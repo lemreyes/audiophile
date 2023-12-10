@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ProductInfo } from "../Types/Interfaces";
-import Picture from "../Components/Picture";
+import { ProductInfo } from "../../Types/Interfaces";
+import Picture from "../../Components/Picture";
 
 export default function ProductCard({
   product,
