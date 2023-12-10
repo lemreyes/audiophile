@@ -14,6 +14,7 @@ module.exports = {
         accentHover: "var(--accent-hover)",
         product: "var(--bg-gray-product)",
         textPrimary: "var(--text-primary)",
+        pageBackground: "var(--page-background)",
       },
       screens: {
         tablet: "430px",
