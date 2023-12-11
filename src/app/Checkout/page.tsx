@@ -1,4 +1,12 @@
+"use client";
+
+import SummaryItem from "./Components/SummaryItem";
+import { useSearchParams } from "next/navigation";
+
 export default function CheckoutPage() {
+  const searchParams = useSearchParams();
+  const cartItems = JSON.parse(searchParams.get("cartItems") as string);
+
   return (
     <div className="flex flex-col items-center bg-pageBackground">
       <div className="w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 mt-4 ">
@@ -163,6 +171,20 @@ export default function CheckoutPage() {
           <h2 className="text-[18px] tracking-wider font-bold uppercase">
             Summary
           </h2>
+          <div>
+            {cartItems.map((item) => {
+              return (
+                <SummaryItem
+                  key={item.productId}
+                  id={item.productId}
+                  imageSrc={item.imageSrc}
+                  productName={item.productName}
+                  price={item.price}
+                  quantity={item.quantity}
+                />
+              );
+            })}
+          </div>
         </aside>
       </main>
     </div>

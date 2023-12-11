@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { CartState, useCartStore } from "../Store/CartStore";
 import CartItem from "./CartItem";
 
@@ -67,9 +68,16 @@ export default function CartDialog({
               ${numberFormat.format(cartItemsTotalPrice)}
             </span>
           </div>
-          <button className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent hover:bg-accentHover ">
-            Checkout
-          </button>
+          <Link
+            href={{
+              pathname: "/Checkout",
+              query: { cartItems: JSON.stringify(cartItems) },
+            }}
+          >
+            <button className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent hover:bg-accentHover ">
+              Checkout
+            </button>
+          </Link>
         </div>
       </div>
     </div>
