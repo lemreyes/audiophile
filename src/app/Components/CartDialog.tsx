@@ -71,7 +71,6 @@ export default function CartDialog({
           <Link
             href={{
               pathname: "/Checkout",
-              query: { cartItems: JSON.stringify(cartItems) },
             }}
           >
             <button className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent hover:bg-accentHover ">

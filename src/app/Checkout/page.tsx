@@ -1,11 +1,17 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { CartState, ICartItem, useCartStore } from "../Store/CartStore";
 import SummaryItem from "./Components/SummaryItem";
-import { useSearchParams } from "next/navigation";
 
 export default function CheckoutPage() {
-  const searchParams = useSearchParams();
-  const cartItems = JSON.parse(searchParams.get("cartItems") as string);
+  const cartItems = useCartStore((state: CartState) => state.items);
+
+  const [summaryItems, setSummaryItems] = useState<Array<ICartItem>>([]);
+
+  useEffect(() => {
+    setSummaryItems(cartItems);
+  }, [cartItems]);
 
   return (
     <div className="flex flex-col items-center bg-pageBackground">
@@ -167,12 +173,12 @@ export default function CheckoutPage() {
             </div>
           </form>
         </section>
-        <aside className="mt-8 bg-white rounded-lg p-4">
+        <section className="mt-8 bg-white rounded-lg p-4">
           <h2 className="text-[18px] tracking-wider font-bold uppercase">
             Summary
           </h2>
           <div>
-            {cartItems.map((item) => {
+            {summaryItems.map((item) => {
               return (
                 <SummaryItem
                   key={item.productId}
@@ -185,7 +191,7 @@ export default function CheckoutPage() {
               );
             })}
           </div>
-        </aside>
+        </section>
       </main>
     </div>
   );
