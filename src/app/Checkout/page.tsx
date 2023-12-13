@@ -3,15 +3,22 @@
 import { useEffect, useState } from "react";
 import { CartState, ICartItem, useCartStore } from "../Store/CartStore";
 import SummaryItem from "./Components/SummaryItem";
+import { calculateGrandTotal, calculateVAT } from "../Utilities/checkoutCalc";
 
 export default function CheckoutPage() {
+  const SHIPPING_FEE = 50;
   const cartItems = useCartStore((state: CartState) => state.items);
+  const totalPrice = useCartStore((state: CartState) => state.totalPrice);
 
   const [summaryItems, setSummaryItems] = useState<Array<ICartItem>>([]);
+  const [totalSummary, setTotalSummary] = useState(0);
+
+  const numberFormat = new Intl.NumberFormat("en-US");
 
   useEffect(() => {
     setSummaryItems(cartItems);
-  }, [cartItems]);
+    setTotalSummary(totalPrice);
+  }, [cartItems, totalPrice]);
 
   return (
     <div className="flex flex-col items-center bg-pageBackground">
@@ -190,6 +197,44 @@ export default function CheckoutPage() {
                 />
               );
             })}
+          </div>
+          <div className="mt-8 mb-16">
+            <div className="flex flex-row items-center justify-between mb-2">
+              <span className="uppercase text-[15px] font-medium text-gray-400 leading-[25px]">
+                Total
+              </span>
+              <span className="uppercase text-[18px] font-bold text-black">
+                ${numberFormat.format(totalSummary)}
+              </span>
+            </div>
+            <div className="flex flex-row items-center justify-between mb-2">
+              <span className="uppercase text-[15px] font-medium text-gray-400 leading-[25px]">
+                Shipping
+              </span>
+              <span className="uppercase text-[18px] font-bold text-black">
+                ${numberFormat.format(SHIPPING_FEE)}
+              </span>
+            </div>
+            <div className="flex flex-row items-center justify-between mb-2">
+              <span className="uppercase text-[15px] font-medium text-gray-400 leading-[25px]">
+                vat (included)
+              </span>
+              <span className="uppercase text-[18px] font-bold text-black">
+                ${numberFormat.format(Math.ceil(calculateVAT(totalSummary)))}
+              </span>
+            </div>
+            <div className="flex flex-row items-center justify-between mb-2">
+              <span className="uppercase text-[15px] font-medium text-gray-400 leading-[25px]">
+                Grand total
+              </span>
+              <span className="uppercase text-[18px] font-bold text-black">
+                ${numberFormat.format(calculateGrandTotal(totalSummary))}
+              </span>
+            </div>
+
+            <button className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent hover:bg-accentHover ">
+              continue & pay
+            </button>
           </div>
         </section>
       </main>
