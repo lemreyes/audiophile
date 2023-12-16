@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { CartState, ICartItem, useCartStore } from "../Store/CartStore";
 import SummaryItem from "./Components/SummaryItem";
 import { calculateGrandTotal, calculateVAT } from "../Utilities/checkoutCalc";
+import { PAYMENT_METHOD } from "../Types/Enums";
 
 export default function CheckoutPage() {
   const SHIPPING_FEE = 50;
@@ -12,6 +13,9 @@ export default function CheckoutPage() {
 
   const [summaryItems, setSummaryItems] = useState<Array<ICartItem>>([]);
   const [totalSummary, setTotalSummary] = useState(0);
+  const [payMethod, setPayMethod] = useState<PAYMENT_METHOD>(
+    PAYMENT_METHOD.COD
+  );
 
   const numberFormat = new Intl.NumberFormat("en-US");
 
@@ -19,6 +23,11 @@ export default function CheckoutPage() {
     setSummaryItems(cartItems);
     setTotalSummary(totalPrice);
   }, [cartItems, totalPrice]);
+
+  const hdlPayMethodOnClick = (event: ChangeEvent<HTMLInputElement>) => {
+    setPayMethod(parseInt(event.target.value));
+    console.log("pay method: ", event.target.value);
+  };
 
   return (
     <div className="flex flex-col items-center bg-pageBackground">
@@ -165,14 +174,21 @@ export default function CheckoutPage() {
                     >
                       Payment Method
                     </label>
-                    <div className="mt-2 flex flex-row items-center gap-x-4 border border-gray-400 rounded-lg px-4 py-1">
+                    <div
+                      className={`mt-2 flex flex-row items-center gap-x-4 border ${
+                        payMethod === PAYMENT_METHOD.EMONEY
+                          ? "border-[#d87d4a]"
+                          : "border-gray-400"
+                      } rounded-lg px-4 py-1`}
+                    >
                       <input
                         type="radio"
                         name="paymentMethod"
                         id="e-Money"
-                        className="mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight"
+                        className="mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight accent-[#d87d4a]"
                         placeholder=""
-                        value="e-Money"
+                        value={PAYMENT_METHOD.EMONEY}
+                        onChange={hdlPayMethodOnClick}
                       />
                       <label
                         htmlFor="e-Money"
@@ -181,14 +197,21 @@ export default function CheckoutPage() {
                         e-Money
                       </label>
                     </div>
-                    <div className="mt-4 flex flex-row items-center gap-x-4 border border-gray-400 rounded-lg px-4 py-1">
+                    <div
+                      className={`mt-4 flex flex-row items-center gap-x-4 border ${
+                        payMethod === PAYMENT_METHOD.COD
+                          ? "border-[#d87d4a]"
+                          : "border-gray-400"
+                      } rounded-lg px-4 py-1`}
+                    >
                       <input
                         type="radio"
                         name="paymentMethod"
                         id="cod"
-                        className="mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight"
+                        className="mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight accent-[#d87d4a]"
                         placeholder=""
-                        value="cod"
+                        value={PAYMENT_METHOD.COD}
+                        onChange={hdlPayMethodOnClick}
                       />
                       <label
                         htmlFor="cod"
