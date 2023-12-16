@@ -1,5 +1,7 @@
 "use client";
 
+import cod_icon from "../../../public/assets/checkout/icon-cash-on-delivery.svg";
+import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 import { CartState, ICartItem, useCartStore } from "../Store/CartStore";
 import SummaryItem from "./Components/SummaryItem";
@@ -19,6 +21,7 @@ export default function CheckoutPage() {
 
   const numberFormat = new Intl.NumberFormat("en-US");
 
+  // need to use useEffect since data of cartItems is from localStorage
   useEffect(() => {
     setSummaryItems(cartItems);
     setTotalSummary(totalPrice);
@@ -221,36 +224,54 @@ export default function CheckoutPage() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-8 tablet:mt-0 tablet:col-start-1 tablet:row-start-2">
-                  <label
-                    htmlFor="emoneyNumber"
-                    className="mt-4 text-[12px] font-bold tracking-tight"
-                  >
-                    e-Money Number
-                  </label>
-                  <input
-                    type="text"
-                    name="emoneyNumber"
-                    id="emoneyNumber"
-                    className="block w-full mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight"
-                    placeholder="238521993"
-                  />
-                </div>
-                <div className="tablet:col-start-2 tablet:row-start-2">
-                  <label
-                    htmlFor="emoneyPin"
-                    className="mt-4 text-[12px] font-bold tracking-tight"
-                  >
-                    e-Money Pin
-                  </label>
-                  <input
-                    type="text"
-                    name="emoneyPin"
-                    id="emoneyPin"
-                    className="block w-full mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight"
-                    placeholder="6891"
-                  />
-                </div>
+                {payMethod === PAYMENT_METHOD.EMONEY ? (
+                  <fieldset>
+                    <div className="mt-8 tablet:mt-0 tablet:col-start-1 tablet:row-start-2">
+                      <label
+                        htmlFor="emoneyNumber"
+                        className="mt-4 text-[12px] font-bold tracking-tight"
+                      >
+                        e-Money Number
+                      </label>
+                      <input
+                        type="text"
+                        name="emoneyNumber"
+                        id="emoneyNumber"
+                        className="block w-full mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight"
+                        placeholder="238521993"
+                      />
+                    </div>
+                    <div className="tablet:col-start-2 tablet:row-start-2">
+                      <label
+                        htmlFor="emoneyPin"
+                        className="mt-4 text-[12px] font-bold tracking-tight"
+                      >
+                        e-Money Pin
+                      </label>
+                      <input
+                        type="text"
+                        name="emoneyPin"
+                        id="emoneyPin"
+                        className="block w-full mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight"
+                        placeholder="6891"
+                      />
+                    </div>
+                  </fieldset>
+                ) : (
+                  <div className="mt-8 flex flex-row items-center gap-x-4">
+                    <Image
+                      src={cod_icon}
+                      alt="icon for COD"
+                      className="w-16 h-16"
+                    />
+                    <p className="text-[15px] font-medium leading-[25px] text-gray-400">
+                      The ‘Cash on Delivery’ option enables you to pay in cash
+                      when our delivery courier arrives at your residence. Just
+                      make sure your address is correct so that your order will
+                      not be cancelled.
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </form>
