@@ -26,7 +26,6 @@ export default function CheckoutPage() {
 
   const hdlPayMethodOnClick = (event: ChangeEvent<HTMLInputElement>) => {
     setPayMethod(parseInt(event.target.value));
-    console.log("pay method: ", event.target.value);
   };
 
   return (
