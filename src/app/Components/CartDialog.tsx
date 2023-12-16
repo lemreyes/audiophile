@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { CartState, useCartStore } from "../Store/CartStore";
 import CartItem from "./CartItem";
+import { useEffect, useState } from "react";
 
 export default function CartDialog({
   hdlClickOutside,
@@ -14,12 +15,21 @@ export default function CartDialog({
   const cartItemsTotalPrice = useCartStore(
     (state: CartState) => state.totalPrice
   );
+  const [disableCheckout, setDisableCheckout] = useState(true);
 
   let numberFormat = new Intl.NumberFormat("en-US");
 
   const cartItemsRemoveAll = useCartStore(
     (state: CartState) => state.removeAll
   );
+
+  useEffect(() => {
+    if (cartItemsTotalPrice === 0) {
+      setDisableCheckout(true);
+    } else {
+      setDisableCheckout(false);
+    }
+  }, [cartItemsTotalPrice]);
 
   const hdlClickRemoveAll = () => {
     cartItemsRemoveAll();
@@ -73,7 +83,11 @@ export default function CartDialog({
               pathname: "/Checkout",
             }}
           >
-            <button className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent hover:bg-accentHover ">
+            <button
+              className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent hover:bg-accentHover
+                          disabled:bg-gray-400"
+              disabled={disableCheckout}
+            >
               Checkout
             </button>
           </Link>
