@@ -95,8 +95,9 @@ export default function CheckoutPage() {
           Go Back
         </span>
       </div>
-      <main className="w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5">
-        <section className="bg-white rounded-lg p-4 mt-4 ">
+      <main className="w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 
+                        desktop:flex desktop:flex-row desktop:items-start desktop:gap-x-8">
+        <section className="bg-white rounded-lg p-4 mt-4 desktop:w-2/3">
           <h1 className="text-[28px] font-bold tracking-[1px] uppercase">
             Checkout
           </h1>
@@ -482,7 +483,7 @@ export default function CheckoutPage() {
             </div>
           </form>
         </section>
-        <section className="mt-8 bg-white rounded-lg p-4">
+        <section className="mt-8 bg-white rounded-lg p-4 desktop:w-1/3 desktop:mt-4">
           <h2 className="text-[18px] tracking-wider font-bold uppercase">
             Summary
           </h2>
