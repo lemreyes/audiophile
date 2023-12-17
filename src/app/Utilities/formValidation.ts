@@ -64,14 +64,29 @@ export function isValidPhone(number: string): boolean {
   return true;
 }
 
+/**
+ * Validate the address
+ * @param address Address to be validated
+ * @returns
+ */
 export function isValidAddress(address: string): boolean {
   return address.length > 3;
 }
 
+/**
+ * Validate the zip code
+ * @param zip zip code to be validated
+ * @returns
+ */
 export function isValidZip(zip: string): boolean {
   return zip.length > 3;
 }
 
+/**
+ * Validate the city
+ * @param city string to be validated
+ * @returns
+ */
 export function isValidCity(city: string): boolean {
   // Check if the city is not empty
   if (!city.trim()) {
@@ -87,6 +102,11 @@ export function isValidCity(city: string): boolean {
   return city.length > 2;
 }
 
+/**
+ * Validate the country
+ * @param country Country string to be validated.
+ * @returns
+ */
 export function isValidCountry(country: string): boolean {
   // Check if the country is not empty
   if (!country.trim()) {
@@ -102,6 +122,11 @@ export function isValidCountry(country: string): boolean {
   return country.length > 2;
 }
 
+/**
+ * Validate the emoney number
+ * @param emoneyNumber emoney number to be validated.  It must be 8-digit numeric string
+ * @returns
+ */
 export function isValidEmoneyNumber(emoneyNumber: string): boolean {
   if (emoneyNumber.length !== 8) {
     return false;
@@ -113,6 +138,11 @@ export function isValidEmoneyNumber(emoneyNumber: string): boolean {
   return onlyNumbersRegex.test(emoneyNumber);
 }
 
+/**
+ * Validate the pin number
+ * @param pin pin string to be validated.  must be 4-digit numeric string
+ * @returns
+ */
 export function isValidEmoneyPin(pin: string): boolean {
   if (pin.length !== 4) {
     return false;
