@@ -7,7 +7,17 @@ import { CartState, ICartItem, useCartStore } from "../Store/CartStore";
 import SummaryItem from "./Components/SummaryItem";
 import { calculateGrandTotal, calculateVAT } from "../Utilities/checkoutCalc";
 import { PAYMENT_METHOD } from "../Types/Enums";
-import { isValidEmail } from "../Utilities/formValidation";
+import {
+  isValidAddress,
+  isValidCity,
+  isValidCountry,
+  isValidEmail,
+  isValidEmoneyNumber,
+  isValidEmoneyPin,
+  isValidName,
+  isValidPhone,
+  isValidZip,
+} from "../Utilities/formValidation";
 
 export default function CheckoutPage() {
   const SHIPPING_FEE = 50;
@@ -25,9 +35,12 @@ export default function CheckoutPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const [zip, setZip] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
+  const [emoneyNumber, setEmoneyNumber] = useState("");
+  const [emoneyPin, setEmoneyPin] = useState("");
 
   // need to use useEffect since data of cartItems is from localStorage
   useEffect(() => {
@@ -41,6 +54,38 @@ export default function CheckoutPage() {
 
   const hdlEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
+  };
+
+  const hdlNameChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
+  };
+
+  const hdlPhoneChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setPhone(event.target.value);
+  };
+
+  const hdlAddressChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setAddress(event.target.value);
+  };
+
+  const hdlZipChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setZip(event.target.value);
+  };
+
+  const hdlCityChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setCity(event.target.value);
+  };
+
+  const hdlCountryChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setCountry(event.target.value);
+  };
+
+  const hdlEmoneyNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmoneyNumber(event.target.value);
+  };
+
+  const hdlEmoneyPinChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmoneyPin(event.target.value);
   };
 
   return (
@@ -62,18 +107,34 @@ export default function CheckoutPage() {
               </h2>
               <div className="tablet:grid tablet:grid-cols-2 tablet:grid-rows-2 tablet:gap-x-4">
                 <div className="tablet:col-start-1 row-start-1">
-                  <label
-                    htmlFor="name"
-                    className="mt-4 text-[12px] font-bold tracking-tight"
-                  >
-                    Name
-                  </label>
+                  <div className="flex flex-row justify-between items-center">
+                    <label
+                      htmlFor="name"
+                      className={`mt-4 text-[12px] font-bold tracking-tight ${
+                        name.length === 0 || isValidName(name)
+                          ? "text-black"
+                          : "text-red-600"
+                      }`}
+                    >
+                      Name
+                    </label>
+                    {isValidName(name) !== true && name.length !== 0 && (
+                      <span className="mt-4 text-[12px] font-bold tracking-tight text-red-600">
+                        Wrong format
+                      </span>
+                    )}
+                  </div>
                   <input
                     type="text"
                     name="name"
                     id="name"
-                    className="block w-full mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight"
+                    className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
+                      name.length === 0 || isValidName(name)
+                        ? "border-gray-400 border"
+                        : "border-red-600 border-2"
+                    }`}
                     placeholder="Alexei Ward"
+                    onChange={hdlNameChange}
                   />
                 </div>
                 <div className="tablet:col-start-2 tablet:row-start-1">
@@ -108,18 +169,34 @@ export default function CheckoutPage() {
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="number"
-                    className="mt-4 text-[12px] font-bold tracking-tight"
-                  >
-                    Phone Number
-                  </label>
+                  <div className="flex flex-row items-center justify-between">
+                    <label
+                      htmlFor="number"
+                      className={`mt-4 text-[12px] font-bold tracking-tight ${
+                        phone.length === 0 || isValidPhone(phone)
+                          ? "text-black"
+                          : "text-red-600"
+                      }`}
+                    >
+                      Phone Number
+                    </label>
+                    {isValidPhone(phone) !== true && phone.length !== 0 && (
+                      <span className="mt-4 text-[12px] font-bold tracking-tight text-red-600">
+                        Wrong format
+                      </span>
+                    )}
+                  </div>
                   <input
                     type="text"
                     name="number"
                     id="number"
-                    className="block w-full mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight"
+                    className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
+                      phone.length === 0 || isValidPhone(phone)
+                        ? "border-gray-400 border"
+                        : "border-red-600 border-2"
+                    }`}
                     placeholder="+1 202-555-0136"
+                    onChange={hdlPhoneChange}
                   />
                 </div>
               </div>
@@ -130,63 +207,129 @@ export default function CheckoutPage() {
               </h2>
               <div className="tablet:grid tablet:grid-cols-2 tablet:grid-rows-3 tablet:gap-x-4">
                 <div className="tablet:col-span-2">
-                  <label
-                    htmlFor="address"
-                    className="mt-4 text-[12px] font-bold tracking-tight"
-                  >
-                    Your Address
-                  </label>
+                  <div className="flex flex-row items-center justify-between">
+                    <label
+                      htmlFor="address"
+                      className={`mt-4 text-[12px] font-bold tracking-tight ${
+                        address.length === 0 || isValidAddress(address)
+                          ? "text-black"
+                          : "text-red-600"
+                      }`}
+                    >
+                      Address
+                    </label>
+                    {isValidAddress(address) !== true &&
+                      address.length !== 0 && (
+                        <span className="mt-4 text-[12px] font-bold tracking-tight text-red-600">
+                          Wrong format
+                        </span>
+                      )}
+                  </div>
                   <input
                     type="text"
                     name="address"
                     id="address"
-                    className="block w-full mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight"
+                    className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
+                      address.length === 0 || isValidAddress(address)
+                        ? "border-gray-400 border"
+                        : "border-red-600 border-2"
+                    }`}
                     placeholder="1137 Williams Avenue"
+                    onChange={hdlAddressChange}
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="zip"
-                    className="mt-4 text-[12px] font-bold tracking-tight"
-                  >
-                    ZIP Code
-                  </label>
+                  <div className="flex flex-row items-center justify-between">
+                    <label
+                      htmlFor="zip"
+                      className={`mt-4 text-[12px] font-bold tracking-tight ${
+                        zip.length === 0 || isValidZip(zip)
+                          ? "text-black"
+                          : "text-red-600"
+                      }`}
+                    >
+                      ZIP
+                    </label>
+                    {isValidZip(zip) !== true && zip.length !== 0 && (
+                      <span className="mt-4 text-[12px] font-bold tracking-tight text-red-600">
+                        Wrong format
+                      </span>
+                    )}
+                  </div>
                   <input
                     type="text"
                     name="zip"
                     id="zip"
-                    className="block w-full mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight"
+                    className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
+                      zip.length === 0 || isValidZip(zip)
+                        ? "border-gray-400 border"
+                        : "border-red-600 border-2"
+                    }`}
                     placeholder="10001"
+                    onChange={hdlZipChange}
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="city"
-                    className="mt-4 text-[12px] font-bold tracking-tight"
-                  >
-                    City
-                  </label>
+                  <div className="flex flex-row items-center justify-between">
+                    <label
+                      htmlFor="city"
+                      className={`mt-4 text-[12px] font-bold tracking-tight ${
+                        city.length === 0 || isValidCity(city)
+                          ? "text-black"
+                          : "text-red-600"
+                      }`}
+                    >
+                      City
+                    </label>
+                    {isValidCity(city) !== true && city.length !== 0 && (
+                      <span className="mt-4 text-[12px] font-bold tracking-tight text-red-600">
+                        Wrong format
+                      </span>
+                    )}
+                  </div>
                   <input
                     type="text"
                     name="city"
                     id="city"
-                    className="block w-full mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight"
+                    className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
+                      city.length === 0 || isValidCity(city)
+                        ? "border-gray-400 border"
+                        : "border-red-600 border-2"
+                    }`}
                     placeholder="New York"
+                    onChange={hdlCityChange}
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="country"
-                    className="mt-4 text-[12px] font-bold tracking-tight"
-                  >
-                    Country
-                  </label>
+                  <div className="flex flex-row items-center justify-between">
+                    <label
+                      htmlFor="country"
+                      className={`mt-4 text-[12px] font-bold tracking-tight ${
+                        country.length === 0 || isValidCountry(country)
+                          ? "text-black"
+                          : "text-red-600"
+                      }`}
+                    >
+                      Country
+                    </label>
+                    {isValidCountry(country) !== true &&
+                      country.length !== 0 && (
+                        <span className="mt-4 text-[12px] font-bold tracking-tight text-red-600">
+                          Wrong format
+                        </span>
+                      )}
+                  </div>
                   <input
                     type="text"
                     name="country"
                     id="country"
-                    className="block w-full mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight"
+                    className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
+                      country.length === 0 || isValidCountry(country)
+                        ? "border-gray-400 border"
+                        : "border-red-600 border-2"
+                    }`}
                     placeholder="United States"
+                    onChange={hdlCountryChange}
                   />
                 </div>
               </div>
@@ -198,12 +341,9 @@ export default function CheckoutPage() {
               <div className="tablet:grid tablet:grid-cols-2 tablet:grid-rows-2 tablet:gap-4">
                 <div className="tablet:col-span-2">
                   <div className="tablet:grid tablet:grid-cols-2">
-                    <label
-                      htmlFor="paymentMethod"
-                      className="mt-4 text-[12px] font-bold tracking-tight tablet:row-span-2"
-                    >
+                    <legend className="mt-4 text-[12px] font-bold tracking-tight tablet:row-span-2">
                       Payment Method
-                    </label>
+                    </legend>
                     <div
                       className={`mt-2 flex flex-row items-center gap-x-4 border ${
                         payMethod === PAYMENT_METHOD.EMONEY
@@ -256,33 +396,70 @@ export default function CheckoutPage() {
                 {payMethod === PAYMENT_METHOD.EMONEY ? (
                   <fieldset>
                     <div className="mt-8 tablet:mt-0 tablet:col-start-1 tablet:row-start-2">
-                      <label
-                        htmlFor="emoneyNumber"
-                        className="mt-4 text-[12px] font-bold tracking-tight"
-                      >
-                        e-Money Number
-                      </label>
+                      <div className="flex flex-row items-center justify-between">
+                        <label
+                          htmlFor="emoneyNumber"
+                          className={`mt-4 text-[12px] font-bold tracking-tight ${
+                            emoneyNumber.length === 0 ||
+                            isValidEmoneyNumber(emoneyNumber)
+                              ? "text-black"
+                              : "text-red-600"
+                          }`}
+                        >
+                          e-Money Number
+                        </label>
+                        {isValidEmoneyNumber(emoneyNumber) !== true &&
+                          emoneyNumber.length !== 0 && (
+                            <span className="mt-4 text-[12px] font-bold tracking-tight text-red-600">
+                              Wrong format
+                            </span>
+                          )}
+                      </div>
                       <input
                         type="text"
                         name="emoneyNumber"
                         id="emoneyNumber"
-                        className="block w-full mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight"
+                        className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
+                          emoneyNumber.length === 0 ||
+                          isValidEmoneyNumber(emoneyNumber)
+                            ? "border-gray-400 border"
+                            : "border-red-600 border-2"
+                        }`}
                         placeholder="238521993"
+                        onChange={hdlEmoneyNumberChange}
                       />
                     </div>
                     <div className="tablet:col-start-2 tablet:row-start-2">
-                      <label
-                        htmlFor="emoneyPin"
-                        className="mt-4 text-[12px] font-bold tracking-tight"
-                      >
-                        e-Money Pin
-                      </label>
+                      <div className="flex flex-row items-center justify-between">
+                        <label
+                          htmlFor="emoneyPin"
+                          className={`mt-4 text-[12px] font-bold tracking-tight ${
+                            emoneyPin.length === 0 ||
+                            isValidEmoneyPin(emoneyPin)
+                              ? "text-black"
+                              : "text-red-600"
+                          }`}
+                        >
+                          e-Money PIN
+                        </label>
+                        {isValidEmoneyPin(emoneyPin) !== true &&
+                          emoneyPin.length !== 0 && (
+                            <span className="mt-4 text-[12px] font-bold tracking-tight text-red-600">
+                              Wrong format
+                            </span>
+                          )}
+                      </div>
                       <input
                         type="text"
                         name="emoneyPin"
                         id="emoneyPin"
-                        className="block w-full mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight"
+                        className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
+                          emoneyPin.length === 0 || isValidEmoneyPin(emoneyPin)
+                            ? "border-gray-400 border"
+                            : "border-red-600 border-2"
+                        }`}
                         placeholder="6891"
+                        onChange={hdlEmoneyPinChange}
                       />
                     </div>
                   </fieldset>

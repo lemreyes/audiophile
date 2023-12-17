@@ -9,3 +9,117 @@ export function isValidEmail(email: string): boolean {
 
   return emailRegex.test(email);
 }
+
+/**
+ * Function that checks if email is in valid format.
+ * @param name Name to be validated
+ * @returns {boolean}
+ */
+export function isValidName(name: string): boolean {
+  // Check if the name is not empty
+  if (!name.trim()) {
+    return false;
+  }
+
+  // Check if the name contains only letters and spaces
+  const nameRegex = /^[a-zA-Z\s]+$/;
+  if (!nameRegex.test(name)) {
+    return false;
+  }
+
+  // Check length
+  if (name.length < 2) {
+    return false;
+  }
+
+  // If all checks pass, consider the name valid
+  return true;
+}
+
+/**
+ * Validate phone number format
+ * @param number Phone number to be validated
+ * @returns
+ */
+export function isValidPhone(number: string): boolean {
+  const cleanedNumber = number.replace(/[^\d()+-]/g, "");
+
+  // Check if the cleaned number is not empty
+  if (!cleanedNumber.trim()) {
+    return false;
+  }
+
+  // Check if the cleaned number contains only allowed characters
+  const validFormatRegex = /^[\d()+-]+$/;
+  if (!validFormatRegex.test(cleanedNumber)) {
+    return false;
+  }
+
+  // Check length
+  if (number.length < 7) {
+    return false;
+  }
+
+  // If all checks pass, consider the phone number valid
+  return true;
+}
+
+export function isValidAddress(address: string): boolean {
+  return address.length > 3;
+}
+
+export function isValidZip(zip: string): boolean {
+  return zip.length > 3;
+}
+
+export function isValidCity(city: string): boolean {
+  // Check if the city is not empty
+  if (!city.trim()) {
+    return false;
+  }
+
+  // Check if the city contains only letters and spaces
+  const nameRegex = /^[a-zA-Z\s]+$/;
+  if (!nameRegex.test(city)) {
+    return false;
+  }
+
+  return city.length > 2;
+}
+
+export function isValidCountry(country: string): boolean {
+  // Check if the country is not empty
+  if (!country.trim()) {
+    return false;
+  }
+
+  // Check if the country contains only letters and spaces
+  const nameRegex = /^[a-zA-Z\s]+$/;
+  if (!nameRegex.test(country)) {
+    return false;
+  }
+
+  return country.length > 2;
+}
+
+export function isValidEmoneyNumber(emoneyNumber: string): boolean {
+  if (emoneyNumber.length !== 8) {
+    return false;
+  }
+
+  // Use a regular expression to check if the string contains only numbers
+  const onlyNumbersRegex = /^[0-9]+$/;
+
+  return onlyNumbersRegex.test(emoneyNumber);
+}
+
+export function isValidEmoneyPin(pin: string): boolean {
+  if (pin.length !== 4) {
+    return false;
+  }
+
+  // Use a regular expression to check if the string contains only numbers
+  const onlyNumbersRegex = /^[0-9]+$/;
+
+  return onlyNumbersRegex.test(pin);
+}
