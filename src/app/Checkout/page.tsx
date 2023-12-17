@@ -242,6 +242,7 @@ export default function CheckoutPage() {
                         placeholder=""
                         value={PAYMENT_METHOD.COD}
                         onChange={hdlPayMethodOnClick}
+                        defaultChecked
                       />
                       <label
                         htmlFor="cod"
