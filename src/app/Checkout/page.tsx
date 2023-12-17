@@ -95,8 +95,10 @@ export default function CheckoutPage() {
           Go Back
         </span>
       </div>
-      <main className="w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 
-                        desktop:flex desktop:flex-row desktop:items-start desktop:gap-x-8">
+      <main
+        className="w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 
+                        desktop:flex desktop:flex-row desktop:items-start desktop:gap-x-8"
+      >
         <section className="bg-white rounded-lg p-4 mt-4 desktop:w-2/3 desktop:mb-16">
           <h1 className="text-[28px] font-bold tracking-[1px] uppercase">
             Checkout
@@ -535,7 +537,11 @@ export default function CheckoutPage() {
               </span>
             </div>
 
-            <button className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent hover:bg-accentHover ">
+            <button
+              className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent 
+                                hover:bg-accentHover disabled:bg-gray-400"
+              disabled={totalSummary === 0}
+            >
               continue & pay
             </button>
           </div>
