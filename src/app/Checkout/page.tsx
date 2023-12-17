@@ -430,6 +430,7 @@ export default function CheckoutPage() {
                         }`}
                         placeholder="238521993"
                         onChange={hdlEmoneyNumberChange}
+                        value={emoneyNumber}
                       />
                     </div>
                     <div className="tablet:col-start-2 tablet:row-start-2">
@@ -463,6 +464,7 @@ export default function CheckoutPage() {
                         }`}
                         placeholder="6891"
                         onChange={hdlEmoneyPinChange}
+                        value={emoneyPin}
                       />
                     </div>
                   </fieldset>
@@ -503,8 +505,8 @@ export default function CheckoutPage() {
               );
             })}
           </div>
-          <div className="mt-8 mb-16">
-            <div className="flex flex-row items-center justify-between mb-2">
+          <div className="mt-8 mb-8">
+            <div className="flex flex-row items-center justify-between mb-4">
               <span className="uppercase text-[15px] font-medium text-gray-400 leading-[25px]">
                 Total
               </span>
@@ -540,7 +542,20 @@ export default function CheckoutPage() {
             <button
               className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent 
                                 hover:bg-accentHover disabled:bg-gray-400"
-              disabled={totalSummary === 0}
+              disabled={
+                totalSummary === 0 ||
+                !isValidName(name) ||
+                !isValidEmail(email) ||
+                !isValidPhone(phone) ||
+                !isValidAddress(address) ||
+                !isValidCity(city) ||
+                !isValidCountry(country) ||
+                !isValidZip(zip) ||
+                (payMethod === PAYMENT_METHOD.EMONEY
+                  ? !isValidEmoneyNumber(emoneyNumber) ||
+                    !isValidEmoneyPin(emoneyPin)
+                  : false)
+              }
             >
               continue & pay
             </button>
