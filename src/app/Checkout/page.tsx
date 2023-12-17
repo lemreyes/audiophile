@@ -7,6 +7,7 @@ import { CartState, ICartItem, useCartStore } from "../Store/CartStore";
 import SummaryItem from "./Components/SummaryItem";
 import { calculateGrandTotal, calculateVAT } from "../Utilities/checkoutCalc";
 import { PAYMENT_METHOD } from "../Types/Enums";
+import { isValidEmail } from "../Utilities/formValidation";
 
 export default function CheckoutPage() {
   const SHIPPING_FEE = 50;
@@ -18,8 +19,15 @@ export default function CheckoutPage() {
   const [payMethod, setPayMethod] = useState<PAYMENT_METHOD>(
     PAYMENT_METHOD.COD
   );
-
   const numberFormat = new Intl.NumberFormat("en-US");
+
+  // form related states
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [zip, setZip] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
 
   // need to use useEffect since data of cartItems is from localStorage
   useEffect(() => {
@@ -29,6 +37,10 @@ export default function CheckoutPage() {
 
   const hdlPayMethodOnClick = (event: ChangeEvent<HTMLInputElement>) => {
     setPayMethod(parseInt(event.target.value));
+  };
+
+  const hdlEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
   };
 
   return (
@@ -65,18 +77,34 @@ export default function CheckoutPage() {
                   />
                 </div>
                 <div className="tablet:col-start-2 tablet:row-start-1">
-                  <label
-                    htmlFor="email"
-                    className="mt-4 text-[12px] font-bold tracking-tight"
-                  >
-                    Email Address
-                  </label>
+                  <div className="flex flex-row items-center justify-between">
+                    <label
+                      htmlFor="email"
+                      className={`mt-4 text-[12px] font-bold tracking-tight ${
+                        email.length === 0 || isValidEmail(email)
+                          ? "text-black"
+                          : "text-red-600"
+                      }`}
+                    >
+                      Email Address
+                    </label>
+                    {isValidEmail(email) !== true && email.length !== 0 && (
+                      <span className="mt-4 text-[12px] font-bold tracking-tight text-red-600">
+                        Wrong format
+                      </span>
+                    )}
+                  </div>
                   <input
                     type="text"
                     name="email"
                     id="email"
-                    className="block w-full mt-4 mb-4 p-4 rounded-lg border border-gray-400 text-14px font-bold tracking-tight"
+                    className={`block w-full mt-4 mb-4 p-4 rounded-lg  ${
+                      email.length === 0 || isValidEmail(email)
+                        ? "border-gray-400 border"
+                        : "border-red-600 border-2"
+                    } text-14px font-bold tracking-tight`}
                     placeholder="alexei@mail.com"
+                    onChange={hdlEmailChange}
                   />
                 </div>
                 <div>
@@ -171,7 +199,7 @@ export default function CheckoutPage() {
                 <div className="tablet:col-span-2">
                   <div className="tablet:grid tablet:grid-cols-2">
                     <label
-                      htmlFor=""
+                      htmlFor="paymentMethod"
                       className="mt-4 text-[12px] font-bold tracking-tight tablet:row-span-2"
                     >
                       Payment Method
