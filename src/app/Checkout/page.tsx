@@ -394,7 +394,7 @@ export default function CheckoutPage() {
                   </div>
                 </div>
                 {payMethod === PAYMENT_METHOD.EMONEY ? (
-                  <fieldset>
+                  <fieldset className="tablet:col-span-2 tablet:grid tablet:grid-cols-2 tablet:grid-rows-1 tablet:gap-x-4">
                     <div className="mt-8 tablet:mt-0 tablet:col-start-1 tablet:row-start-2">
                       <div className="flex flex-row items-center justify-between">
                         <label
@@ -464,7 +464,7 @@ export default function CheckoutPage() {
                     </div>
                   </fieldset>
                 ) : (
-                  <div className="mt-8 flex flex-row items-center gap-x-4">
+                  <div className="tablet:col-span-2 mt-8 flex flex-row items-center gap-x-4">
                     <Image
                       src={cod_icon}
                       alt="icon for COD"
