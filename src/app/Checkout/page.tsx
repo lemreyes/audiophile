@@ -18,6 +18,7 @@ import {
   isValidPhone,
   isValidZip,
 } from "../Utilities/formValidation";
+import AcknowledgeDialog from "./Components/AcknowledgeDialog";
 
 export default function CheckoutPage() {
   const SHIPPING_FEE = 50;
@@ -41,6 +42,24 @@ export default function CheckoutPage() {
   const [country, setCountry] = useState("");
   const [emoneyNumber, setEmoneyNumber] = useState("");
   const [emoneyPin, setEmoneyPin] = useState("");
+
+  // acknowledge dialog
+  const [isShowAckDialog, setIsShowAckDialog] = useState(false);
+
+  const openAckDialog = () => {
+    setIsShowAckDialog(true);
+    document.body.style.overflowY = "hidden";
+    document.body.style.overflowX = "hidden";
+  };
+
+  const hdlClickOutside = (e: React.MouseEvent) => {
+    const target = e.target as HTMLDivElement;
+    if (target && target.id === "ack-overlay") {
+      setIsShowAckDialog(false);
+      document.body.style.overflowY = "auto";
+      document.body.style.overflowX = "auto";
+    }
+  };
 
   // need to use useEffect since data of cartItems is from localStorage
   useEffect(() => {
@@ -556,11 +575,15 @@ export default function CheckoutPage() {
                     !isValidEmoneyPin(emoneyPin)
                   : false)
               }
+              onClick={openAckDialog}
             >
               continue & pay
             </button>
           </div>
         </section>
+        {isShowAckDialog && (
+          <AcknowledgeDialog hdlClickOutside={hdlClickOutside} />
+        )}
       </main>
     </div>
   );
