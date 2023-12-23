@@ -40,8 +40,8 @@ export default function AcknowledgeDialog({
         <p className="mt-4 text-[15px] font-medium leading-[25px] text-gray-400">
           You will receive an email confirmation shortly.
         </p>
-        <div className="mt-4 w-full">
-          <div className="bg-product p-4 rounded-t-xl">
+        <div className="mt-4 w-full flex flex-col tablet:flex-row">
+          <div className="bg-product p-4 rounded-t-xl tablet:rounded-none tablet:rounded-l-xl tablet:w-7/12">
             <div className="">
               {singleCartItem && (
                 <SummaryItem
@@ -60,7 +60,7 @@ export default function AcknowledgeDialog({
               </p>
             </div>
           </div>
-          <div className="bg-black p-4 rounded-b-xl">
+          <div className="bg-black p-4 rounded-b-xl tablet:rounded-none tablet:rounded-r-xl tablet:w-5/12">
             <span className="text-gray-400 text-[15px] font-medium leading-6 uppercase">
               Grand Total
             </span>
@@ -68,14 +68,14 @@ export default function AcknowledgeDialog({
               $ {numberFormat.format(totalPrice)}
             </span>
           </div>
-          <button
-            className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent hover:bg-accentHover
-                          disabled:bg-gray-400"
-            onClick={() => router.push("/")}
-          >
-            Back to home
-          </button>
         </div>
+        <button
+          className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent hover:bg-accentHover
+                          disabled:bg-gray-400"
+          onClick={() => router.push("/")}
+        >
+          Back to home
+        </button>
       </div>
     </div>
   );
