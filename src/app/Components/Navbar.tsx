@@ -25,6 +25,12 @@ export default function Navbar() {
       document.body.style.overflowY = "auto";
       document.body.style.overflowX = "auto";
     }
+
+    if (target && target.id === "menu-overlay") {
+      setIsShowMenu(false);
+      document.body.style.overflowY = "auto";
+      document.body.style.overflowX = "auto";
+    }
   };
 
   const hdlProceedCheckout = (e: React.MouseEvent) => {
@@ -82,7 +88,7 @@ export default function Navbar() {
           hdlProceedCheckout={hdlProceedCheckout}
         />
       )}
-      {isShowMenu && <Menu />}
+      {isShowMenu && <Menu hdlClickOutside={hdlClickOutside} />}
     </Fragment>
   );
 }
