@@ -1,9 +1,9 @@
 import Image from "next/image";
 import check_icon from "../../../../public/assets/checkout/icon-order-confirmation.svg";
 import { CartState, ICartItem, useCartStore } from "../../Store/CartStore";
-import CartItem from "../../Components/CartItem";
 import { useEffect, useState } from "react";
 import SummaryItem from "./SummaryItem";
+import { useRouter } from "next/navigation";
 
 export default function AcknowledgeDialog({
   hdlClickOutside,
@@ -18,6 +18,7 @@ export default function AcknowledgeDialog({
     undefined
   );
 
+  const router = useRouter();
   const numberFormat = new Intl.NumberFormat("en-US");
 
   // need to use useEffect since data of cartItems is from localStorage
@@ -67,6 +68,13 @@ export default function AcknowledgeDialog({
               $ {numberFormat.format(totalPrice)}
             </span>
           </div>
+          <button
+            className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent hover:bg-accentHover
+                          disabled:bg-gray-400"
+            onClick={() => router.push("/")}
+          >
+            Back to home
+          </button>
         </div>
       </div>
     </div>
