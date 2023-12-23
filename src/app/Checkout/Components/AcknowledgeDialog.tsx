@@ -32,7 +32,7 @@ export default function AcknowledgeDialog({
       className="w-screen h-screen overflow-y-hidden bg-black bg-opacity-40 fixed z-50 top-0 left-0 flex flex-col items-center"
       onClick={hdlClickOutside}
     >
-      <div className="w-11/12 desktop:w-4/5 wide:w-3/5 mt-12 desktop:mt-56 p-8 rounded-lg bg-white flex flex-col items-start">
+      <div className="w-11/12 tablet:w-3/5 desktop:w-2/5 wide:w-3/5 mt-12 desktop:mt-56 p-8 rounded-lg bg-white flex flex-col items-start">
         <Image src={check_icon} alt="Check icon" />
         <h1 className="mt-4 text-[24px] font-bold uppercase tracking-tight leading-[28px]">
           Thank you for your order
