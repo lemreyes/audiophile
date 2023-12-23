@@ -13,6 +13,7 @@ export default function AcknowledgeDialog({
   const cartItems = useCartStore((state: CartState) => state.items);
   const cartItemsCount = useCartStore((state: CartState) => state.itemCount);
   const totalPrice = useCartStore((state: CartState) => state.totalPrice);
+  const removeCartitems = useCartStore((state: CartState) => state.removeAll);
 
   const [singleCartItem, setSingleCartItem] = useState<ICartItem | undefined>(
     undefined
@@ -72,7 +73,10 @@ export default function AcknowledgeDialog({
         <button
           className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent hover:bg-accentHover
                           disabled:bg-gray-400"
-          onClick={() => router.push("/")}
+          onClick={() => {
+            removeCartitems();
+            router.push("/");
+          }}
         >
           Back to home
         </button>
