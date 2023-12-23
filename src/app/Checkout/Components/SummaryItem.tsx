@@ -17,8 +17,8 @@ export default function SummaryItem({
   const numberFormat = new Intl.NumberFormat("en-US");
 
   return (
-    <div className="flex flex-row items-center justify-between mt-4 mb-4">
-      <div className="flex flex-row items-center justify-start">
+    <div className="flex flex-row items-center justify-between w-full">
+      <div className="flex flex-row items-center justify-start w-full">
         <Image
           src={imageSrc}
           alt={`${productName}-image`}
