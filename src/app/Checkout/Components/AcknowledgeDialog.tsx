@@ -18,6 +18,8 @@ export default function AcknowledgeDialog({
     undefined
   );
 
+  const numberFormat = new Intl.NumberFormat("en-US");
+
   // need to use useEffect since data of cartItems is from localStorage
   useEffect(() => {
     setSingleCartItem(cartItems[0]);
@@ -58,8 +60,12 @@ export default function AcknowledgeDialog({
             </div>
           </div>
           <div className="bg-black p-4 rounded-b-xl">
-            <span>Grand Total</span>
-            <span>{totalPrice}</span>
+            <span className="text-gray-400 text-[15px] font-medium leading-6 uppercase">
+              Grand Total
+            </span>
+            <span className="block mt-4 text-white text-[18px] font-bold">
+              $ {numberFormat.format(totalPrice)}
+            </span>
           </div>
         </div>
       </div>
