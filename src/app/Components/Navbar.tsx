@@ -22,7 +22,13 @@ export default function Navbar() {
       setIsShowCartDialog(false);
       document.body.style.overflowY = "auto";
       document.body.style.overflowX = "auto";
-    } 
+    }
+  };
+
+  const hdlProceedCheckout = (e: React.MouseEvent) => {
+    setIsShowCartDialog(false);
+    document.body.style.overflowY = "auto";
+    document.body.style.overflowX = "auto";
   };
 
   return (
@@ -63,7 +69,12 @@ export default function Navbar() {
           />
         </nav>
       </header>
-      {isShowCartDialog && <CartDialog hdlClickOutside={hdlClickOutside} />}
+      {isShowCartDialog && (
+        <CartDialog
+          hdlClickOutside={hdlClickOutside}
+          hdlProceedCheckout={hdlProceedCheckout}
+        />
+      )}
     </Fragment>
   );
 }

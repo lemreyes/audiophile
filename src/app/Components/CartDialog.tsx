@@ -1,14 +1,16 @@
 "use client";
 
-import Link from "next/link";
 import { CartState, useCartStore } from "../Store/CartStore";
 import CartItem from "./CartItem";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function CartDialog({
   hdlClickOutside,
+  hdlProceedCheckout,
 }: {
   hdlClickOutside: (e: React.MouseEvent) => void;
+  hdlProceedCheckout: (e: React.MouseEvent) => void;
 }) {
   const cartItems = useCartStore((state: CartState) => state.items);
   const cartItemsCount = useCartStore((state: CartState) => state.itemCount);
@@ -16,6 +18,8 @@ export default function CartDialog({
     (state: CartState) => state.totalPrice
   );
   const [disableCheckout, setDisableCheckout] = useState(true);
+
+  const router = useRouter();
 
   let numberFormat = new Intl.NumberFormat("en-US");
 
@@ -78,19 +82,17 @@ export default function CartDialog({
               ${numberFormat.format(cartItemsTotalPrice)}
             </span>
           </div>
-          <Link
-            href={{
-              pathname: "/Checkout",
+          <button
+            className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent hover:bg-accentHover
+                          disabled:bg-gray-400"
+            disabled={disableCheckout}
+            onClick={(e) => {
+              router.push("/Checkout");
+              hdlProceedCheckout(e);
             }}
           >
-            <button
-              className="w-full mt-8 py-4 uppercase text-white text-[13px] font-bold tracking-[1px] bg-accent hover:bg-accentHover
-                          disabled:bg-gray-400"
-              disabled={disableCheckout}
-            >
-              Checkout
-            </button>
-          </Link>
+            Checkout
+          </button>
         </div>
       </div>
     </div>
