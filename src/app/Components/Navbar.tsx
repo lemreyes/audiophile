@@ -6,9 +6,11 @@ import logo from "../../../public/assets/shared/desktop/logo.svg";
 import Link from "next/link";
 import { useState, Fragment } from "react";
 import CartDialog from "./CartDialog";
+import Menu from "./Menu";
 
 export default function Navbar() {
   const [isShowCartDialog, setIsShowCartDialog] = useState(false);
+  const [isShowMenu, setIsShowMenu] = useState(false);
 
   const openCartDialog = () => {
     setIsShowCartDialog(true);
@@ -31,6 +33,10 @@ export default function Navbar() {
     document.body.style.overflowX = "auto";
   };
 
+  const hdlClickMenuButton = (e: React.MouseEvent) => {
+    setIsShowMenu((prevState) => !prevState);
+  };
+
   return (
     <Fragment>
       <header className="bg-primary py-4 flex flex-col items-center ">
@@ -43,6 +49,7 @@ export default function Navbar() {
             style={{
               height: "auto",
             }}
+            onClick={hdlClickMenuButton}
           />
           <Link href="/">
             <Image src={logo} alt="logo" />
@@ -75,6 +82,7 @@ export default function Navbar() {
           hdlProceedCheckout={hdlProceedCheckout}
         />
       )}
+      {isShowMenu && <Menu />}
     </Fragment>
   );
 }

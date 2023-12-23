@@ -1,4 +1,3 @@
-import Link from "next/link";
 import CategoryCard from "./CategoryCard";
 
 export default function Categories() {
