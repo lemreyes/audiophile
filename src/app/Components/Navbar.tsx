@@ -7,10 +7,12 @@ import Link from "next/link";
 import { useState, Fragment } from "react";
 import CartDialog from "./CartDialog";
 import Menu from "./Menu";
+import { CartState, useCartStore } from "../Store/CartStore";
 
 export default function Navbar() {
   const [isShowCartDialog, setIsShowCartDialog] = useState(false);
   const [isShowMenu, setIsShowMenu] = useState(false);
+  const cartItemsCount = useCartStore((state: CartState) => state.itemCount);
 
   const openCartDialog = () => {
     setIsShowCartDialog(true);
@@ -74,12 +76,12 @@ export default function Navbar() {
               <li className="my-8 hover:text-accent">Earphones</li>
             </Link>
           </ul>
-          <Image
-            src={cart_icon}
-            alt="cart_icon"
-            className="w-4 h-4"
-            onClick={openCartDialog}
-          />
+          <div className="flex flex-row" onClick={openCartDialog}>
+            <Image src={cart_icon} alt="cart_icon" className="w-4 h-4 mr-2" />
+            <span className="text-white uppercase text-[13px] tracking-[2px] text-left">
+              ({cartItemsCount})
+            </span>
+          </div>
         </nav>
       </header>
       {isShowCartDialog && (
