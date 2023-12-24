@@ -75,6 +75,9 @@ export default function AcknowledgeDialog({
                           disabled:bg-gray-400"
           onClick={() => {
             removeCartitems();
+            // restore scrolling
+            document.body.style.overflowY = "auto";
+            document.body.style.overflowX = "auto";
             router.push("/");
           }}
         >
