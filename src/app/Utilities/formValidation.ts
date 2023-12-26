@@ -1,3 +1,12 @@
+export const INPUT_LENGTH_MAX = 60;
+export const NAME_LENGTH_MAX = 60;
+export const EMAIL_LENGTH_MAX = 60;
+export const PHONE_LENGTH_MAX = 14;
+export const ADDRESS_LENGTH_MAX = 100;
+export const ZIP_LENGTH_MAX = 5;
+export const EMONEYNUMBER_LENGTH_MAX = 8;
+export const EMONEYPIN_LENGTH_MAX = 4;
+
 /**
  * Function to check if email is in valid format.
  * @param email Email to be validated

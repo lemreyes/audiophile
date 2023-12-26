@@ -8,6 +8,14 @@ import SummaryItem from "./Components/SummaryItem";
 import { calculateGrandTotal, calculateVAT } from "../Utilities/checkoutCalc";
 import { PAYMENT_METHOD } from "../Types/Enums";
 import {
+  ADDRESS_LENGTH_MAX,
+  EMAIL_LENGTH_MAX,
+  EMONEYNUMBER_LENGTH_MAX,
+  EMONEYPIN_LENGTH_MAX,
+  INPUT_LENGTH_MAX,
+  NAME_LENGTH_MAX,
+  PHONE_LENGTH_MAX,
+  ZIP_LENGTH_MAX,
   isValidAddress,
   isValidCity,
   isValidCountry,
@@ -150,6 +158,7 @@ export default function CheckoutPage() {
                     type="text"
                     name="name"
                     id="name"
+                    maxLength={NAME_LENGTH_MAX}
                     className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
                       name.length === 0 || isValidName(name)
                         ? "border-gray-400 border"
@@ -157,6 +166,7 @@ export default function CheckoutPage() {
                     }`}
                     placeholder="Alexei Ward"
                     onChange={hdlNameChange}
+                    required
                   />
                 </div>
                 <div className="tablet:col-start-2 tablet:row-start-1">
@@ -181,6 +191,7 @@ export default function CheckoutPage() {
                     type="text"
                     name="email"
                     id="email"
+                    maxLength={EMAIL_LENGTH_MAX}
                     className={`block w-full mt-4 mb-4 p-4 rounded-lg  ${
                       email.length === 0 || isValidEmail(email)
                         ? "border-gray-400 border"
@@ -188,6 +199,7 @@ export default function CheckoutPage() {
                     } text-14px font-bold tracking-tight`}
                     placeholder="alexei@mail.com"
                     onChange={hdlEmailChange}
+                    required
                   />
                 </div>
                 <div>
@@ -212,6 +224,7 @@ export default function CheckoutPage() {
                     type="text"
                     name="number"
                     id="number"
+                    maxLength={PHONE_LENGTH_MAX}
                     className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
                       phone.length === 0 || isValidPhone(phone)
                         ? "border-gray-400 border"
@@ -251,6 +264,7 @@ export default function CheckoutPage() {
                     type="text"
                     name="address"
                     id="address"
+                    maxLength={ADDRESS_LENGTH_MAX}
                     className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
                       address.length === 0 || isValidAddress(address)
                         ? "border-gray-400 border"
@@ -258,6 +272,7 @@ export default function CheckoutPage() {
                     }`}
                     placeholder="1137 Williams Avenue"
                     onChange={hdlAddressChange}
+                    required
                   />
                 </div>
                 <div>
@@ -282,6 +297,7 @@ export default function CheckoutPage() {
                     type="text"
                     name="zip"
                     id="zip"
+                    maxLength={ZIP_LENGTH_MAX}
                     className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
                       zip.length === 0 || isValidZip(zip)
                         ? "border-gray-400 border"
@@ -289,6 +305,7 @@ export default function CheckoutPage() {
                     }`}
                     placeholder="10001"
                     onChange={hdlZipChange}
+                    required
                   />
                 </div>
                 <div>
@@ -313,6 +330,7 @@ export default function CheckoutPage() {
                     type="text"
                     name="city"
                     id="city"
+                    maxLength={INPUT_LENGTH_MAX}
                     className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
                       city.length === 0 || isValidCity(city)
                         ? "border-gray-400 border"
@@ -320,6 +338,7 @@ export default function CheckoutPage() {
                     }`}
                     placeholder="New York"
                     onChange={hdlCityChange}
+                    required
                   />
                 </div>
                 <div>
@@ -345,6 +364,7 @@ export default function CheckoutPage() {
                     type="text"
                     name="country"
                     id="country"
+                    maxLength={INPUT_LENGTH_MAX}
                     className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
                       country.length === 0 || isValidCountry(country)
                         ? "border-gray-400 border"
@@ -352,6 +372,7 @@ export default function CheckoutPage() {
                     }`}
                     placeholder="United States"
                     onChange={hdlCountryChange}
+                    required
                   />
                 </div>
               </div>
@@ -441,6 +462,7 @@ export default function CheckoutPage() {
                         type="text"
                         name="emoneyNumber"
                         id="emoneyNumber"
+                        maxLength={EMONEYNUMBER_LENGTH_MAX}
                         className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
                           emoneyNumber.length === 0 ||
                           isValidEmoneyNumber(emoneyNumber)
@@ -476,6 +498,7 @@ export default function CheckoutPage() {
                         type="text"
                         name="emoneyPin"
                         id="emoneyPin"
+                        maxLength={EMONEYPIN_LENGTH_MAX}
                         className={`block w-full mt-4 mb-4 p-4 rounded-lg borde text-14px font-bold tracking-tight ${
                           emoneyPin.length === 0 || isValidEmoneyPin(emoneyPin)
                             ? "border-gray-400 border"
