@@ -8,7 +8,7 @@ import twitter_logo_hover from "../../../public/assets/shared/desktop/icon-twitt
 import ig_logo from "../../../public/assets/shared/desktop/icon-instagram.svg";
 import ig_logo_hover from "../../../public/assets/shared/desktop/icon-instagram-hover.svg";
 import Link from "next/link";
-import { ScreenTypeEnum } from "../Types/Interfaces";
+import { ScreenTypeEnum } from "../Types/Enums";
 import { useEffect, useState } from "react";
 
 export default function Footer() {
@@ -134,12 +134,11 @@ export default function Footer() {
             id="footer-accent"
             className="w-24 h-[4px] bg-accent row-start-1 row-end-2 col-start-1 col-end-2"
           ></div>
-          <Link href="/" className="row-start-2 row-end-3 col-start-1 col-end-2">
-            <Image
-              src={logo}
-              alt="Logo"
-              
-            />
+          <Link
+            href="/"
+            className="row-start-2 row-end-3 col-start-1 col-end-2"
+          >
+            <Image src={logo} alt="Logo" />
           </Link>
           <nav
             id="site-links"
