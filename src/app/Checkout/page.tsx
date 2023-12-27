@@ -5,7 +5,12 @@ import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 import { CartState, ICartItem, useCartStore } from "../Store/CartStore";
 import SummaryItem from "./Components/SummaryItem";
-import { calculateGrandTotal, calculateVAT } from "../Utilities/checkoutCalc";
+import {
+  SHIPPING_FEE,
+  VAT_RATE,
+  calculateGrandTotal,
+  calculateVAT,
+} from "../Utilities/checkoutCalc";
 import { PAYMENT_METHOD } from "../Types/Enums";
 import {
   ADDRESS_LENGTH_MAX,
@@ -27,9 +32,10 @@ import {
   isValidZip,
 } from "../Utilities/formValidation";
 import AcknowledgeDialog from "./Components/AcknowledgeDialog";
+import { StoreNewOrder } from "../Services/OrderService";
+import { CustomerInfo, OrderItem, TransactionInfo } from "../Types/Interfaces";
 
 export default function CheckoutPage() {
-  const SHIPPING_FEE = 50;
   const cartItems = useCartStore((state: CartState) => state.items);
   const totalPrice = useCartStore((state: CartState) => state.totalPrice);
 
@@ -113,6 +119,51 @@ export default function CheckoutPage() {
 
   const hdlEmoneyPinChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmoneyPin(event.target.value);
+  };
+
+  const hdlContinuePay = async () => {
+    const customerInfo: CustomerInfo = {
+      name: name,
+      email: email,
+      phone: phone,
+      address: address,
+      zipcode: zip,
+      city: city,
+      country: country,
+    };
+
+    const orders: Array<OrderItem> = [];
+    cartItems.map((item) => {
+      const order = {
+        productId: item.productId,
+        quantity: item.quantity,
+      };
+
+      orders.push(order);
+      return true;
+    });
+
+    const transactionInfo: TransactionInfo = {
+      paymentMethod: payMethod,
+      eMoneyNumber: emoneyNumber,
+      eMoneyPin: emoneyPin,
+      shippingFee: SHIPPING_FEE,
+      vatRate: VAT_RATE,
+      orders: orders,
+    };
+
+    try {
+      // store customer info and transaction to database
+      await StoreNewOrder(customerInfo, transactionInfo);
+
+      // show OK dialog
+      openAckDialog();
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        // TODO show error dialog here
+        console.error("Error occurred");
+      }
+    }
   };
 
   return (
@@ -598,7 +649,7 @@ export default function CheckoutPage() {
                     !isValidEmoneyPin(emoneyPin)
                   : false)
               }
-              onClick={openAckDialog}
+              onClick={hdlContinuePay}
             >
               continue & pay
             </button>

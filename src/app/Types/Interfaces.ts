@@ -49,7 +49,7 @@ export interface CustomerInfo {
 export interface TransactionInfo {
   id?: number;
   paymentMethod: PAYMENT_METHOD;
-  eMoneyNumber: string;
+  eMoneyNumber?: string;
   eMoneyPin?: string;
   shippingFee: number;
   vatRate: number;
