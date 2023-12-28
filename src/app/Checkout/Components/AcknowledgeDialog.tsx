@@ -4,6 +4,7 @@ import { CartState, ICartItem, useCartStore } from "../../Store/CartStore";
 import { useEffect, useState } from "react";
 import SummaryItem from "./SummaryItem";
 import { useRouter } from "next/navigation";
+import { calculateGrandTotal } from "../../Utilities/checkoutCalc";
 
 export default function AcknowledgeDialog({
   hdlClickOutside,
@@ -66,7 +67,7 @@ export default function AcknowledgeDialog({
               Grand Total
             </span>
             <span className="block mt-4 text-white text-[18px] font-bold">
-              $ {numberFormat.format(totalPrice)}
+              $ {numberFormat.format(calculateGrandTotal(totalPrice))}
             </span>
           </div>
         </div>
