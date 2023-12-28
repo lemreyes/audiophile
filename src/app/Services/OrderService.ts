@@ -17,7 +17,7 @@ export async function StoreNewOrder(
   console.log("customerInfo", customerInfo);
   console.log("transactionInfo", transactionInfo);
 
-  const response = await fetch("/api/item", {
+  const response = await fetch("/api/transactions", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -29,6 +29,7 @@ export async function StoreNewOrder(
   });
 
   const responseData = await response.json();
+  console.log("responseData", responseData);
 
   if (!response.ok) {
     throw new Error(responseData.errorMessage);

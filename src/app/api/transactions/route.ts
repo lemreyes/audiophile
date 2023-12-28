@@ -1,3 +1,7 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request: NextRequest) {}
+export async function POST(request: NextRequest) {
+  console.log("POST /api/transactions");
+
+  return NextResponse.json({ status: "OK" });
+}
