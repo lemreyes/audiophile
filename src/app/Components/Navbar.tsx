@@ -4,7 +4,7 @@ import hamburger_icon from "../../../public/assets/shared/tablet/icon-hamburger.
 import cart_icon from "../../../public/assets/shared/desktop/icon-cart.svg";
 import logo from "../../../public/assets/shared/desktop/logo.svg";
 import Link from "next/link";
-import { useState, Fragment } from "react";
+import { useState, Fragment, useEffect } from "react";
 import CartDialog from "./CartDialog";
 import Menu from "./Menu";
 import { CartState, useCartStore } from "../Store/CartStore";
@@ -12,7 +12,14 @@ import { CartState, useCartStore } from "../Store/CartStore";
 export default function Navbar() {
   const [isShowCartDialog, setIsShowCartDialog] = useState(false);
   const [isShowMenu, setIsShowMenu] = useState(false);
-  const cartItemsCount = useCartStore((state: CartState) => state.itemCount);
+  const [cartItemsCount, setCartItemsCount] = useState(0);
+  const cartItemsCountFromStore = useCartStore(
+    (state: CartState) => state.itemCount
+  );
+
+  useEffect(() => {
+    setCartItemsCount(cartItemsCountFromStore);
+  }, [cartItemsCountFromStore]);
 
   const openCartDialog = () => {
     setIsShowCartDialog(true);

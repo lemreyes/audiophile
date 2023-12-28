@@ -11,8 +11,11 @@ export async function StoreNewOrder(
   transactionInfo: TransactionInfo
 ) {
   if (!transactionInfo || !customerInfo) {
+    console.error("transaction or customer information is NULL");
     return false;
   }
+  console.log("customerInfo", customerInfo);
+  console.log("transactionInfo", transactionInfo);
 
   const response = await fetch("/api/item", {
     method: "POST",
