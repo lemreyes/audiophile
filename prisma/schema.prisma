@@ -26,8 +26,8 @@ model Product {
   gallery       GalleryImage[]
   otherProducts OtherProducts[]
   imageAsOther  ImageAsOtherProduct[]
-  created_at    DateTime
-  updated_at    DateTime
+  created_at    DateTime              @default(now())
+  updated_at    DateTime              @default(now())
 }
 
 model Image {
@@ -38,8 +38,8 @@ model Image {
   cartSrc    String   @default("")
   Product    Product  @relation(fields: [productId], references: [id])
   productId  Int
-  created_at DateTime
-  updated_at DateTime
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
 }
 
 model CategoryImage {
@@ -49,8 +49,8 @@ model CategoryImage {
   desktopSrc String
   Product    Product  @relation(fields: [productId], references: [id])
   productId  Int
-  created_at DateTime
-  updated_at DateTime
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
 }
 
 model GalleryImage {
@@ -61,8 +61,8 @@ model GalleryImage {
   desktopSrc String
   Product    Product  @relation(fields: [productId], references: [id])
   productId  Int
-  created_at DateTime
-  updated_at DateTime
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
 }
 
 model OtherProducts {
@@ -70,8 +70,8 @@ model OtherProducts {
   Product         Product  @relation(fields: [parentProductId], references: [id])
   parentProductId Int
   productId       Int
-  created_at      DateTime
-  updated_at      DateTime
+  created_at      DateTime @default(now())
+  updated_at      DateTime @default(now())
 }
 
 model ImageAsOtherProduct {
@@ -81,8 +81,8 @@ model ImageAsOtherProduct {
   desktopSrc String
   Product    Product  @relation(fields: [productId], references: [id])
   productId  Int
-  created_at DateTime
-  updated_at DateTime
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
 }
 
 model Inclusions {
@@ -91,8 +91,8 @@ model Inclusions {
   productId  Int
   item       String
   quantity   Int
-  created_at DateTime
-  updated_at DateTime
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
 }
 
 model Customer {
@@ -105,8 +105,8 @@ model Customer {
   city        String
   country     String
   transaction Transaction[]
-  created_at  DateTime
-  updated_at  DateTime
+  created_at  DateTime      @default(now())
+  updated_at  DateTime      @default(now())
 }
 
 model Transaction {
@@ -119,16 +119,16 @@ model Transaction {
   shippingFee   Float
   vatRate       Float
   order         OrderItem[]
-  created_at    DateTime
-  updated_at    DateTime
+  created_at    DateTime      @default(now())
+  updated_at    DateTime      @default(now())
 }
 
 model OrderItem {
   id            Int          @id @default(autoincrement())
   productId     Int
   quantity      Int
-  created_at    DateTime
-  updated_at    DateTime
+  created_at    DateTime     @default(now())
+  updated_at    DateTime     @default(now())
   Transaction   Transaction? @relation(fields: [transactionId], references: [id])
   transactionId Int?
 }

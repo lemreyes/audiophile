@@ -17,6 +17,8 @@ import { PAYMENT_METHOD } from "../../Types/Enums";
 export async function POST(request: NextRequest) {
   console.log("POST /api/transactions");
 
+  let dbCustomerInfo = undefined;
+
   // get data
   const {
     customerInfo,
@@ -28,7 +30,7 @@ export async function POST(request: NextRequest) {
   console.log("transactionInfo", transactionInfo);
 
   // check if not yet existing customer
-  const existingCustomer = await prisma.customer.findUnique({
+  dbCustomerInfo = await prisma.customer.findUnique({
     where: {
       email: customerInfo.email,
     },
@@ -53,7 +55,7 @@ export async function POST(request: NextRequest) {
     }
   }
 
-  if (!existingCustomer) {
+  if (!dbCustomerInfo) {
     // do validation
     if (
       !isValidName(customerInfo.name) ||
@@ -80,6 +82,19 @@ export async function POST(request: NextRequest) {
         }
       );
     }
+
+    // store the new customer info
+    dbCustomerInfo = await prisma.customer.create({
+      data: {
+        name: customerInfo.name,
+        email: customerInfo.email,
+        phone: customerInfo.phone,
+        address: customerInfo.address,
+        city: customerInfo.city,
+        zipcode: customerInfo.zipcode,
+        country: customerInfo.country,
+      },
+    });
   }
 
   // store transaction
