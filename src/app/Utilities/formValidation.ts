@@ -1,4 +1,5 @@
 export const INPUT_LENGTH_MAX = 60;
+export const NAME_LENGTH_MIN = 2;
 export const NAME_LENGTH_MAX = 60;
 export const EMAIL_LENGTH_MAX = 60;
 export const PHONE_LENGTH_MAX = 14;
@@ -37,7 +38,7 @@ export function isValidName(name: string): boolean {
   }
 
   // Check length
-  if (name.length < 2) {
+  if (name.length < 2 || name.length > NAME_LENGTH_MAX) {
     return false;
   }
 
