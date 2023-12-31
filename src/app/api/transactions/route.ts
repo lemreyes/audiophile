@@ -25,6 +25,16 @@ export async function POST(request: NextRequest) {
     transactionInfo,
   }: { customerInfo: CustomerInfo; transactionInfo: TransactionInfo } =
     await request.json();
+  if (!customerInfo || !transactionInfo) {
+    return NextResponse.json(
+      {
+        errorMessage: "Invalid parameters",
+      },
+      {
+        status: 400,
+      }
+    );
+  }
 
   console.log("customerInfo ", customerInfo);
   console.log("transactionInfo", transactionInfo);
@@ -35,8 +45,10 @@ export async function POST(request: NextRequest) {
       email: customerInfo.email,
     },
   });
+  console.log("dbCustomerInfo ", dbCustomerInfo);
 
-  // check valid payment method first
+  // validate transaction data
+  // check valid payment method
   if (transactionInfo.paymentMethod === PAYMENT_METHOD.EMONEY) {
     if (
       !transactionInfo.eMoneyNumber ||
@@ -53,6 +65,23 @@ export async function POST(request: NextRequest) {
         }
       );
     }
+  }
+
+  // validate other transaction information
+  if (
+    transactionInfo.shippingFee < 0 ||
+    transactionInfo.vatRate < 0 ||
+    transactionInfo.vatRate > 1 ||
+    transactionInfo.orders.length < 1
+  ) {
+    return NextResponse.json(
+      {
+        errorMessage: "Invalid parameters inside transaction info",
+      },
+      {
+        status: 400,
+      }
+    );
   }
 
   if (!dbCustomerInfo) {
