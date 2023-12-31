@@ -13,6 +13,7 @@ import {
 import { CustomerInfo, TransactionInfo } from "../../Types/Interfaces";
 import prisma from "../../Utilities/prismaUtils";
 import { PAYMENT_METHOD } from "../../Types/Enums";
+import { PaymentMethod } from "@prisma/client";
 
 export async function POST(request: NextRequest) {
   console.log("POST /api/transactions");
@@ -127,6 +128,29 @@ export async function POST(request: NextRequest) {
   }
 
   // store transaction
+  const newDbTransactionInfo = await prisma.transaction.create({
+    data: {
+      customerId: dbCustomerInfo.id,
+      paymentMethod:
+        transactionInfo.paymentMethod === PAYMENT_METHOD.EMONEY
+          ? PaymentMethod.EMONEY
+          : PaymentMethod.COD,
+      eMoneyNumber: transactionInfo.eMoneyNumber,
+      eMoneyPin: transactionInfo.eMoneyPin,
+      shippingFee: transactionInfo.shippingFee,
+      vatRate: transactionInfo.vatRate,
+    },
+  });
+  if (!newDbTransactionInfo) {
+    return NextResponse.json(
+      {
+        errorMessage: "Unable to create new transaction in database",
+      },
+      {
+        status: 500,
+      }
+    );
+  }
 
   return NextResponse.json({ status: "OK" });
 }
