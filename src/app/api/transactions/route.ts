@@ -20,7 +20,6 @@ import { PAYMENT_METHOD } from "../../Types/Enums";
 import { PaymentMethod } from "@prisma/client";
 
 export async function POST(request: NextRequest) {
-  console.log("POST /api/transactions");
 
   let dbCustomerInfo = undefined;
 
@@ -41,16 +40,12 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  console.log("customerInfo ", customerInfo);
-  console.log("transactionInfo", transactionInfo);
-
   // check if not yet existing customer
   dbCustomerInfo = await prisma.customer.findUnique({
     where: {
       email: customerInfo.email,
     },
   });
-  console.log("dbCustomerInfo ", dbCustomerInfo);
 
   // validate transaction data
   // check valid payment method

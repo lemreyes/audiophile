@@ -14,8 +14,6 @@ export async function StoreNewOrder(
     console.error("transaction or customer information is NULL");
     return false;
   }
-  console.log("customerInfo", customerInfo);
-  console.log("transactionInfo", transactionInfo);
 
   const response = await fetch("/api/transactions", {
     method: "POST",
@@ -29,7 +27,6 @@ export async function StoreNewOrder(
   });
 
   const responseData = await response.json();
-  console.log("responseData", responseData);
 
   if (!response.ok) {
     throw new Error(responseData.errorMessage);
