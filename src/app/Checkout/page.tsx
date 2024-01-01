@@ -34,10 +34,14 @@ import {
 import AcknowledgeDialog from "./Components/AcknowledgeDialog";
 import { StoreNewOrder } from "../Services/OrderService";
 import { CustomerInfo, OrderItem, TransactionInfo } from "../Types/Interfaces";
+import { useRouter } from "next/navigation";
 
 export default function CheckoutPage() {
   const cartItems = useCartStore((state: CartState) => state.items);
   const totalPrice = useCartStore((state: CartState) => state.totalPrice);
+  const deleteItems = useCartStore((state: CartState) => state.removeAll);
+
+  const router = useRouter();
 
   const [summaryItems, setSummaryItems] = useState<Array<ICartItem>>([]);
   const [totalSummary, setTotalSummary] = useState(0);
@@ -69,9 +73,18 @@ export default function CheckoutPage() {
   const hdlClickOutside = (e: React.MouseEvent) => {
     const target = e.target as HTMLDivElement;
     if (target && target.id === "ack-overlay") {
+      // delete cart storage
+      deleteItems();
+
+      // hide dialog
       setIsShowAckDialog(false);
+
+      // show scroll
       document.body.style.overflowY = "auto";
       document.body.style.overflowX = "auto";
+
+      // redirect to home
+      router.push("/");
     }
   };
 
