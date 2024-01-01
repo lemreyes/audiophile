@@ -602,7 +602,6 @@ export default function CheckoutPage() {
               return (
                 <SummaryItem
                   key={item.productId}
-                  id={item.productId}
                   imageSrc={item.imageSrc}
                   productName={item.productName}
                   price={item.price}

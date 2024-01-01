@@ -2,13 +2,11 @@
 import Image from "next/image";
 
 export default function SummaryItem({
-  id,
   imageSrc,
   productName,
   price,
   quantity,
 }: {
-  id: number;
   imageSrc: string;
   productName: string;
   price: number;

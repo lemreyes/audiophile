@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CountButton from "../[Categories]/[Product]/Components/CountButton";
 import { CartState, ICartItem, useCartStore } from "../Store/CartStore";
 
