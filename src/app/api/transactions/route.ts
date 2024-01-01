@@ -10,7 +10,11 @@ import {
   isValidPhone,
   isValidZip,
 } from "../../Utilities/formValidation";
-import { CustomerInfo, TransactionInfo } from "../../Types/Interfaces";
+import {
+  CustomerInfo,
+  OrderItem,
+  TransactionInfo,
+} from "../../Types/Interfaces";
 import prisma from "../../Utilities/prismaUtils";
 import { PAYMENT_METHOD } from "../../Types/Enums";
 import { PaymentMethod } from "@prisma/client";
@@ -152,5 +156,23 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  return NextResponse.json({ status: "OK" });
+  // store orders
+  const dbStoredOrders = await Promise.all(
+    transactionInfo.orders.map(async (order: OrderItem) => {
+      const dbStoredOrder = await prisma.orderItem.create({
+        data: {
+          productId: order.productId,
+          quantity: order.quantity,
+        },
+      });
+
+      return dbStoredOrder;
+    })
+  );
+
+  return NextResponse.json({
+    dbCustomerInfo,
+    newDbTransactionInfo,
+    dbStoredOrders,
+  });
 }
