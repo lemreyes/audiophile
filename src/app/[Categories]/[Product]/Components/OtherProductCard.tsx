@@ -1,7 +1,8 @@
+"use client";
 import { Fragment } from "react";
 import Picture from "../../../Components/Picture";
 import { ImageInfoPictureComponent } from "../../../Types/Interfaces";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function OtherProductCard({
   imageSrcSetInfo,
@@ -16,6 +17,8 @@ export default function OtherProductCard({
   category: string;
   id: number;
 }) {
+  const router = useRouter();
+
   return (
     <Fragment>
       <div className="px-2 bg-product rounded-lg w-full flex items-center justify-center">
@@ -33,19 +36,13 @@ export default function OtherProductCard({
       <h4 className="mt-4 text-[24px] px-4 font-bold text-center tracking-wide">
         {shortName}
       </h4>
-      <Link
-        href={{
-          pathname: `/${category}/${name}`,
-          query: { id: id },
-        }}
-      >
-        <button
-          className="mt-4 mb-8 py-4 px-8 uppercase text-[13px] font-bold tracking-wide text-white bg-accent 
+      <button
+        className="mt-4 mb-8 py-4 px-8 uppercase text-[13px] font-bold tracking-wide text-white bg-accent 
                           hover:bg-accentHover"
-        >
-          See product
-        </button>
-      </Link>
+        onClick={() => router.push(`/${category}/${name}?id=${id}`)}
+      >
+        See product
+      </button>
     </Fragment>
   );
 }
