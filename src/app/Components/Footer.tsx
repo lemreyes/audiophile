@@ -134,12 +134,11 @@ export default function Footer() {
             id="footer-accent"
             className="w-24 h-[4px] bg-accent row-start-1 row-end-2 col-start-1 col-end-2"
           ></div>
-          <Link
-            href="/"
-            className="row-start-2 row-end-3 col-start-1 col-end-2"
-          >
-            <Image src={logo} alt="Logo" />
-          </Link>
+          <div className="row-start-2 row-end-3 col-start-1 col-end-2">
+            <Link href="/">
+              <Image src={logo} alt="Logo" />
+            </Link>
+          </div>
           <nav
             id="site-links"
             className="uppercase text-[13px] font-bold leading-[25px] tracking-[2px] 
