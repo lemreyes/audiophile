@@ -62,18 +62,18 @@ export default function Footer() {
           className="mt-8 tablet:ml-10 uppercase text-[13px] font-bold leading-[25px] tracking-[2px] text-center tablet:text-left"
         >
           <ul className="tablet:flex tablet:flex-row gap-x-8">
-            <Link href="/">
-              <li className="my-8 tablet:my-0 hover:text-accent">Home</li>
-            </Link>
-            <Link href="/Headphones">
-              <li className="my-8 tablet:my-0 hover:text-accent">Headphones</li>
-            </Link>
-            <Link href="/Speakers">
-              <li className="my-8 tablet:my-0 hover:text-accent">Speakers</li>
-            </Link>
-            <Link href="/Earphones">
-              <li className="my-8 tablet:my-0 hover:text-accent">Earphones</li>
-            </Link>
+            <li className="my-8 tablet:my-0 hover:text-accent">
+              <Link href="/">Home</Link>
+            </li>
+            <li className="my-8 tablet:my-0 hover:text-accent">
+              <Link href="/Headphones">Headphones</Link>
+            </li>
+            <li className="my-8 tablet:my-0 hover:text-accent">
+              <Link href="/Speakers">Speakers</Link>
+            </li>
+            <li className="my-8 tablet:my-0 hover:text-accent">
+              <Link href="/Earphones">Earphones</Link>
+            </li>
           </ul>
         </nav>
         <p className="mt-8 tablet:ml-10 text-gray-400 text-[15px] text-center tablet:text-left leading-6 font-medium px-8 tablet:px-0 tablet:w-[90%]">
@@ -146,18 +146,18 @@ export default function Footer() {
                         row-start-2 row-end-3 col-start-2 col-end-3 self-start justify-self-end"
           >
             <ul className="flex flex-row gap-x-8">
-              <Link href="/">
-                <li className="hover:text-accent">Home</li>
-              </Link>
-              <Link href="/Headphones">
-                <li className="hover:text-accent">Headphones</li>
-              </Link>
-              <Link href="/Speakers">
-                <li className="hover:text-accent">Speakers</li>
-              </Link>
-              <Link href="/Earphones">
-                <li className="hover:text-accent">Earphones</li>
-              </Link>
+              <li className="hover:text-accent">
+                <Link href="/">Home</Link>
+              </li>
+              <li className="hover:text-accent">
+                <Link href="/Headphones">Headphones</Link>
+              </li>
+              <li className="hover:text-accent">
+                <Link href="/Speakers">Speakers</Link>
+              </li>
+              <li className="hover:text-accent">
+                <Link href="/Earphones">Earphones</Link>
+              </li>
             </ul>
           </nav>
           <p

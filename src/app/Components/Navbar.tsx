@@ -69,20 +69,22 @@ export default function Navbar() {
           <Link href="/">
             <Image src={logo} alt="logo" />
           </Link>
-          <ul className="hidden desktop:flex desktop:flex-row desktop:gap-x-8 text-white uppercase text-[13px] tracking-[2px] text-center">
-            <Link href="/">
-              <li className="my-8 hover:text-accent">Home</li>
-            </Link>
-            <Link href="/Headphones">
-              <li className="my-8 hover:text-accent">Headphones</li>
-            </Link>
-            <Link href="/Speakers">
-              <li className="my-8 hover:text-accent">Speakers</li>
-            </Link>
-            <Link href="/Earphones">
-              <li className="my-8 hover:text-accent">Earphones</li>
-            </Link>
-          </ul>
+          <menu>
+            <ul className="hidden desktop:flex desktop:flex-row desktop:gap-x-8 text-white uppercase text-[13px] tracking-[2px] text-center">
+              <li className="my-8 hover:text-accent">
+                <Link href="/">Home</Link>
+              </li>
+              <li className="my-8 hover:text-accent">
+                <Link href="/Headphones">Headphones</Link>
+              </li>
+              <li className="my-8 hover:text-accent">
+                <Link href="/Speakers">Speakers</Link>
+              </li>
+              <li className="my-8 hover:text-accent">
+                <Link href="/Earphones">Earphones</Link>
+              </li>
+            </ul>
+          </menu>
           <div className="flex flex-row" onClick={openCartDialog}>
             <Image src={cart_icon} alt="cart_icon" className="w-4 h-4 mr-2" />
             <span className="text-white uppercase text-[13px] tracking-[2px] text-left">
