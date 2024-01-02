@@ -61,3 +61,15 @@ export interface OrderItem {
   productId: number;
   quantity: number;
 }
+
+export interface ImageSource {
+  mobile: string;
+  tablet: string;
+  desktop: string;
+}
+
+export interface ImageInfoPictureComponent {
+  imageSrc: ImageSource;
+  alt: string;
+  styleClasses: string;
+}

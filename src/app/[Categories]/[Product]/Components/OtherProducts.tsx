@@ -1,6 +1,10 @@
-import Link from "next/link";
-import Picture, { srcSetInfo } from "../../../Components/Picture";
+import { srcSetInfo } from "../../../Components/Picture";
 import prisma from "../../../Utilities/prismaUtils";
+import OtherProductCard from "./OtherProductCard";
+import {
+  ImageInfoPictureComponent,
+  ImageSource,
+} from "../../../Types/Interfaces";
 
 export interface OtherProductsInfo {
   id: number;
@@ -40,12 +44,12 @@ export default async function OtherProducts({
       throw new Error("Product information not found.");
     }
 
-    const imageInfo = {
+    const imageInfo: ImageInfoPictureComponent = {
       imageSrc: {
         mobile: product.image[0].mobileSrc,
         tablet: product.image[0].tabletSrc,
         desktop: product.image[0].desktopSrc,
-      },
+      } as ImageSource,
       alt: product.name,
       styleClasses: "max-w-[200px]",
     };
@@ -69,34 +73,13 @@ export default async function OtherProducts({
             key={otherProduct.id}
             className="flex flex-col items-center justify-between w-full h-full"
           >
-            <div className="px-2 bg-product rounded-lg w-full flex items-center justify-center">
-              <Picture
-                srcSet={{
-                  mobile: otherProduct.imageSrcSetInfo.imageSrc.mobile,
-                  tablet: otherProduct.imageSrcSetInfo.imageSrc.tablet,
-                  desktop: otherProduct.imageSrcSetInfo.imageSrc.desktop,
-                }}
-                alt={otherProduct.imageSrcSetInfo.alt}
-                styleClass={otherProduct.imageSrcSetInfo.styleClasses}
-              />
-            </div>
-
-            <h4 className="mt-4 text-[24px] px-4 font-bold text-center tracking-wide">
-              {otherProduct.shortName}
-            </h4>
-            <Link
-              href={{
-                pathname: `/${otherProduct.category}/${otherProduct.name}`,
-                query: { id: otherProduct.id },
-              }}
-            >
-              <button
-                className="mt-4 mb-8 py-4 px-8 uppercase text-[13px] font-bold tracking-wide text-white bg-accent 
-                          hover:bg-accentHover"
-              >
-                See product
-              </button>
-            </Link>
+            <OtherProductCard
+              imageSrcSetInfo={otherProduct.imageSrcSetInfo}
+              shortName={otherProduct.shortName}
+              name={otherProduct.name}
+              category={otherProduct.category}
+              id={otherProduct.id}
+            />
           </div>
         );
       })}
