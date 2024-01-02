@@ -1,4 +1,5 @@
-import Link from "next/link";
+"use client";
+import { useRouter } from "next/navigation";
 import { ProductInfo } from "../../Types/Interfaces";
 import Picture from "../../Components/Picture";
 
@@ -9,6 +10,8 @@ export default function ProductCard({
   product: ProductInfo;
   listOrder: number;
 }) {
+  const router = useRouter();
+
   let orderStyle = "";
   if (listOrder % 2 === 0) {
     orderStyle = "desktop:order-last";
@@ -46,16 +49,14 @@ export default function ProductCard({
         <p className="mb-8 tablet:px-12 desktop:px-0 text-center desktop:text-left text-[15px] leading-[25px] text-textPrimary font-medium">
           {product.description}
         </p>
-        <Link
-          href={{
-            pathname: `/${product.category}/${product.slug}`,
-            query: { id: product.id },
-          }}
+        <button
+          className="px-8 py-4 uppercase bg-accent hover:bg-accentHover text-white text-[13px] tracking-[1px] font-bold"
+          onClick={() =>
+            router.push(`/${product.category}/${product.slug}?id=${product.id}`)
+          }
         >
-          <button className="px-8 py-4 uppercase bg-accent hover:bg-accentHover text-white text-[13px] tracking-[1px] font-bold">
-            See Product
-          </button>
-        </Link>
+          See Product
+        </button>
       </div>
     </article>
   );
