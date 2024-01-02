@@ -2,6 +2,7 @@ import prisma from "../Utilities/prismaUtils";
 import ProductCard from "./Components/ProductCard";
 import Categories from "../Components/Categories";
 import ClosingStatement from "../Components/ClosingStatement";
+import { notFound } from "next/navigation";
 
 export default async function Category({
   params,
@@ -18,6 +19,11 @@ export default async function Category({
       image: true,
     },
   });
+
+  // if products is empty it is non-existing category, redirect to not found
+  if (products.length === 0) {
+    notFound();
+  }
 
   return (
     <main className="flex flex-col items-center">
