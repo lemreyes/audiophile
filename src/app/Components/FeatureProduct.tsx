@@ -1,7 +1,10 @@
-import Link from "next/link";
+"use client";
 import Picture from "./Picture";
+import { useRouter } from "next/navigation";
 
 export default function FeatureProduct() {
+  const router = useRouter();
+
   return (
     <section
       id="featureProducts"
@@ -31,32 +34,24 @@ export default function FeatureProduct() {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
-          <Link
-            href={{
-              pathname: "/Speakers/zx9-speaker",
-              query: { id: 6 },
-            }}
+          <button
+            className="mt-12 px-8 py-4 bg-black hover:bg-[#4c4c4c] text-white text-sm uppercase font-bold"
+            onClick={() => router.push(`/Speakers/zx9-speaker?id=6`)}
           >
-            <button className="mt-12 px-8 py-4 bg-black hover:bg-[#4c4c4c] text-white text-sm uppercase font-bold">
-              See product
-            </button>
-          </Link>
+            See product
+          </button>
         </div>
       </article>
       <article className="bg-zx7 w-full rounded-lg mt-8 pl-8 py-20">
         <h2 className="text-3xl uppercase font-bold tracking-[2px]">
           ZX7 speaker
         </h2>
-        <Link
-          href={{
-            pathname: "/Speakers/zx7-speaker",
-            query: { id: 5 },
-          }}
+        <button
+          className="mt-12 border border-black hover:bg-black hover:text-white px-8 py-4 uppercase text-sm font-bold"
+          onClick={() => router.push(`/Speakers/zx7-speaker?id=5`)}
         >
-          <button className="mt-12 border border-black hover:bg-black hover:text-white px-8 py-4 uppercase text-sm font-bold">
-            See Product
-          </button>
-        </Link>
+          See Product
+        </button>
       </article>
       <article className="mt-8 tablet:w-full">
         <div className="tablet:grid tablet:grid-cols-2 gap-x-4">
@@ -73,16 +68,12 @@ export default function FeatureProduct() {
           </div>
           <div className="flex flex-col justify-center mt-8 tablet:mt-0 bg-product pl-4 gap-4 rounded-lg min-h-[200px]">
             <h2 className="text-[28px] uppercase font-bold">yx1 earphones</h2>
-            <Link
-              href={{
-                pathname: "/Earphones/yx1-earphones",
-                query: { id: 1 },
-              }}
+            <button
+              className="border border-black hover:bg-black hover:text-white px-4 py-4 w-[160px] uppercase text-sm font-bold"
+              onClick={() => router.push(`/Earphones/yx1-earphones?id=1`)}
             >
-              <button className="border border-black hover:bg-black hover:text-white px-4 py-4 w-[160px] uppercase text-sm font-bold">
-                See Product
-              </button>
-            </Link>
+              See Product
+            </button>
           </div>
         </div>
       </article>
