@@ -1,3 +1,1 @@
-module.exports = {
-  plugins: ["prettier-plugin-tailwindss"],
-};
+export const plugins = ["prettier-plugin-tailwindss"];
