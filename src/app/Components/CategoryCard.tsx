@@ -27,7 +27,9 @@ export default function CategoryCard({
           {name}
         </h2>
         <span className="uppercase text-center text-textPrimary text-[13px] font-bold hover:text-accent flex flex-row items-center gap-2">
-          <Link href={`/${name}`}>Shop</Link>
+          <Link href={`/${name}`}>
+            <span className="sr-only">Shop for {name}</span>Shop
+          </Link>
           <Image src={shop_arrow} alt="arrow icon" className="inline" />
         </span>
       </div>
