@@ -55,7 +55,10 @@ export default function Navbar() {
   return (
     <Fragment>
       <header className="bg-primary py-4 flex flex-col items-center ">
-        <nav className="w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 flex flex-row justify-between items-center">
+        <nav
+          aria-label="main navigation"
+          className="w-10/12 tablet:w-11/12 desktop:w-4/5 wide:w-3/5 flex flex-row justify-between items-center"
+        >
           <Image
             src={hamburger_icon}
             alt="burger_icon"

@@ -58,7 +58,8 @@ export default function Footer() {
           className="mt-12 tablet:ml-10 justify-self-center tablet:justify-self-start"
         />
         <nav
-          id="site-links"
+          id="site-links-smallscreen"
+          aria-label="footer navigation smallscreen"
           className="mt-8 tablet:ml-10 uppercase text-[13px] font-bold leading-[25px] tracking-[2px] text-center tablet:text-left"
         >
           <ul className="tablet:flex tablet:flex-row gap-x-8">
@@ -87,7 +88,8 @@ export default function Footer() {
             Copyright 2023. All Rights Reserved
           </p>
           <nav
-            id="social-media-links"
+            id="social-media-links-smallscreen"
+            aria-label="social-media-nav-smallscreen"
             className="mt-12 tablet:mr-10 tablet:justify-self-end justify-self-center "
           >
             <ul className="flex flex-row gap-x-4">
@@ -140,7 +142,8 @@ export default function Footer() {
             </Link>
           </div>
           <nav
-            id="site-links"
+            id="site-links-largescreen"
+            aria-label="footer-nav-largescreen"
             className="uppercase text-[13px] font-bold leading-[25px] tracking-[2px] 
                         row-start-2 row-end-3 col-start-2 col-end-3 self-start justify-self-end"
           >
@@ -172,7 +175,8 @@ export default function Footer() {
             Copyright 2023. All Rights Reserved
           </p>
           <nav
-            id="social-media-links"
+            id="social-media-links-largescreen"
+            aria-label="socialmedia-nav-largescreen"
             className="mt-12 justify-self-end row-start-3 row-end-4 col-start-2 col-end-3"
           >
             <ul className="flex flex-row gap-x-4">
