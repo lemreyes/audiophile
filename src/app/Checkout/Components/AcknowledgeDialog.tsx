@@ -47,7 +47,6 @@ export default function AcknowledgeDialog({
             <div className="">
               {singleCartItem && (
                 <SummaryItem
-                  id={singleCartItem.productId}
                   imageSrc={singleCartItem.imageSrc}
                   productName={singleCartItem.productName}
                   price={singleCartItem.price}
