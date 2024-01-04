@@ -6,7 +6,6 @@ This is a solution to the [Audiophile e-commerce website challenge on Frontend M
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -38,8 +37,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Add live site URL here](https://audiophile-omss.onrender.com/)
 
 ## My process
 
@@ -50,7 +48,11 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
+- Typescript
 - [React](https://reactjs.org/) - JS library
+- React Server Components
+- [Zustand] (https://zustand-demo.pmnd.rs/) - Zustand
+- [Prisma] (https://www.prisma.io/) - Prisma ORM
 - [Next.js](https://nextjs.org/) - React framework
 - [TailwindCSS](https://tailwindcss.com/) - For styles
 
@@ -58,48 +60,20 @@ Users should be able to:
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+Instead of a localstorage, the product contents, image source, and descriptions are stored in a PostgreSQL database and retrieved using React Server Components.
+Cart items though are stored in localstorage using Zustand for state management.
 
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+In the future, I would like to add animations using Framer Motion.
+Also I plan to make unit tests with Jest.
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
-
-### Useful resources
-
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Frontend Mentor - [@lemreyes](https://www.frontendmentor.io/profile/lemreyes)
+- Twitter - [@SwLemreyes](https://twitter.com/SwLemreyes)
 
 **Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
 
